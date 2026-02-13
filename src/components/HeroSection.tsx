@@ -74,11 +74,11 @@ const MarqueeRow = ({ images, speed = 30, reverse = false }: MarqueeRowProps) =>
 
 const HeroSection = () => {
   return (
-    <section id="home" className="bg-secondary">
+    <section id="home">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Left text */}
-          <div className="space-y-6">
+          {/* Left text - white background */}
+          <div className="space-y-6 bg-white rounded-lg p-6 md:p-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-foreground leading-tight">
               Pomeranian Zucht
               <br />
@@ -93,8 +93,8 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Right marquee sliders */}
-          <div className="flex flex-col gap-3">
+          {/* Right marquee sliders - pink background */}
+          <div className="flex flex-col gap-3 bg-secondary rounded-lg p-6 md:p-8">
             <MarqueeRow images={topImages} speed={30} />
             <MarqueeRow images={bottomImages} speed={25} reverse />
           </div>
