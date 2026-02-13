@@ -12,7 +12,7 @@ const TrainingSection = () => {
               <span className="text-accent">bestens vorbereitet</span>{" "}
               auf die große Welt
             </h2>
-            <div className="text-sm md:text-base font-body text-muted-foreground leading-relaxed space-y-3">
+            <div className="font-body text-muted-foreground leading-relaxed space-y-3">
               <p>
                 Unsere Welpen wachsen mitten in unserem Familienalltag auf und erhalten
                 von Anfang an ein liebevolles, fundiertes Training. Damit der Start in

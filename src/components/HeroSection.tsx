@@ -84,7 +84,7 @@ const HeroSection = () => {
               <br />
               <span className="text-3xl md:text-4xl text-accent">mit Herz und Verstand</span>
             </h1>
-            <p className="text-sm md:text-base font-body text-muted-foreground leading-relaxed">
+            <p className="font-body text-muted-foreground leading-relaxed">
               Willkommen bei Pomeranian-Zucht Anne &amp; Georg – im idyllischen
               Marienroda, mitten im Grünen. Mit Leidenschaft, Herz und Fachwissen
               widmen wir uns der Zucht gesunder, charakterstarker und langlebiger
