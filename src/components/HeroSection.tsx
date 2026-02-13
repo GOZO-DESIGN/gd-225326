@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import img1 from "@/assets/home/WhatsApp-Image-2024-08-23-at-00.58.31_e742076e.webp";
 import img2 from "@/assets/home/WhatsApp-Image-2024-08-23-at-00.58.32_6d8ead87.webp";
 import img3 from "@/assets/home/WhatsApp-Image-2024-08-23-at-02.29.19_90af7699.webp";
@@ -11,41 +11,61 @@ import img8 from "@/assets/home/WhatsApp-Image-2024-08-07-at-20.15.07_9f431fe2.w
 const topImages = [img1, img2, img3, img4];
 const bottomImages = [img5, img6, img7, img8];
 
-interface SliderProps {
+interface MarqueeRowProps {
   images: string[];
-  interval?: number;
+  speed?: number;
+  reverse?: boolean;
 }
 
-const AutoSlider = ({ images, interval = 4000 }: SliderProps) => {
-  const [current, setCurrent] = useState(0);
+const MarqueeRow = ({ images, speed = 30, reverse = false }: MarqueeRowProps) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, interval);
-    return () => clearInterval(timer);
-  }, [images.length, interval]);
+    const el = scrollRef.current;
+    if (!el) return;
+
+    let animationId: number;
+    let pos = 0;
+    const half = el.scrollWidth / 2;
+
+    const step = () => {
+      pos += speed / 60;
+      if (pos >= half) pos = 0;
+      el.style.transform = reverse
+        ? `translateX(${pos}px)`
+        : `translateX(${-pos}px)`;
+      animationId = requestAnimationFrame(step);
+    };
+
+    animationId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationId);
+  }, [speed, reverse]);
+
+  // Duplicate images for seamless loop
+  const doubled = [...images, ...images];
 
   return (
-    <div className="relative w-full h-full overflow-hidden rounded-lg">
-      {/* Blurred background */}
-      <img
-        src={images[current]}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
-      />
-      {/* Foreground image */}
-      <div className="relative w-full h-full flex items-center justify-center">
-        {images.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={`Pomeranian ${i + 1}`}
-            className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${
-              i === current ? "opacity-100" : "opacity-0"
-            }`}
-          />
+    <div className="relative w-full h-48 md:h-56 overflow-hidden rounded-lg">
+      {/* Blurred background layer */}
+      <div className="absolute inset-0 bg-secondary" />
+      {/* Scrolling strip */}
+      <div ref={scrollRef} className="flex gap-3 h-full w-max will-change-transform">
+        {doubled.map((src, i) => (
+          <div key={i} className="relative h-full w-64 md:w-72 flex-shrink-0 rounded-lg overflow-hidden">
+            {/* Blur bg */}
+            <img
+              src={src}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-50"
+            />
+            {/* Foreground */}
+            <img
+              src={src}
+              alt={`Pomeranian ${(i % images.length) + 1}`}
+              className="relative w-full h-full object-contain"
+            />
+          </div>
         ))}
       </div>
     </div>
@@ -73,14 +93,10 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Right sliders */}
+          {/* Right marquee sliders */}
           <div className="flex flex-col gap-3">
-            <div className="h-48 md:h-56">
-              <AutoSlider images={topImages} interval={4000} />
-            </div>
-            <div className="h-48 md:h-56">
-              <AutoSlider images={bottomImages} interval={5000} />
-            </div>
+            <MarqueeRow images={topImages} speed={30} />
+            <MarqueeRow images={bottomImages} speed={25} reverse />
           </div>
         </div>
       </div>
