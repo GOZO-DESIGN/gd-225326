@@ -82,7 +82,7 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-foreground leading-tight">
               Pomeranian Zucht
               <br />
-              <span className="text-3xl md:text-4xl">mit Herz und Verstand</span>
+              <span className="text-3xl md:text-4xl text-accent">mit Herz und Verstand</span>
             </h1>
             <p className="text-sm md:text-base font-body text-muted-foreground leading-relaxed">
               Willkommen bei Pomeranian-Zucht Anne &amp; Georg – im idyllischen
