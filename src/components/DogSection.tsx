@@ -30,11 +30,11 @@ const DogSection = ({
           } gap-8 md:gap-12 items-center`}
         >
           {/* Image */}
-          <div className="w-full md:w-1/2 relative">
+            <div className="w-full md:w-1/2 relative">
             <img
               src={imageSrc}
               alt={imageAlt}
-              className="w-full h-80 md:h-[500px] object-contain rounded-[10px]"
+              className="w-full h-80 md:h-[500px] object-cover rounded-[10px]"
               loading="lazy"
             />
             {imageLabel && (
