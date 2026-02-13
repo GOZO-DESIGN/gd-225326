@@ -81,7 +81,7 @@ const Navbar = () => {
                     <Link
                       key={l.href}
                       to={l.href}
-                      className="block px-5 py-3 text-[18px] font-body text-foreground hover:opacity-80 transition-opacity"
+                      className="block px-5 py-3 text-[18px] font-body text-foreground hover:bg-primary/10 transition-colors"
                       onClick={() => setHundeOpen(false)}
                     >
                       {l.label}
