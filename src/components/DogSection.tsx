@@ -34,7 +34,7 @@ const DogSection = ({
             <img
               src={imageSrc}
               alt={imageAlt}
-              className="w-full h-64 md:h-80 object-cover rounded-lg"
+              className="w-full h-[400px] md:h-[650px] object-cover rounded-[10px]"
               loading="lazy" />
 
             {imageLabel &&
