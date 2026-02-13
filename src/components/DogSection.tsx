@@ -23,7 +23,7 @@ const DogSection = ({
 }: DogSectionProps) => {
   return (
     <section id={id} className="py-16 md:py-20 bg-primary-foreground">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={`flex flex-col ${
           reversed ? "md:flex-row-reverse" : "md:flex-row"} gap-8 md:gap-12 items-center`
