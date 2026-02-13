@@ -45,13 +45,13 @@ const MarqueeRow = ({ images, speed = 30, reverse = false }: MarqueeRowProps) =>
   const tripled = [...images, ...images, ...images];
 
   return (
-    <div className="relative w-full h-48 md:h-56 overflow-hidden rounded-lg">
+    <div className="relative w-full h-[350px] md:h-[500px] overflow-hidden rounded-[10px]">
       {/* Blurred background layer */}
       <div className="absolute inset-0 bg-secondary" />
       {/* Scrolling strip */}
       <div ref={scrollRef} className="flex gap-3 h-full w-max will-change-transform">
         {tripled.map((src, i) => (
-          <div key={i} className="relative h-full w-64 md:w-72 flex-shrink-0 rounded-lg overflow-hidden">
+          <div key={i} className="relative h-full w-80 md:w-[28rem] flex-shrink-0 rounded-[10px] overflow-hidden">
             {/* Blur bg */}
             <img
               src={src}
