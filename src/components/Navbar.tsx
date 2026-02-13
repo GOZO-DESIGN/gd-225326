@@ -63,16 +63,20 @@ const Navbar = () => {
             </Link>
 
             {/* Unsere Hunde Dropdown */}
-            <div ref={dropdownRef} className="relative">
+            <div
+              ref={dropdownRef}
+              className="relative"
+              onMouseEnter={() => setHundeOpen(true)}
+              onMouseLeave={() => setHundeOpen(false)}
+            >
               <button
-                onClick={() => setHundeOpen(!hundeOpen)}
                 className="flex items-center gap-1 text-[18px] font-body hover:opacity-80 transition-opacity"
               >
                 Unsere Hunde
                 {hundeOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
               </button>
               {hundeOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-secondary border border-primary rounded-[10px] shadow-lg z-50 py-2">
+                <div className="absolute top-full left-0 mt-0 w-48 bg-secondary border-2 border-primary shadow-lg z-50 py-2 animate-fade-in">
                   {hundeLinks.map((l) => (
                     <Link
                       key={l.href}
