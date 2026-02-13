@@ -13,8 +13,8 @@ pomWelpen, pomRuede, pomHuendin, pomTraining,
 pomHero1, pomHero2, pomHero3, pomHero4];
 
 
-const PhotoGrid = () => {
-  return;
+const PhotoGrid = (): JSX.Element | null => {
+  return null;
 
 
 
