@@ -74,8 +74,8 @@ const MarqueeRow = ({ images, speed = 30, reverse = false }: MarqueeRowProps) =>
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative">
-      <div className="grid md:grid-cols-2">
+    <section id="home" className="relative h-screen">
+      <div className="grid md:grid-cols-2 h-full">
         {/* Left half - white */}
         <div className="bg-white flex items-center">
           <div className="space-y-6 px-6 sm:px-10 lg:px-16 py-12 md:py-20 max-w-xl ml-auto">
