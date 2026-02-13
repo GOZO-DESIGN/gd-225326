@@ -5,7 +5,7 @@ const AboutSection = () => {
         <h2 className="text-4xl md:text-5xl font-heading text-foreground mb-8">
           Über <span className="text-accent">Mich</span>
         </h2>
-        <div className="space-y-4 text-sm md:text-base font-body text-muted-foreground leading-relaxed">
+        <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
           <p>
             Mein Name ist Anne-Katrin Müller und lebe mit meinem Mann Georg im
             idyllischen Marienroda, einem sehr kleinen Dorf mit ca. 38 Einwohnern

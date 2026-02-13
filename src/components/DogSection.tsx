@@ -50,7 +50,7 @@ const DogSection = ({
               {title}{" "}
               <span className="text-accent">{titleHighlight}</span>
             </h2>
-            <p className="text-sm md:text-base font-body text-muted-foreground leading-relaxed">
+            <p className="font-body text-muted-foreground leading-relaxed">
               {description}
             </p>
             <a
