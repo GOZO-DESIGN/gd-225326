@@ -2,13 +2,13 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer id="kontakt" className="bg-primary text-primary-foreground py-12 border-t-2 border-primary">
+    <footer id="kontakt" className="bg-secondary text-foreground py-12 border-t-2 border-primary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Address */}
           <div>
             <h3 className="font-heading text-2xl mb-4">Anschrift</h3>
-            <p className="font-body text-sm leading-relaxed opacity-90">
+            <p className="font-body text-[18px] leading-relaxed opacity-90">
               Marienroda 4
               <br />
               06647 Finneland
@@ -18,7 +18,7 @@ const Footer = () => {
           {/* Contact */}
           <div>
             <h3 className="font-heading text-2xl mb-4">Kontakt</h3>
-            <div className="font-body text-sm leading-relaxed space-y-1 opacity-90">
+            <div className="font-body text-[18px] leading-relaxed space-y-1 opacity-90">
               <p>WhatsApp: +49 (0) 152 028 221 93</p>
               <p>Festnetz: +49 (0) 34465690366</p>
               <p>
@@ -36,7 +36,7 @@ const Footer = () => {
           {/* Legal */}
           <div>
             <h3 className="font-heading text-2xl mb-4">Sonstiges</h3>
-            <div className="font-body text-sm space-y-1 opacity-90">
+            <div className="font-body text-[18px] space-y-1 opacity-90">
               <a href="#" className="block hover:opacity-80">
                 Impressum
               </a>
