@@ -1,17 +1,17 @@
-import pomHero1 from "@/assets/pom-hero-1.jpg";
-import pomHero2 from "@/assets/pom-hero-2.jpg";
-import pomHero3 from "@/assets/pom-hero-3.jpg";
-import pomHero4 from "@/assets/pom-hero-4.jpg";
-import pomWelpen from "@/assets/pom-welpen.jpg";
-import pomRuede from "@/assets/pom-ruede.jpg";
-import pomHuendin from "@/assets/pom-huendin.jpg";
-import pomTraining from "@/assets/pom-training.jpg";
+import img1 from "@/assets/home/WhatsApp-Image-2024-07-11-at-17.33.05-1.webp";
+import img2 from "@/assets/home/WhatsApp-Image-2024-07-26-at-04.08.51_17788466.webp";
+import img3 from "@/assets/home/WhatsApp-Image-2024-07-26-at-04.54.00_c4d82cac.webp";
+import img4 from "@/assets/home/WhatsApp-Image-2024-08-07-at-17.38.21_8f1f40b8.webp";
+import img5 from "@/assets/home/WhatsApp-Image-2024-08-07-at-20.15.07_9f431fe2.webp";
+import img6 from "@/assets/home/WhatsApp-Image-2024-08-07-at-20.15.08_e3a41125.webp";
+import img7 from "@/assets/home/WhatsApp-Image-2024-08-13-at-21.23.32_6ff19255.webp";
+import img8 from "@/assets/home/WhatsApp-Image-2024-08-23-at-00.58.31_e742076e.webp";
+import img9 from "@/assets/home/WhatsApp-Image-2024-08-23-at-00.58.32_6d8ead87.webp";
+import img10 from "@/assets/home/WhatsApp-Image-2024-08-23-at-02.29.19_90af7699.webp";
+import img11 from "@/assets/home/WhatsApp-Image-2024-08-23-at-19.22.48_ccc1001e.webp";
+import img12 from "@/assets/home/welpen-01-09-24-51.webp";
 
-const allImages = [
-  pomHero1, pomHero2, pomHero3, pomHero4,
-  pomWelpen, pomRuede, pomHuendin, pomTraining,
-  pomHero1, pomHero2, pomHero3, pomHero4,
-];
+const allImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12];
 
 const PhotoGrid = () => {
   return (
