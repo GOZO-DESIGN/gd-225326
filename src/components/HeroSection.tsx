@@ -1,9 +1,9 @@
-import pomHero1 from "@/assets/pom-hero-1.jpg";
-import pomHero2 from "@/assets/pom-hero-2.jpg";
-import pomHero3 from "@/assets/pom-hero-3.jpg";
-import pomHero4 from "@/assets/pom-hero-4.jpg";
+import img1 from "@/assets/home/WhatsApp-Image-2024-08-23-at-00.58.31_e742076e.webp";
+import img2 from "@/assets/home/WhatsApp-Image-2024-08-23-at-00.58.32_6d8ead87.webp";
+import img3 from "@/assets/home/WhatsApp-Image-2024-08-23-at-02.29.19_90af7699.webp";
+import img4 from "@/assets/home/WhatsApp-Image-2024-08-23-at-19.22.48_ccc1001e.webp";
 
-const images = [pomHero1, pomHero2, pomHero3, pomHero4];
+const images = [img1, img2, img3, img4];
 
 const HeroSection = () => {
   return (

@@ -1,4 +1,4 @@
-import pomTraining from "@/assets/pom-training.jpg";
+import trainingImg from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-10.23.58.avif";
 
 const TrainingSection = () => {
   return (
@@ -42,7 +42,7 @@ const TrainingSection = () => {
           {/* Image */}
           <div className="w-full md:w-1/2 relative">
             <img
-              src={pomTraining}
+              src={trainingImg}
               alt="Pomeranian Welpe Training"
               className="w-full h-64 md:h-80 object-cover rounded-lg"
               loading="lazy"
