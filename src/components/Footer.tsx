@@ -2,7 +2,7 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer id="kontakt" className="bg-primary text-primary-foreground py-12">
+    <footer id="kontakt" className="bg-primary text-primary-foreground py-12 border-t-2 border-primary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Address */}
