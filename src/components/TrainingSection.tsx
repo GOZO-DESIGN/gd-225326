@@ -2,9 +2,9 @@ import trainingImg from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10
 
 const TrainingSection = () => {
   return (
-    <section className="bg-primary/10 py-16 md:py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row gap-8 items-center">
+    <section className="bg-primary-foreground py-16 md:py-20">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           {/* Text */}
           <div className="w-full md:w-1/2 space-y-4">
             <h2 className="text-3xl md:text-4xl font-heading text-foreground">
@@ -44,7 +44,7 @@ const TrainingSection = () => {
             <img
               src={trainingImg}
               alt="Pomeranian Welpe Training"
-              className="w-full h-64 md:h-80 object-cover rounded-lg"
+              className="w-full h-[400px] md:h-[650px] object-cover rounded-[10px]"
               loading="lazy"
             />
             <span className="absolute bottom-3 right-3 bg-accent/80 text-accent-foreground px-3 py-1 rounded-full text-sm font-heading">
