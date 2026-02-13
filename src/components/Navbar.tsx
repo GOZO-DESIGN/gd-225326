@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.webp";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const links = [
     { label: "Home", href: "#home" },
@@ -15,12 +24,16 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-secondary text-foreground">
+    <nav className="sticky top-0 z-50 bg-secondary text-foreground transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? "h-16" : "h-28"}`}>
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3">
-            <img src={logo} alt="Pomeranianzucht Sachsen-Anhalt Logo" className="h-14 w-auto" />
+            <img
+              src={logo}
+              alt="Pomeranianzucht Sachsen-Anhalt Logo"
+              className={`w-auto transition-all duration-300 ${scrolled ? "h-12" : "h-24"}`}
+            />
           </a>
 
           {/* Desktop Links */}
