@@ -1,12 +1,55 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import PhotoGrid from "@/components/PhotoGrid";
+import AboutSection from "@/components/AboutSection";
+import DogSection from "@/components/DogSection";
+import TrainingSection from "@/components/TrainingSection";
+import Footer from "@/components/Footer";
+
+import pomWelpen from "@/assets/pom-welpen.jpg";
+import pomRuede from "@/assets/pom-ruede.jpg";
+import pomHuendin from "@/assets/pom-huendin.jpg";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <HeroSection />
+      <PhotoGrid />
+      <AboutSection />
+
+      <DogSection
+        title="Unsere"
+        titleHighlight="Welpen"
+        description="Unsere Pomeranian-Welpen wachsen mitten in unserem Familienalltag auf – umsorgt, sicher und mit viel Liebe. Vom ersten Tag an begleiten wir sie rund um die Uhr, sorgen für behutsame Sozialisierung und ein kleines Trainingsprogramm, das sie optimal auf ihr neues Zuhause vorbereitet. Jeder Welpe erhält bei uns die Zeit, Aufmerksamkeit und Fürsorge, die ein guter Start ins Leben braucht."
+        buttonText="Entdecken Sie unsere Welpen"
+        imageSrc={pomWelpen}
+        imageAlt="Pomeranian Welpen"
+      />
+
+      <DogSection
+        title="Unsere"
+        titleHighlight="Rüden"
+        description="Unsere Deckrüden sind charakterstarke, gesunde und bestens untersuchte Pomeranians mit besonderer Farbgebung. Sie leben als vollwertige Familienmitglieder in unserem Zuhause, sind ausgeglichen, freundlich und zeigen ein rassetypisches Wesen ohne Qualzuchtmerkmale. Jeder Rüde wird sorgfältig ausgewählt und trägt maßgeblich zu unserer verantwortungsvollen und transparenten Zucht bei."
+        buttonText="Entdecken Sie unsere Rüden"
+        imageSrc={pomRuede}
+        imageAlt="Pomeranian Rüde Remmy"
+        imageLabel="Remmy"
+        reversed
+      />
+
+      <DogSection
+        title="Unsere"
+        titleHighlight="Hündinnen"
+        description="Unsere Hündinnen leben eng bei uns im Haus, genießen Nähe, Zuwendung und ein harmonisches Rudelleben. Sie werden liebevoll betreut, regelmäßig tierärztlich untersucht und nur eingesetzt, wenn sie vollständig gesund und bereit für eine Trächtigkeit sind. Jede Hündin ist verschmust, menschenbezogen und trägt mit ihrem stabilen, freundlichen Wesen einen wichtigen Teil zu unserer Zuchtqualität bei."
+        buttonText="Entdecken Sie unsere Hündinnen"
+        imageSrc={pomHuendin}
+        imageAlt="Pomeranian Hündin Fee"
+        imageLabel="Fee"
+      />
+
+      <TrainingSection />
+      <Footer />
     </div>
   );
 };
