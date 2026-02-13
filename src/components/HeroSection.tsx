@@ -74,17 +74,17 @@ const MarqueeRow = ({ images, speed = 30, reverse = false }: MarqueeRowProps) =>
 
 const HeroSection = () => {
   return (
-    <section id="home">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Left text - white background */}
-          <div className="space-y-6 bg-white rounded-lg p-6 md:p-8">
+    <section id="home" className="relative">
+      <div className="grid md:grid-cols-2">
+        {/* Left half - white */}
+        <div className="bg-white flex items-center">
+          <div className="space-y-6 px-6 sm:px-10 lg:px-16 py-12 md:py-20 max-w-xl ml-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-foreground leading-tight">
               Pomeranian Zucht
               <br />
               <span className="text-3xl md:text-4xl">mit Herz und Verstand</span>
             </h1>
-            <p className="text-sm md:text-base font-body text-muted-foreground leading-relaxed max-w-lg">
+            <p className="text-sm md:text-base font-body text-muted-foreground leading-relaxed">
               Willkommen bei Pomeranian-Zucht Anne &amp; Georg – im idyllischen
               Marienroda, mitten im Grünen. Mit Leidenschaft, Herz und Fachwissen
               widmen wir uns der Zucht gesunder, charakterstarker und langlebiger
@@ -92,12 +92,12 @@ const HeroSection = () => {
               auf artgerechte Haltung, Gesundheit und Liebe zum Detail.
             </p>
           </div>
+        </div>
 
-          {/* Right marquee sliders - pink background */}
-          <div className="flex flex-col gap-3 bg-secondary rounded-lg p-6 md:p-8">
-            <MarqueeRow images={topImages} speed={30} />
-            <MarqueeRow images={bottomImages} speed={25} reverse />
-          </div>
+        {/* Right half - pink */}
+        <div className="bg-secondary flex flex-col gap-3 justify-center py-12 md:py-20 overflow-hidden">
+          <MarqueeRow images={topImages} speed={30} />
+          <MarqueeRow images={bottomImages} speed={25} reverse />
         </div>
       </div>
     </section>
