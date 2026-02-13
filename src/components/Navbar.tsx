@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.webp";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -14,12 +15,12 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-primary text-primary-foreground">
+    <nav className="sticky top-0 z-50 bg-secondary text-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="font-heading text-xl">
-            Pomeranianzucht
+          <a href="#home" className="flex items-center gap-3">
+            <img src={logo} alt="Pomeranianzucht Sachsen-Anhalt Logo" className="h-14 w-auto" />
           </a>
 
           {/* Desktop Links */}
@@ -28,14 +29,14 @@ const Navbar = () => {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm font-body hover:opacity-80 transition-opacity"
+                className="text-[18px] font-body hover:opacity-80 transition-opacity"
               >
                 {l.label}
               </a>
             ))}
             <a
               href="#kontakt"
-              className="bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-sm border border-primary hover:opacity-90 transition-opacity"
+              className="bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-[18px] border border-primary hover:opacity-90 transition-opacity"
             >
               Kontakt
             </a>
@@ -53,12 +54,12 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-primary pb-4 px-4 space-y-2">
+        <div className="md:hidden bg-secondary pb-4 px-4 space-y-2">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="block text-sm py-2 hover:opacity-80"
+              className="block text-[18px] py-2 hover:opacity-80"
               onClick={() => setMobileOpen(false)}
             >
               {l.label}
@@ -66,7 +67,7 @@ const Navbar = () => {
           ))}
           <a
             href="#kontakt"
-            className="block bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-sm text-center border border-primary"
+            className="block bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-[18px] text-center border border-primary"
             onClick={() => setMobileOpen(false)}
           >
             Kontakt
