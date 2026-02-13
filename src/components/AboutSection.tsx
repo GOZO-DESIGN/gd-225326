@@ -1,6 +1,6 @@
 const AboutSection = () => {
   return (
-    <section id="ueber" className="bg-background py-16 md:py-24">
+    <section id="ueber" className="py-16 md:py-24 text-primary-foreground bg-secondary">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-heading text-foreground mb-8">
           Über <span className="text-accent">Mich</span>
@@ -50,8 +50,8 @@ const AboutSection = () => {
           </p>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default AboutSection;
