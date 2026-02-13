@@ -26,11 +26,11 @@ const MarqueeRow = ({ images, speed = 30, reverse = false }: MarqueeRowProps) =>
 
     let animationId: number;
     let pos = 0;
-    const half = el.scrollWidth / 2;
+    const singleSetWidth = (el.scrollWidth / 3);
 
     const step = () => {
       pos += speed / 60;
-      if (pos >= half) pos = 0;
+      if (pos >= singleSetWidth) pos = 0;
       el.style.transform = reverse
         ? `translateX(${pos}px)`
         : `translateX(${-pos}px)`;
@@ -41,8 +41,8 @@ const MarqueeRow = ({ images, speed = 30, reverse = false }: MarqueeRowProps) =>
     return () => cancelAnimationFrame(animationId);
   }, [speed, reverse]);
 
-  // Duplicate images for seamless loop
-  const doubled = [...images, ...images];
+  // Triple images for seamless infinite loop
+  const tripled = [...images, ...images, ...images];
 
   return (
     <div className="relative w-full h-48 md:h-56 overflow-hidden rounded-lg">
@@ -50,7 +50,7 @@ const MarqueeRow = ({ images, speed = 30, reverse = false }: MarqueeRowProps) =>
       <div className="absolute inset-0 bg-secondary" />
       {/* Scrolling strip */}
       <div ref={scrollRef} className="flex gap-3 h-full w-max will-change-transform">
-        {doubled.map((src, i) => (
+        {tripled.map((src, i) => (
           <div key={i} className="relative h-full w-64 md:w-72 flex-shrink-0 rounded-lg overflow-hidden">
             {/* Blur bg */}
             <img
