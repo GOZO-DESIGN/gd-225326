@@ -1,9 +1,56 @@
+import { useEffect, useState } from "react";
 import img1 from "@/assets/home/WhatsApp-Image-2024-08-23-at-00.58.31_e742076e.webp";
 import img2 from "@/assets/home/WhatsApp-Image-2024-08-23-at-00.58.32_6d8ead87.webp";
 import img3 from "@/assets/home/WhatsApp-Image-2024-08-23-at-02.29.19_90af7699.webp";
 import img4 from "@/assets/home/WhatsApp-Image-2024-08-23-at-19.22.48_ccc1001e.webp";
+import img5 from "@/assets/home/WhatsApp-Image-2024-07-26-at-04.08.51_17788466.webp";
+import img6 from "@/assets/home/WhatsApp-Image-2024-07-26-at-04.54.00_c4d82cac.webp";
+import img7 from "@/assets/home/WhatsApp-Image-2024-08-07-at-17.38.21_8f1f40b8.webp";
+import img8 from "@/assets/home/WhatsApp-Image-2024-08-07-at-20.15.07_9f431fe2.webp";
 
-const images = [img1, img2, img3, img4];
+const topImages = [img1, img2, img3, img4];
+const bottomImages = [img5, img6, img7, img8];
+
+interface SliderProps {
+  images: string[];
+  interval?: number;
+}
+
+const AutoSlider = ({ images, interval = 4000 }: SliderProps) => {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [images.length, interval]);
+
+  return (
+    <div className="relative w-full h-full overflow-hidden rounded-lg">
+      {/* Blurred background */}
+      <img
+        src={images[current]}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
+      />
+      {/* Foreground image */}
+      <div className="relative w-full h-full flex items-center justify-center">
+        {images.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt={`Pomeranian ${i + 1}`}
+            className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${
+              i === current ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const HeroSection = () => {
   return (
@@ -26,17 +73,14 @@ const HeroSection = () => {
             </p>
           </div>
 
-          {/* Right image grid */}
-          <div className="grid grid-cols-2 gap-3">
-            {images.map((src, i) => (
-              <img
-                key={i}
-                src={src}
-                alt={`Pomeranian ${i + 1}`}
-                className="w-full h-40 md:h-48 object-cover rounded-lg"
-                loading="lazy"
-              />
-            ))}
+          {/* Right sliders */}
+          <div className="flex flex-col gap-3">
+            <div className="h-48 md:h-56">
+              <AutoSlider images={topImages} interval={4000} />
+            </div>
+            <div className="h-48 md:h-56">
+              <AutoSlider images={bottomImages} interval={5000} />
+            </div>
           </div>
         </div>
       </div>
