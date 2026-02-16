@@ -8,7 +8,10 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [hundeOpen, setHundeOpen] = useState(false);
   const [mobileHundeOpen, setMobileHundeOpen] = useState(false);
+  const [zuchtOpen, setZuchtOpen] = useState(false);
+  const [mobileZuchtOpen, setMobileZuchtOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const zuchtDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,18 +26,24 @@ const Navbar = () => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setHundeOpen(false);
       }
+      if (zuchtDropdownRef.current && !zuchtDropdownRef.current.contains(e.target as Node)) {
+        setZuchtOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const links = [
-    { label: "Home", href: "/" },
+  const otherLinks = [
     { label: "Aussehen/Farben", href: "/#about" },
-    { label: "Zucht", href: "/#zucht" },
     { label: "Über uns", href: "/#ueber" },
     { label: "Galerie", href: "/#galerie" },
     { label: "Wissenswertes", href: "/#wissen" },
+  ];
+
+  const zuchtLinks = [
+    { label: "Wurfplanung und Aufzucht", href: "/wurfplanung" },
+    { label: "Unsere Zuchtstätte", href: "/zuchtstaette" },
   ];
 
   const hundeLinks = [
@@ -91,7 +100,36 @@ const Navbar = () => {
               )}
             </div>
 
-            {links.slice(1).map((l) => (
+            {/* Zucht Dropdown */}
+            <div
+              ref={zuchtDropdownRef}
+              className="relative"
+              onMouseEnter={() => setZuchtOpen(true)}
+              onMouseLeave={() => setZuchtOpen(false)}
+            >
+              <button
+                className="flex items-center gap-1 text-[18px] font-body hover:opacity-80 transition-opacity"
+              >
+                Zucht
+                {zuchtOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+              </button>
+              {zuchtOpen && (
+                <div className="absolute top-full left-0 mt-0 w-64 bg-secondary border-2 border-primary shadow-lg z-50 py-2 animate-fade-in">
+                  {zuchtLinks.map((l) => (
+                    <Link
+                      key={l.href}
+                      to={l.href}
+                      className="block px-5 py-3 text-[18px] font-body text-foreground hover:bg-primary/10 transition-colors"
+                      onClick={() => setZuchtOpen(false)}
+                    >
+                      {l.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {otherLinks.map((l) => (
               <Link
                 key={l.href}
                 to={l.href}
@@ -152,7 +190,30 @@ const Navbar = () => {
             </div>
           )}
 
-          {links.slice(1).map((l) => (
+          {/* Mobile Zucht */}
+          <button
+            onClick={() => setMobileZuchtOpen(!mobileZuchtOpen)}
+            className="flex items-center gap-1 text-[18px] py-2 hover:opacity-80 w-full"
+          >
+            Zucht
+            {mobileZuchtOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+          </button>
+          {mobileZuchtOpen && (
+            <div className="pl-4 space-y-1 border-l-2 border-primary ml-2">
+              {zuchtLinks.map((l) => (
+                <Link
+                  key={l.href}
+                  to={l.href}
+                  className="block text-[18px] py-2 hover:opacity-80"
+                  onClick={() => { setMobileOpen(false); setMobileZuchtOpen(false); }}
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {otherLinks.map((l) => (
             <Link
               key={l.href}
               to={l.href}
