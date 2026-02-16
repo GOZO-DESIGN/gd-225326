@@ -7,7 +7,15 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 // Import all benji images
 const benjiModules = import.meta.glob("@/assets/benji/*.webp", { eager: true, import: "default" }) as Record<string, string>;
-const benjiImages = Object.values(benjiModules);
+const benjiImages = Object.entries(benjiModules)
+  .sort(([a], [b]) => {
+    const aIsBenji = a.includes("benji_");
+    const bIsBenji = b.includes("benji_");
+    if (aIsBenji && !bIsBenji) return -1;
+    if (!aIsBenji && bIsBenji) return 1;
+    return a.localeCompare(b);
+  })
+  .map(([, src]) => src);
 
 const Welpen = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
