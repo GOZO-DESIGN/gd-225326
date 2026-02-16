@@ -19,7 +19,7 @@ const Welpen = () => {
         <img
           src={heroImg}
           alt="Pomeranian Welpe – Hündin 2 Monate"
-          className="relative w-full h-full object-cover"
+          className="relative w-full h-full object-contain"
         />
       </section>
 
