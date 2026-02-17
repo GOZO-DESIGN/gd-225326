@@ -12,9 +12,12 @@ const Navbar = () => {
   const [mobileZuchtOpen, setMobileZuchtOpen] = useState(false);
   const [wissenOpen, setWissenOpen] = useState(false);
   const [mobileWissenOpen, setMobileWissenOpen] = useState(false);
+  const [ueberOpen, setUeberOpen] = useState(false);
+  const [mobileUeberOpen, setMobileUeberOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const zuchtDropdownRef = useRef<HTMLDivElement>(null);
   const wissenDropdownRef = useRef<HTMLDivElement>(null);
+  const ueberDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,15 +38,22 @@ const Navbar = () => {
       if (wissenDropdownRef.current && !wissenDropdownRef.current.contains(e.target as Node)) {
         setWissenOpen(false);
       }
+      if (ueberDropdownRef.current && !ueberDropdownRef.current.contains(e.target as Node)) {
+        setUeberOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const otherLinks = [
-    { label: "Aussehen/Farben", href: "/#about" },
-    { label: "Über uns", href: "/#ueber" },
     { label: "Galerie", href: "/#galerie" },
+  ];
+
+  const ueberLinks = [
+    { label: "Über uns", href: "/#ueber" },
+    { label: "Weiterbildungen, Zertifikate, Auszeichnungen", href: "/ueber/weiterbildungen" },
+    { label: "Urkunden und Pokale", href: "/ueber/urkunden" },
   ];
 
   const zuchtLinks = [
@@ -141,6 +151,33 @@ const Navbar = () => {
               )}
             </div>
 
+            {/* Über uns Dropdown */}
+            <div
+              ref={ueberDropdownRef}
+              className="relative"
+              onMouseEnter={() => setUeberOpen(true)}
+              onMouseLeave={() => setUeberOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-[18px] font-body hover:opacity-80 transition-opacity">
+                Über uns
+                {ueberOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+              </button>
+              {ueberOpen && (
+                <div className="absolute top-full left-0 mt-0 w-96 bg-secondary border-2 border-primary shadow-lg z-50 py-2 animate-fade-in">
+                  {ueberLinks.map((l) => (
+                    <Link
+                      key={l.href}
+                      to={l.href}
+                      className="block px-5 py-3 text-[18px] font-body text-foreground hover:bg-primary/10 transition-colors"
+                      onClick={() => setUeberOpen(false)}
+                    >
+                      {l.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {otherLinks.map((l) => (
               <Link
                 key={l.href}
@@ -227,6 +264,21 @@ const Navbar = () => {
             <div className="pl-4 space-y-1 border-l-2 border-primary ml-2">
               {zuchtLinks.map((l) => (
                 <Link key={l.href} to={l.href} className="block text-[18px] py-2 hover:opacity-80" onClick={() => { setMobileOpen(false); setMobileZuchtOpen(false); }}>
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {/* Mobile Über uns */}
+          <button onClick={() => setMobileUeberOpen(!mobileUeberOpen)} className="flex items-center gap-1 text-[18px] py-2 hover:opacity-80 w-full">
+            Über uns
+            {mobileUeberOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+          </button>
+          {mobileUeberOpen && (
+            <div className="pl-4 space-y-1 border-l-2 border-primary ml-2">
+              {ueberLinks.map((l) => (
+                <Link key={l.href} to={l.href} className="block text-[18px] py-2 hover:opacity-80" onClick={() => { setMobileOpen(false); setMobileUeberOpen(false); }}>
                   {l.label}
                 </Link>
               ))}
