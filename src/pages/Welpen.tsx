@@ -54,6 +54,22 @@ const happyHopeImages = happyHopeMedia.filter((m) => m.type === "image").map((m)
 // Import all welpen folder images for date-based tabs
 const welpenModules = import.meta.glob("@/assets/welpen/*.{webp,avif,jpg}", { eager: true, import: "default" }) as Record<string, string>;
 
+// Import welpen-2023, welpen-2022, welpen-2021 folders
+const welpen2023Modules = import.meta.glob("@/assets/welpen-2023/*.webp", { eager: true, import: "default" }) as Record<string, string>;
+const welpen2023Images = Object.entries(welpen2023Modules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src);
+
+const welpen2022Modules = import.meta.glob("@/assets/welpen-2022/*.webp", { eager: true, import: "default" }) as Record<string, string>;
+const welpen2022Images = Object.entries(welpen2022Modules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src);
+
+const welpen2021Modules = import.meta.glob("@/assets/welpen-2021/*.webp", { eager: true, import: "default" }) as Record<string, string>;
+const welpen2021Images = Object.entries(welpen2021Modules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src);
+
 function numericSort(a: string, b: string): number {
   const numA = a.match(/-(\d+)\.[^.]+$/);
   const numB = b.match(/-(\d+)\.[^.]+$/);
@@ -107,9 +123,9 @@ const galleries: Record<GalleryTab, { label: string; birthday: string; images: s
   "welpen-29-08-24": { label: "Welpen geb. 29.08.2024", birthday: "29.08.2024", images: [...welpen300824Images, ...deliaImages] },
   "welpen-27-04-24": { label: "Welpen gep. 27.04.2024", birthday: "27.04.2024", images: [...welpen270424Images, ...whatsapp0726Images] },
   "welpen-30-01-24": { label: "Welpen geb. 30.01.24", birthday: "30.01.2024", images: [...whatsapp0807Images, ...whatsapp0808Images, ...whatsapp0813Images] },
-  "welpen-2023": { label: "Welpen 2023", birthday: "2023", images: [] },
-  "welpen-2022": { label: "Welpen 2022", birthday: "2022", images: [] },
-  "welpen-2021": { label: "Welpen 2021", birthday: "2021", images: [] },
+  "welpen-2023": { label: "Welpen 2023", birthday: "2023", images: welpen2023Images },
+  "welpen-2022": { label: "Welpen 2022", birthday: "2022", images: welpen2022Images },
+  "welpen-2021": { label: "Welpen 2021", birthday: "2021", images: welpen2021Images },
 };
 
 const Welpen = () => {
