@@ -1,18 +1,15 @@
-import heroVideo from "@/assets/home/hero.mp4";
+import heroImg from "@/assets/home/welpen-01-09-24-51.webp";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative h-screen overflow-hidden">
-      {/* Video background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
+      {/* Background image */}
+      <img
+        src={heroImg}
+        alt=""
+        aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src={heroVideo} type="video/mp4" />
-      </video>
+      />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-foreground/40" />

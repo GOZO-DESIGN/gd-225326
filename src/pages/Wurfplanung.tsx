@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Correct images from old website
-import heroImg from "@/assets/wurfplanung/hero.avif";
+import heroVideo from "@/assets/home/hero.mp4";
 import zuchtnewsImg from "@/assets/wurfplanung/zuchtnews-hope.jpg";
 import geburtImg from "@/assets/wurfplanung/geburt.webp";
 import zweiWochenImg from "@/assets/wurfplanung/zwei-wochen.webp";
@@ -64,19 +64,18 @@ const Wurfplanung = () => {
     <>
       <Navbar />
 
-      {/* Hero */}
+      {/* Hero Video */}
       <section className="relative h-[400px] md:h-[650px] overflow-hidden">
-        <img
-          src={heroImg}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
-        />
-        <img
-          src={heroImg}
-          alt="Wurfplanung und Aufzucht"
-          className="relative w-full h-full object-contain"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-foreground/20" />
       </section>
 
       {/* Title bar */}
@@ -293,7 +292,7 @@ const Wurfplanung = () => {
                   passt, darf der Welpe bei Ihnen einziehen.
                 </p>
               </div>
-              <AbgabeSlider images={[kennenlernen1, heroImg, kennenlernen3, kennenlernen4]} />
+              <AbgabeSlider images={[kennenlernen1, kennenlernen3, kennenlernen4]} />
             </div>
 
             {/* Erstausstattung */}
