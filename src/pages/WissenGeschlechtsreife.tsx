@@ -3,6 +3,9 @@ import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import SEOHead from "@/components/SEOHead";
 import heroImg from "@/assets/wissen/geschlechtsreife-hero.webp";
+import huendin1 from "@/assets/wissen/geschlechtsreife/huendin-1.webp";
+import huendin2 from "@/assets/wissen/geschlechtsreife/huendin-2.webp";
+import ruede1 from "@/assets/wissen/geschlechtsreife/ruede-1.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
   <AnimateOnScroll variant="fade-up">
@@ -79,6 +82,13 @@ const WissenGeschlechtsreife = () => {
             </p>
           </div>
 
+          <AnimateOnScroll variant="fade-up">
+            <div className="grid grid-cols-2 gap-4">
+              <img src={huendin1} alt="Pomeranian Hündin" className="rounded-xl w-full h-auto object-cover shadow-md" loading="lazy" />
+              <img src={huendin2} alt="Pomeranian Hündin" className="rounded-xl w-full h-auto object-cover shadow-md" loading="lazy" />
+            </div>
+          </AnimateOnScroll>
+
           {/* ───── RÜDE ───── */}
           <Section>
             <h2 className="text-2xl md:text-3xl font-heading text-foreground">
@@ -90,6 +100,7 @@ const WissenGeschlechtsreife = () => {
             <p>
               Wenn Sie einen unkastrierten Hund über 6 Monate haben, kennen Sie wahrscheinlich die Herausforderungen, die mit seiner Geschlechtsreife einhergehen. Ein unkastrierter Rüde, der immer bereit ist sich zu paaren, kann bei jeder sich bietenden Gelegenheit ausbüchsen, begierig darauf, die läufige Hündin in der Nachbarschaft zu decken. Ggf. beginnt er sein Revier zu markieren und hebt sein Bein, eventuell auch in den eigenen vier Wänden. Um Pfützen zu vermeiden, können Sie dann mit Rüdenbinden arbeiten und versuchen, es ihm abzugewöhnen. Auch hier ist das Thema Erziehung wichtig.
             </p>
+            <img src={ruede1} alt="Pomeranian Rüde" className="rounded-xl w-full max-w-md mx-auto shadow-md" loading="lazy" />
           </Section>
 
         </div>
