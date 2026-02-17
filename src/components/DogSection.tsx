@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 interface DogSectionProps {
   id?: string;
@@ -34,7 +35,7 @@ const DogSection = ({
           }>
 
           {/* Image */}
-          <div className="w-full md:w-1/2 relative">
+          <AnimateOnScroll variant={reversed ? "fade-left" : "fade-right"} className="w-full md:w-1/2 relative">
             <img
               src={imageSrc}
               alt={imageAlt}
@@ -46,10 +47,10 @@ const DogSection = ({
                 {imageLabel}
               </span>
             }
-          </div>
+          </AnimateOnScroll>
 
           {/* Text */}
-          <div className="w-full md:w-1/2 space-y-4">
+          <AnimateOnScroll variant={reversed ? "fade-right" : "fade-left"} delay={150} className="w-full md:w-1/2 space-y-4">
             <h2 className="text-3xl md:text-4xl font-heading text-foreground">
               {title}{" "}
               <span className="text-accent">{titleHighlight}</span>
@@ -62,7 +63,7 @@ const DogSection = ({
               className="inline-block bg-accent text-accent-foreground px-6 py-2 rounded-full text-sm font-body border border-primary hover:opacity-90 transition-opacity">
               {buttonText}
             </Link>
-          </div>
+          </AnimateOnScroll>
         </div>
       </div>
     </section>);

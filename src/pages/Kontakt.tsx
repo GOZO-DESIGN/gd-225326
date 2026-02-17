@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
@@ -34,7 +35,6 @@ const Kontakt = () => {
 
     setIsSubmitting(true);
 
-    // Simulate submission for now
     setTimeout(() => {
       toast({
         title: "Nachricht gesendet!",
@@ -52,19 +52,21 @@ const Kontakt = () => {
       <main className="pt-32 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="font-heading text-4xl md:text-5xl text-foreground mb-4">
-              Kontakt
-            </h1>
-            <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-              Haben Sie Fragen zu unserer Zucht oder möchten Sie einen Welpen reservieren?
-              Wir freuen uns auf Ihre Nachricht!
-            </p>
-          </div>
+          <AnimateOnScroll variant="fade-up">
+            <div className="text-center mb-12">
+              <h1 className="font-heading text-4xl md:text-5xl text-foreground mb-4">
+                Kontakt
+              </h1>
+              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+                Haben Sie Fragen zu unserer Zucht oder möchten Sie einen Welpen reservieren?
+                Wir freuen uns auf Ihre Nachricht!
+              </p>
+            </div>
+          </AnimateOnScroll>
 
           <div className="grid md:grid-cols-5 gap-10">
             {/* Contact Info */}
-            <div className="md:col-span-2 space-y-6">
+            <AnimateOnScroll variant="fade-right" className="md:col-span-2 space-y-6">
               <div className="bg-secondary rounded-2xl p-6 border border-primary/20">
                 <h2 className="font-heading text-2xl mb-6 text-foreground">Kontaktdaten</h2>
                 <div className="space-y-5">
@@ -112,74 +114,38 @@ const Kontakt = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </AnimateOnScroll>
 
             {/* Form */}
-            <div className="md:col-span-3">
+            <AnimateOnScroll variant="fade-left" delay={150} className="md:col-span-3">
               <form onSubmit={handleSubmit} className="bg-secondary rounded-2xl p-6 border border-primary/20 space-y-5">
                 <h2 className="font-heading text-2xl mb-2 text-foreground">Schreiben Sie uns</h2>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="font-body text-sm text-foreground/80 mb-1 block">Name *</label>
-                    <Input
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Ihr Name"
-                      maxLength={100}
-                      required
-                    />
+                    <Input name="name" value={formData.name} onChange={handleChange} placeholder="Ihr Name" maxLength={100} required />
                   </div>
                   <div>
                     <label className="font-body text-sm text-foreground/80 mb-1 block">E-Mail *</label>
-                    <Input
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Ihre E-Mail-Adresse"
-                      maxLength={255}
-                      required
-                    />
+                    <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Ihre E-Mail-Adresse" maxLength={255} required />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="font-body text-sm text-foreground/80 mb-1 block">Telefon</label>
-                    <Input
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="Ihre Telefonnummer"
-                      maxLength={30}
-                    />
+                    <Input name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="Ihre Telefonnummer" maxLength={30} />
                   </div>
                   <div>
                     <label className="font-body text-sm text-foreground/80 mb-1 block">Betreff</label>
-                    <Input
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="Betreff Ihrer Nachricht"
-                      maxLength={150}
-                    />
+                    <Input name="subject" value={formData.subject} onChange={handleChange} placeholder="Betreff Ihrer Nachricht" maxLength={150} />
                   </div>
                 </div>
 
                 <div>
                   <label className="font-body text-sm text-foreground/80 mb-1 block">Nachricht *</label>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Ihre Nachricht an uns..."
-                    rows={6}
-                    maxLength={2000}
-                    required
-                  />
+                  <Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Ihre Nachricht an uns..." rows={6} maxLength={2000} required />
                 </div>
 
                 <button
@@ -190,7 +156,7 @@ const Kontakt = () => {
                   {isSubmitting ? "Wird gesendet..." : "Nachricht senden"}
                 </button>
               </form>
-            </div>
+            </AnimateOnScroll>
           </div>
         </div>
       </main>

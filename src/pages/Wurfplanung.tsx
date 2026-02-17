@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Correct images from old website
@@ -90,24 +91,23 @@ const Wurfplanung = () => {
         <section className="py-16 md:py-20">
           <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-              {/* Text */}
-              <div className="w-full md:w-1/2 space-y-4">
+            <AnimateOnScroll variant="fade-right" className="w-full md:w-1/2 space-y-4">
+
                 <h2 className="text-2xl md:text-3xl font-heading text-foreground">
                   Zucht <span className="text-accent">News</span>
                 </h2>
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Für unsere Welpen haben wir ihre Traumschlößchen gefunden, nette und verantwortungsbewußte Familien🥰.
                 </p>
-              </div>
-              {/* Image */}
-              <div className="w-full md:w-1/2">
+            </AnimateOnScroll>
+            <AnimateOnScroll variant="fade-left" className="w-full md:w-1/2">
                 <img
                   src={zuchtnewsImg}
                   alt="Welpen Neugeboren"
                   className="w-full h-[350px] md:h-[450px] object-cover rounded-xl shadow-lg"
                   loading="lazy"
                 />
-              </div>
+            </AnimateOnScroll>
             </div>
           </div>
         </section>

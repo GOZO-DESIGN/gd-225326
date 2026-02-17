@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 // Hero
 import heroImg from "@/assets/weiterbildungen/weiterbildungen-hero.webp";
@@ -119,7 +120,7 @@ const UeberWeiterbildungen = () => {
       <main className="bg-primary-foreground py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 font-body text-muted-foreground leading-relaxed">
 
-          {/* Certifications list */}
+          <AnimateOnScroll variant="fade-up">
           <section className="space-y-4">
             <h2 className="text-xl md:text-2xl font-heading text-foreground">
               Weiterbildungen, Auszeichnungen, Zertifikate
@@ -132,6 +133,7 @@ const UeberWeiterbildungen = () => {
               <li>03/2024 Burgenlandkreis, Veterinäramt Naumburg: Zuchterlaubnis nach Paragraph 11 TierSchG</li>
             </ul>
           </section>
+          </AnimateOnScroll>
 
           {/* HonestDog + Zertifikate */}
           <section className="space-y-6">

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 import heroImg from "@/assets/zahnpflege/zahnpflege-hero.webp";
 import img1 from "@/assets/zahnpflege/zahnpflege-1.webp";
@@ -12,16 +13,20 @@ import img7 from "@/assets/zahnpflege/zahnpflege-7.avif";
 import img8 from "@/assets/zahnpflege/zahnpflege-8.avif";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
-  <div className="space-y-6">{children}</div>
+  <AnimateOnScroll variant="fade-up">
+    <div className="space-y-6">{children}</div>
+  </AnimateOnScroll>
 );
 
 const Img = ({ src, alt }: { src: string; alt: string }) => (
-  <img
-    src={src}
-    alt={alt}
-    className="w-full max-w-2xl mx-auto rounded-xl shadow-md"
-    loading="lazy"
-  />
+  <AnimateOnScroll variant="scale">
+    <img
+      src={src}
+      alt={alt}
+      className="w-full max-w-2xl mx-auto rounded-xl shadow-md"
+      loading="lazy"
+    />
+  </AnimateOnScroll>
 );
 
 const WissenZahngesundheit = () => {

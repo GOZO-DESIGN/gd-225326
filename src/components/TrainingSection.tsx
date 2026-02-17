@@ -1,3 +1,4 @@
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 import trainingImg from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-10.23.58.avif";
 
 const TrainingSection = () => {
@@ -6,7 +7,7 @@ const TrainingSection = () => {
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           {/* Text */}
-          <div className="w-full md:w-1/2 space-y-4">
+          <AnimateOnScroll variant="fade-right" className="w-full md:w-1/2 space-y-4">
             <h2 className="text-3xl md:text-4xl font-heading text-foreground">
               Bei uns{" "}
               <span className="text-accent">bestens vorbereitet</span>{" "}
@@ -37,10 +38,10 @@ const TrainingSection = () => {
             >
               Kontaktieren Sie uns
             </a>
-          </div>
+          </AnimateOnScroll>
 
           {/* Image */}
-          <div className="w-full md:w-1/2 relative">
+          <AnimateOnScroll variant="fade-left" delay={150} className="w-full md:w-1/2 relative">
             <img
               src={trainingImg}
               alt="Pomeranian Welpe Training"
@@ -50,7 +51,7 @@ const TrainingSection = () => {
             <span className="absolute bottom-3 right-3 bg-accent/80 text-accent-foreground px-3 py-1 rounded-full text-sm font-heading">
               Amy - 2 Monate
             </span>
-          </div>
+          </AnimateOnScroll>
         </div>
       </div>
     </section>
