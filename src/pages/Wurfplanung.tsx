@@ -115,7 +115,7 @@ const Wurfplanung = () => {
         {/* ── Wurfplanung 2026 ── */}
         <section className="py-16 md:py-20 border-t border-border">
           <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl font-heading text-foreground mb-6">
+            <h2 className="text-2xl md:text-3xl font-heading text-foreground mb-6 text-center">
               Wurf<span className="text-accent">planung</span>
             </h2>
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
