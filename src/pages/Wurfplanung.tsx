@@ -78,7 +78,7 @@ const Wurfplanung = () => {
               Wurf<span className="text-accent">planung</span>
             </h2>
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
-              <div className="w-full md:w-1/2 space-y-4">
+              <div className="w-full md:w-1/2 space-y-4 text-center mx-auto">
                 <h3 className="text-xl font-heading text-accent">Wurfplanung für 2026</h3>
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Wir planen für 2026 unsere nächsten Zwergspitz Würfe. Ausgewachsen zwischen 20 und 25 cm
