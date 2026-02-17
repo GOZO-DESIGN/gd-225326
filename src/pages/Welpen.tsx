@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import heroImg from "@/assets/welpen/hero_welpen.webp";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 // Import all benji images
@@ -17,13 +18,29 @@ const benjiImages = Object.entries(benjiModules)
   })
   .map(([, src]) => src);
 
+// Import all enzo images
+const enzoModules = import.meta.glob("@/assets/enzo/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
+const enzoImages = Object.entries(enzoModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src);
+
+type GalleryTab = "benji" | "enzo";
+
+const galleries: Record<GalleryTab, { label: string; images: string[] }> = {
+  benji: { label: "Benji", images: benjiImages },
+  enzo: { label: "Enzo", images: enzoImages },
+};
+
 const Welpen = () => {
+  const [activeTab, setActiveTab] = useState<GalleryTab>("benji");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const currentImages = galleries[activeTab].images;
 
   const openLightbox = (i: number) => setLightboxIndex(i);
   const closeLightbox = () => setLightboxIndex(null);
-  const prev = () => setLightboxIndex((i) => (i !== null ? (i - 1 + benjiImages.length) % benjiImages.length : null));
-  const next = () => setLightboxIndex((i) => (i !== null ? (i + 1) % benjiImages.length : null));
+  const prev = () => setLightboxIndex((i) => (i !== null ? (i - 1 + currentImages.length) % currentImages.length : null));
+  const next = () => setLightboxIndex((i) => (i !== null ? (i + 1) % currentImages.length : null));
 
   return (
     <>
@@ -45,33 +62,47 @@ const Welpen = () => {
 
       <main className="min-h-screen bg-primary-foreground py-16 md:py-20">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-heading text-foreground mb-6">
+          <h1 className="text-4xl md:text-5xl font-heading text-foreground mb-8">
             Unsere <span className="text-accent">Welpen</span>
           </h1>
 
-          {/* Benji Section */}
-          <h2 className="text-2xl md:text-3xl font-heading text-foreground mb-4 mt-10">
-            Benji
-          </h2>
+          <Tabs
+            value={activeTab}
+            onValueChange={(v) => {
+              setActiveTab(v as GalleryTab);
+              setLightboxIndex(null);
+            }}
+          >
+            <TabsList className="mb-6">
+              {Object.entries(galleries).map(([key, { label }]) => (
+                <TabsTrigger key={key} value={key} className="text-base px-6">
+                  {label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
 
-          {/* Photo Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-            {benjiImages.map((src, i) => (
-              <button
-                key={i}
-                onClick={() => openLightbox(i)}
-                className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-              >
-                <img
-                  src={src}
-                  alt={`Benji Foto ${i + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
-              </button>
+            {Object.entries(galleries).map(([key, { label, images }]) => (
+              <TabsContent key={key} value={key}>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+                  {images.map((src, i) => (
+                    <button
+                      key={i}
+                      onClick={() => openLightbox(i)}
+                      className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                    >
+                      <img
+                        src={src}
+                        alt={`${label} Foto ${i + 1}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+                    </button>
+                  ))}
+                </div>
+              </TabsContent>
             ))}
-          </div>
+          </Tabs>
         </div>
       </main>
 
@@ -90,8 +121,8 @@ const Welpen = () => {
                 <ChevronRight className="w-8 h-8" />
               </button>
               <img
-                src={benjiImages[lightboxIndex]}
-                alt={`Benji Foto ${lightboxIndex + 1}`}
+                src={currentImages[lightboxIndex]}
+                alt={`${galleries[activeTab].label} Foto ${lightboxIndex + 1}`}
                 className="max-w-full max-h-[85vh] object-contain rounded-md"
               />
             </>
