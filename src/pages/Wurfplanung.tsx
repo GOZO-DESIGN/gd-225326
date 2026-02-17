@@ -267,12 +267,7 @@ const Wurfplanung = () => {
 
             {/* Block 5: Kennenlernen & Reservierung */}
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-              <div className="w-full md:w-1/2 grid grid-cols-2 gap-3">
-                <img src={kennenlernen1} alt="Welpen kennenlernen" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
-                <img src={heroImg} alt="Welpen kennenlernen" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
-                <img src={kennenlernen3} alt="Welpen kennenlernen" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
-                <img src={kennenlernen4} alt="Welpen kennenlernen" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
-              </div>
+              <AbgabeSlider images={[kennenlernen1, heroImg, kennenlernen3, kennenlernen4]} />
               <div className="w-full md:w-1/2 space-y-4">
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Eine Woche nachdem unsere Welpen geboren sind, stellen wir unsere Welpen auf unsere Webseite,
