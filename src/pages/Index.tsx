@@ -8,7 +8,7 @@ import SEOHead from "@/components/SEOHead";
 
 import welpenImg from "@/assets/home/Anne_Katrin_Mueller_Oct_31_2025.avif";
 import ruedeImg from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-09.38.50.avif";
-import huendinImg from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.19.avif";
+import huendinImg from "@/assets/home/fee-pomeranian-huendin.avif";
 
 const Index = () => {
   return (
