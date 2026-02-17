@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface DogSectionProps {
   id?: string;
   title: string;
@@ -55,12 +57,11 @@ const DogSection = ({
             <p className="font-body text-muted-foreground leading-relaxed">
               {description}
             </p>
-            <a
-              href={buttonHref}
+            <Link
+              to={buttonHref}
               className="inline-block bg-accent text-accent-foreground px-6 py-2 rounded-full text-sm font-body border border-primary hover:opacity-90 transition-opacity">
-
               {buttonText}
-            </a>
+            </Link>
           </div>
         </div>
       </div>
