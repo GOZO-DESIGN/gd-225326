@@ -1,18 +1,20 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import pomWelpen from "@/assets/pom-welpen.jpg";
-import pomTraining from "@/assets/pom-training.jpg";
 
-/* Use available welpen images as placeholders */
-const welpenModules = import.meta.glob(
-  "@/assets/welpen/*.{jpg,jpeg,webp,avif,png}",
-  { eager: true, import: "default" }
-) as Record<string, string>;
-const welpenImages = Object.entries(welpenModules)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([, s]) => s);
-
-const heroImg = pomWelpen;
+// Correct images from old website
+import heroImg from "@/assets/wurfplanung/hero.avif";
+import geburtImg from "@/assets/wurfplanung/geburt.webp";
+import zweiWochenImg from "@/assets/wurfplanung/zwei-wochen.webp";
+import praegephaseImg from "@/assets/wurfplanung/praegephase-1.webp";
+import abgabe1 from "@/assets/wurfplanung/abgabe-1.webp";
+import abgabe2 from "@/assets/wurfplanung/abgabe-2.webp";
+import abgabe3 from "@/assets/wurfplanung/abgabe-3.webp";
+import abgabe4 from "@/assets/wurfplanung/abgabe-4.webp";
+import abgabe5 from "@/assets/wurfplanung/abgabe-5.webp";
+import kennenlernen1 from "@/assets/wurfplanung/kennenlernen-1.avif";
+import kennenlernen3 from "@/assets/wurfplanung/kennenlernen-3.avif";
+import kennenlernen4 from "@/assets/wurfplanung/kennenlernen-4.avif";
+import erstausstattungImg from "@/assets/wurfplanung/erstausstattung.avif";
 
 const Wurfplanung = () => {
   return (
@@ -52,50 +54,18 @@ const Wurfplanung = () => {
                   Zucht <span className="text-accent">News</span>
                 </h2>
                 <p className="font-body text-muted-foreground leading-relaxed">
-                  Ashley hat ihren Nachwuchs am 12.10.25 gesund auf die Welt gebracht.
+                  Für unsere Welpen haben wir ihre Traumschlößchen gefunden, nette und verantwortungsbewußte Familien🥰.
                 </p>
-                <ul className="font-body text-muted-foreground list-disc list-inside space-y-1">
-                  <li>1 Hündin orange Sable &amp; tan mit Weißanteil</li>
-                  <li>1 Rüde in weiss-schwarz Parti</li>
-                  <li>1 Rüde in creme Sable &amp; tan</li>
-                </ul>
               </div>
               {/* Image */}
               <div className="w-full md:w-1/2">
                 <img
-                  src={welpenImages[0] || pomWelpen}
+                  src={heroImg}
                   alt="Welpen Neugeboren"
                   className="w-full h-[350px] md:h-[450px] object-cover rounded-xl shadow-lg"
                   loading="lazy"
                 />
               </div>
-            </div>
-
-            {/* Image grid – Ashley's litter */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10">
-              {welpenImages.slice(0, 8).map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`Ashley Welpen ${i + 1}`}
-                  className="w-full h-[140px] md:h-[180px] object-cover rounded-lg"
-                  loading="lazy"
-                />
-              ))}
-            </div>
-
-            {/* Amy section */}
-            <div className="mt-14 space-y-4">
-              <p className="font-body text-muted-foreground leading-relaxed max-w-4xl">
-                Auch unsere schoko Tricolor Merle Hündin Amy hat am 25.10.25 zwei wunderschöne Welpen
-                gesund auf die Welt gebracht. Unsere zuckersüßen Wonneproppen sind Rüden und haben die
-                exotische und seltene Farbe schoko Tri Merle.
-              </p>
-              <p className="font-body text-muted-foreground leading-relaxed max-w-4xl">
-                Sie möchten auch ein Glückspilz sein und eines unserer Babys an Ihrer Seite haben? Gerne
-                können Sie sich für eines unserer flauschigen Nesthäkchen bei uns bewerben… via WhatsApp oder
-                auf unserem Fragebogen. Wir rufen Sie auch gerne zurück.
-              </p>
             </div>
           </div>
         </section>
@@ -107,14 +77,6 @@ const Wurfplanung = () => {
               Wurf<span className="text-accent">planung</span>
             </h2>
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
-              <div className="w-full md:w-1/2">
-                <img
-                  src={welpenImages[1] || pomWelpen}
-                  alt="Wurfplanung"
-                  className="w-full h-[350px] md:h-[450px] object-cover rounded-xl shadow-lg"
-                  loading="lazy"
-                />
-              </div>
               <div className="w-full md:w-1/2 space-y-4">
                 <h3 className="text-xl font-heading text-accent">Wurfplanung für 2026</h3>
                 <p className="font-body text-muted-foreground leading-relaxed">
@@ -139,6 +101,14 @@ const Wurfplanung = () => {
           <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             {/* Block 1: Geburt */}
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+              <div className="w-full md:w-1/2">
+                <img
+                  src={geburtImg}
+                  alt="Welpenaufzucht"
+                  className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
+                  loading="lazy"
+                />
+              </div>
               <div className="w-full md:w-1/2 space-y-4">
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Wir nehmen uns genügend Zeit, um uns auf das bevorstehende schöne Ereignis vorzubereiten.
@@ -160,14 +130,6 @@ const Wurfplanung = () => {
                   der Mutterhündin ist. Die Wurfkiste ist zusätzlich mit einer Wärmematte ausgelegt. Um das
                   Wundwerden des Gesäuges zu verhindern, kürze ich ganz vorsichtig die Krallen der Welpen.
                 </p>
-              </div>
-              <div className="w-full md:w-1/2">
-                <img
-                  src={welpenImages[2] || pomTraining}
-                  alt="Welpenaufzucht"
-                  className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
-                  loading="lazy"
-                />
               </div>
             </div>
 
@@ -192,16 +154,13 @@ const Wurfplanung = () => {
                   Garten austoben und neues erkunden.
                 </p>
               </div>
-              <div className="w-full md:w-1/2 grid grid-cols-2 gap-3">
-                {welpenImages.slice(3, 7).map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Welpen Entwicklung ${i + 1}`}
-                    className="w-full h-[180px] md:h-[220px] object-cover rounded-lg"
-                    loading="lazy"
-                  />
-                ))}
+              <div className="w-full md:w-1/2">
+                <img
+                  src={zweiWochenImg}
+                  alt="Welpen 2 Wochen"
+                  className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
+                  loading="lazy"
+                />
               </div>
             </div>
 
@@ -209,7 +168,7 @@ const Wurfplanung = () => {
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
               <div className="w-full md:w-1/2">
                 <img
-                  src={welpenImages[4] || pomTraining}
+                  src={praegephaseImg}
                   alt="Welpen Prägephase"
                   className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
                   loading="lazy"
@@ -260,25 +219,21 @@ const Wurfplanung = () => {
                   Erstausstattung, die Ihnen den Einzug Ihres Welpen erleichtern soll.
                 </p>
               </div>
-              <div className="w-full md:w-1/2">
-                <img
-                  src={welpenImages[5] || pomTraining}
-                  alt="Welpen Abgabe"
-                  className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
-                  loading="lazy"
-                />
+              <div className="w-full md:w-1/2 grid grid-cols-2 gap-3">
+                <img src={abgabe1} alt="Welpen Abgabe" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
+                <img src={abgabe2} alt="Welpen Abgabe" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
+                <img src={abgabe3} alt="Welpen Abgabe" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
+                <img src={abgabe4} alt="Welpen Abgabe" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
               </div>
             </div>
 
             {/* Block 5: Kennenlernen & Reservierung */}
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-              <div className="w-full md:w-1/2">
-                <img
-                  src={welpenImages[6] || pomWelpen}
-                  alt="Welpen kennenlernen"
-                  className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
-                  loading="lazy"
-                />
+              <div className="w-full md:w-1/2 grid grid-cols-2 gap-3">
+                <img src={kennenlernen1} alt="Welpen kennenlernen" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
+                <img src={heroImg} alt="Welpen kennenlernen" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
+                <img src={kennenlernen3} alt="Welpen kennenlernen" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
+                <img src={kennenlernen4} alt="Welpen kennenlernen" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
               </div>
               <div className="w-full md:w-1/2 space-y-4">
                 <p className="font-body text-muted-foreground leading-relaxed">
@@ -319,17 +274,12 @@ const Wurfplanung = () => {
               <h3 className="text-xl md:text-2xl font-heading text-accent">
                 Unsere Erstausstattung
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-                {welpenImages.slice(7, 9).map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Erstausstattung ${i + 1}`}
-                    className="w-full h-[250px] md:h-[350px] object-cover rounded-xl shadow-lg"
-                    loading="lazy"
-                  />
-                ))}
-              </div>
+              <img
+                src={erstausstattungImg}
+                alt="Erstausstattung für Welpen"
+                className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px] object-cover rounded-xl shadow-lg"
+                loading="lazy"
+              />
             </div>
           </div>
         </section>
