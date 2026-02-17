@@ -63,6 +63,16 @@ const WissenHundeerziehung = () => {
             <p className="italic">
               Einen Hund für etwas belohnen oder zu bestrafen, was einige Minuten oder länger zurückliegt, ist daher sinnlos und führt nur zu Verwirrungen.
             </p>
+            <div className="aspect-video w-full rounded-xl overflow-hidden shadow-md">
+              <iframe
+                src="https://www.youtube.com/embed/TyaYDgxzdt8"
+                title="Hundeerziehung Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+                loading="lazy"
+              />
+            </div>
           </Section>
 
           {/* Sachkundige Erziehung */}
