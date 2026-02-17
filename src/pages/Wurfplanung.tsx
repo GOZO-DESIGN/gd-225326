@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 
 // Correct images from old website
 import heroImg from "@/assets/wurfplanung/hero.avif";
+import zuchtnewsImg from "@/assets/wurfplanung/zuchtnews-hope.jpg";
 import geburtImg from "@/assets/wurfplanung/geburt.webp";
 import zweiWochenImg from "@/assets/wurfplanung/zwei-wochen.webp";
 import praegephaseImg from "@/assets/wurfplanung/praegephase-1.webp";
@@ -60,7 +61,7 @@ const Wurfplanung = () => {
               {/* Image */}
               <div className="w-full md:w-1/2">
                 <img
-                  src={heroImg}
+                  src={zuchtnewsImg}
                   alt="Welpen Neugeboren"
                   className="w-full h-[350px] md:h-[450px] object-cover rounded-xl shadow-lg"
                   loading="lazy"
