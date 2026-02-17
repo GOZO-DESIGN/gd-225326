@@ -23,7 +23,7 @@ const Index = () => {
         titleHighlight="Welpen"
         description="Unsere Pomeranian-Welpen wachsen mitten in unserem Familienalltag auf – umsorgt, sicher und mit viel Liebe. Vom ersten Tag an begleiten wir sie rund um die Uhr, sorgen für behutsame Sozialisierung und ein kleines Trainingsprogramm, das sie optimal auf ihr neues Zuhause vorbereitet. Jeder Welpe erhält bei uns die Zeit, Aufmerksamkeit und Fürsorge, die ein guter Start ins Leben braucht."
         buttonText="Entdecken Sie unsere Welpen"
-        buttonHref="/zucht/welpen"
+        buttonHref="/welpen"
         imageSrc={welpenImg}
         imageAlt="Pomeranian Welpen"
       />
