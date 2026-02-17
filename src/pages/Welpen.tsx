@@ -36,32 +36,42 @@ const pandaImages = Object.entries(pandaModules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src);
 
-// Import all happy hope images
-const happyHopeModules = import.meta.glob("@/assets/happy-hope/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
-const happyHopeImages = Object.entries(happyHopeModules)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([, src]) => src);
+// Import all happy hope images and videos
+const happyHopeImageModules = import.meta.glob("@/assets/happy-hope/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
+const happyHopeVideoModules = import.meta.glob("@/assets/happy-hope/*.mp4", { eager: true, import: "default" }) as Record<string, string>;
+
+type MediaItem = { type: "image" | "video"; src: string };
+
+const happyHopeMedia: MediaItem[] = [
+  ...Object.entries(happyHopeImageModules).map(([path, src]) => ({ type: "image" as const, src, path })),
+  ...Object.entries(happyHopeVideoModules).map(([path, src]) => ({ type: "video" as const, src, path })),
+]
+  .sort((a, b) => a.path.localeCompare(b.path))
+  .map(({ type, src }) => ({ type, src }));
+
+const happyHopeImages = happyHopeMedia.filter((m) => m.type === "image").map((m) => m.src);
 
 type GalleryTab = "benji" | "enzo" | "balu" | "panda" | "happy-hope";
 
-const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[] }> = {
+const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[]; media?: MediaItem[] }> = {
   benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages },
   enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages },
   balu: { label: "Balu", birthday: "12.10.2025", images: baluImages },
   panda: { label: "Panda", birthday: "12.10.2025", images: pandaImages },
-  "happy-hope": { label: "Happy Hope", birthday: "12.10.2025", images: happyHopeImages },
+  "happy-hope": { label: "Happy Hope", birthday: "12.10.2025", images: happyHopeImages, media: happyHopeMedia },
 };
 
 const Welpen = () => {
   const [activeTab, setActiveTab] = useState<GalleryTab>("benji");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const currentImages = galleries[activeTab].images;
+  const currentGallery = galleries[activeTab];
+  const currentMedia: MediaItem[] = currentGallery.media ?? currentGallery.images.map((src) => ({ type: "image", src }));
 
   const openLightbox = (i: number) => setLightboxIndex(i);
   const closeLightbox = () => setLightboxIndex(null);
-  const prev = () => setLightboxIndex((i) => (i !== null ? (i - 1 + currentImages.length) % currentImages.length : null));
-  const next = () => setLightboxIndex((i) => (i !== null ? (i + 1) % currentImages.length : null));
+  const prev = () => setLightboxIndex((i) => (i !== null ? (i - 1 + currentMedia.length) % currentMedia.length : null));
+  const next = () => setLightboxIndex((i) => (i !== null ? (i + 1) % currentMedia.length : null));
 
   return (
     <>
@@ -102,28 +112,48 @@ const Welpen = () => {
               ))}
             </TabsList>
 
-            {Object.entries(galleries).map(([key, { label, images }]) => (
-              <TabsContent key={key} value={key}>
-                <p className="text-muted-foreground mb-4">Geboren am {galleries[key as GalleryTab].birthday}</p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-                  {images.map((src, i) => (
-                    <button
-                      key={i}
-                      onClick={() => openLightbox(i)}
-                      className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                    >
-                      <img
-                        src={src}
-                        alt={`${label} Foto ${i + 1}`}
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
-                    </button>
-                  ))}
-                </div>
-              </TabsContent>
-            ))}
+            {Object.entries(galleries).map(([key, { label }]) => {
+              const g = galleries[key as GalleryTab];
+              const media: MediaItem[] = g.media ?? g.images.map((src) => ({ type: "image", src }));
+              return (
+                <TabsContent key={key} value={key}>
+                  <p className="text-muted-foreground mb-4">Geboren am {g.birthday}</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+                    {media.map((item, i) => (
+                      <button
+                        key={i}
+                        onClick={() => openLightbox(i)}
+                        className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                      >
+                        {item.type === "video" ? (
+                          <video
+                            src={item.src}
+                            muted
+                            playsInline
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        ) : (
+                          <img
+                            src={item.src}
+                            alt={`${label} Foto ${i + 1}`}
+                            loading="lazy"
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        )}
+                        {item.type === "video" && (
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="w-12 h-12 rounded-full bg-background/70 flex items-center justify-center">
+                              <svg className="w-5 h-5 text-foreground ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21" /></svg>
+                            </div>
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+                      </button>
+                    ))}
+                  </div>
+                </TabsContent>
+              );
+            })}
           </Tabs>
         </div>
       </main>
@@ -142,11 +172,21 @@ const Welpen = () => {
               <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 z-50 text-foreground/70 hover:text-foreground">
                 <ChevronRight className="w-8 h-8" />
               </button>
-              <img
-                src={currentImages[lightboxIndex]}
-                alt={`${galleries[activeTab].label} Foto ${lightboxIndex + 1}`}
-                className="max-w-full max-h-[85vh] object-contain rounded-md"
-              />
+              {currentMedia[lightboxIndex].type === "video" ? (
+                <video
+                  src={currentMedia[lightboxIndex].src}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="max-w-full max-h-[85vh] rounded-md"
+                />
+              ) : (
+                <img
+                  src={currentMedia[lightboxIndex].src}
+                  alt={`${galleries[activeTab].label} Foto ${lightboxIndex + 1}`}
+                  className="max-w-full max-h-[85vh] object-contain rounded-md"
+                />
+              )}
             </>
           )}
         </DialogContent>
