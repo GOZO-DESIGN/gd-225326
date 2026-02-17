@@ -16,6 +16,7 @@ import Gesundheit from "./pages/Gesundheit";
 import WissenStubenreinheit from "./pages/WissenStubenreinheit";
 import WissenHundeerziehung from "./pages/WissenHundeerziehung";
 import WissenGeschlechtsreife from "./pages/WissenGeschlechtsreife";
+import WissenKastration from "./pages/WissenKastration";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/wissen/stubenreinheit" element={<WissenStubenreinheit />} />
           <Route path="/wissen/hundeerziehung" element={<WissenHundeerziehung />} />
           <Route path="/wissen/geschlechtsreife" element={<WissenGeschlechtsreife />} />
+          <Route path="/wissen/kastration" element={<WissenKastration />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
