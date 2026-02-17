@@ -23,6 +23,7 @@ const Index = () => {
         titleHighlight="Welpen"
         description="Unsere Pomeranian-Welpen wachsen mitten in unserem Familienalltag auf – umsorgt, sicher und mit viel Liebe. Vom ersten Tag an begleiten wir sie rund um die Uhr, sorgen für behutsame Sozialisierung und ein kleines Trainingsprogramm, das sie optimal auf ihr neues Zuhause vorbereitet. Jeder Welpe erhält bei uns die Zeit, Aufmerksamkeit und Fürsorge, die ein guter Start ins Leben braucht."
         buttonText="Entdecken Sie unsere Welpen"
+        buttonHref="/zucht/welpen"
         imageSrc={welpenImg}
         imageAlt="Pomeranian Welpen"
       />
@@ -32,6 +33,7 @@ const Index = () => {
         titleHighlight="Rüden"
         description="Unsere Deckrüden sind charakterstarke, gesunde und bestens untersuchte Pomeranians mit besonderer Farbgebung. Sie leben als vollwertige Familienmitglieder in unserem Zuhause, sind ausgeglichen, freundlich und zeigen ein rassetypisches Wesen ohne Qualzuchtmerkmale. Jeder Rüde wird sorgfältig ausgewählt und trägt maßgeblich zu unserer verantwortungsvollen und transparenten Zucht bei."
         buttonText="Entdecken Sie unsere Rüden"
+        buttonHref="/zucht/rueden"
         imageSrc={ruedeImg}
         imageAlt="Pomeranian Rüde Remmy"
         imageLabel="Remmy"
@@ -43,6 +45,7 @@ const Index = () => {
         titleHighlight="Hündinnen"
         description="Unsere Hündinnen leben eng bei uns im Haus, genießen Nähe, Zuwendung und ein harmonisches Rudelleben. Sie werden liebevoll betreut, regelmäßig tierärztlich untersucht und nur eingesetzt, wenn sie vollständig gesund und bereit für eine Trächtigkeit sind. Jede Hündin ist verschmust, menschenbezogen und trägt mit ihrem stabilen, freundlichen Wesen einen wichtigen Teil zu unserer Zuchtqualität bei."
         buttonText="Entdecken Sie unsere Hündinnen"
+        buttonHref="/zucht/huendinnen"
         imageSrc={huendinImg}
         imageAlt="Pomeranian Hündin Fee"
         imageLabel="Fee"

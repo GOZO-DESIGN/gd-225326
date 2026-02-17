@@ -4,6 +4,7 @@ interface DogSectionProps {
   titleHighlight: string;
   description: string;
   buttonText: string;
+  buttonHref?: string;
   imageSrc: string;
   imageAlt: string;
   imageLabel?: string;
@@ -16,6 +17,7 @@ const DogSection = ({
   titleHighlight,
   description,
   buttonText,
+  buttonHref = "#kontakt",
   imageSrc,
   imageAlt,
   imageLabel,
@@ -54,7 +56,7 @@ const DogSection = ({
               {description}
             </p>
             <a
-              href="#kontakt"
+              href={buttonHref}
               className="inline-block bg-accent text-accent-foreground px-6 py-2 rounded-full text-sm font-body border border-primary hover:opacity-90 transition-opacity">
 
               {buttonText}
