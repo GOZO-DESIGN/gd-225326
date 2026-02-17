@@ -32,7 +32,7 @@ const TrainingSection = () => {
               </p>
             </div>
             <a
-              href="#kontakt"
+              href="/kontakt"
               className="inline-block bg-accent text-accent-foreground px-6 py-2 rounded-full text-sm font-body border border-primary hover:opacity-90 transition-opacity"
             >
               Kontaktieren Sie uns
