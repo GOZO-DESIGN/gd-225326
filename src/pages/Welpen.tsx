@@ -51,7 +51,50 @@ const happyHopeMedia: MediaItem[] = [
 
 const happyHopeImages = happyHopeMedia.filter((m) => m.type === "image").map((m) => m.src);
 
-type GalleryTab = "benji" | "enzo" | "balu" | "panda" | "happy-hope";
+// Import all welpen folder images for date-based tabs
+const welpenModules = import.meta.glob("@/assets/welpen/*.{webp,avif,jpg}", { eager: true, import: "default" }) as Record<string, string>;
+
+function numericSort(a: string, b: string): number {
+  const numA = a.match(/-(\d+)\.[^.]+$/);
+  const numB = b.match(/-(\d+)\.[^.]+$/);
+  if (numA && numB) return parseInt(numA[1]) - parseInt(numB[1]);
+  return a.localeCompare(b);
+}
+
+function filterWelpenByPrefix(prefix: string): string[] {
+  return Object.entries(welpenModules)
+    .filter(([path]) => {
+      const filename = path.split("/").pop() || "";
+      return filename.startsWith(prefix);
+    })
+    .sort(([a], [b]) => numericSort(a, b))
+    .map(([, src]) => src);
+}
+
+const welpen051124Images = filterWelpenByPrefix("welpen-05-11-24-");
+const welpen010924Images = filterWelpenByPrefix("welpen-01-09-24-");
+const welpen300824Images = filterWelpenByPrefix("welpen-30-08-24-");
+const welpen270424Images = filterWelpenByPrefix("welpen-27-04-24-");
+const deliaImages = filterWelpenByPrefix("delia-");
+const whatsapp0726Images = filterWelpenByPrefix("WhatsApp-Image-2024-07-26-");
+const whatsapp0807Images = filterWelpenByPrefix("WhatsApp-Image-2024-08-07-");
+const whatsapp0808Images = filterWelpenByPrefix("WhatsApp-Image-2024-08-08-");
+const whatsapp0813Images = filterWelpenByPrefix("WhatsApp-Image-2024-08-13-");
+
+type GalleryTab =
+  | "benji"
+  | "enzo"
+  | "balu"
+  | "panda"
+  | "happy-hope"
+  | "welpen-05-11-24"
+  | "welpen-01-09-24"
+  | "welpen-29-08-24"
+  | "welpen-27-04-24"
+  | "welpen-30-01-24"
+  | "welpen-2023"
+  | "welpen-2022"
+  | "welpen-2021";
 
 const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[]; media?: MediaItem[] }> = {
   benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages },
@@ -59,6 +102,14 @@ const galleries: Record<GalleryTab, { label: string; birthday: string; images: s
   balu: { label: "Balu", birthday: "12.10.2025", images: baluImages },
   panda: { label: "Panda", birthday: "12.10.2025", images: pandaImages },
   "happy-hope": { label: "Happy Hope", birthday: "12.10.2025", images: happyHopeImages, media: happyHopeMedia },
+  "welpen-05-11-24": { label: "Welpen geb. 05.11.2024", birthday: "05.11.2024", images: welpen051124Images },
+  "welpen-01-09-24": { label: "Welpen geb. 01.09.2024", birthday: "01.09.2024", images: welpen010924Images },
+  "welpen-29-08-24": { label: "Welpen geb. 29.08.2024", birthday: "29.08.2024", images: [...welpen300824Images, ...deliaImages] },
+  "welpen-27-04-24": { label: "Welpen gep. 27.04.2024", birthday: "27.04.2024", images: [...welpen270424Images, ...whatsapp0726Images] },
+  "welpen-30-01-24": { label: "Welpen geb. 30.01.24", birthday: "30.01.2024", images: [...whatsapp0807Images, ...whatsapp0808Images, ...whatsapp0813Images] },
+  "welpen-2023": { label: "Welpen 2023", birthday: "2023", images: [] },
+  "welpen-2022": { label: "Welpen 2022", birthday: "2022", images: [] },
+  "welpen-2021": { label: "Welpen 2021", birthday: "2021", images: [] },
 };
 
 const Welpen = () => {
@@ -104,9 +155,9 @@ const Welpen = () => {
               setLightboxIndex(null);
             }}
           >
-            <TabsList className="mb-6">
+            <TabsList className="mb-6 flex flex-wrap h-auto gap-1">
               {Object.entries(galleries).map(([key, { label }]) => (
-                <TabsTrigger key={key} value={key} className="text-base px-6">
+                <TabsTrigger key={key} value={key} className="text-sm md:text-base px-3 md:px-6">
                   {label}
                 </TabsTrigger>
               ))}
@@ -118,39 +169,43 @@ const Welpen = () => {
               return (
                 <TabsContent key={key} value={key}>
                   <p className="text-muted-foreground mb-4">Geboren am {g.birthday}</p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-                    {media.map((item, i) => (
-                      <button
-                        key={i}
-                        onClick={() => openLightbox(i)}
-                        className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                      >
-                        {item.type === "video" ? (
-                          <video
-                            src={item.src}
-                            muted
-                            playsInline
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                        ) : (
-                          <img
-                            src={item.src}
-                            alt={`${label} Foto ${i + 1}`}
-                            loading="lazy"
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                        )}
-                        {item.type === "video" && (
-                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <div className="w-12 h-12 rounded-full bg-background/70 flex items-center justify-center">
-                              <svg className="w-5 h-5 text-foreground ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21" /></svg>
+                  {media.length === 0 ? (
+                    <p className="text-muted-foreground italic">Keine Bilder vorhanden.</p>
+                  ) : (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+                      {media.map((item, i) => (
+                        <button
+                          key={i}
+                          onClick={() => openLightbox(i)}
+                          className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                        >
+                          {item.type === "video" ? (
+                            <video
+                              src={item.src}
+                              muted
+                              playsInline
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          ) : (
+                            <img
+                              src={item.src}
+                              alt={`${label} Foto ${i + 1}`}
+                              loading="lazy"
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          )}
+                          {item.type === "video" && (
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                              <div className="w-12 h-12 rounded-full bg-background/70 flex items-center justify-center">
+                                <svg className="w-5 h-5 text-foreground ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21" /></svg>
+                              </div>
                             </div>
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
-                      </button>
-                    ))}
-                  </div>
+                          )}
+                          <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </TabsContent>
               );
             })}
