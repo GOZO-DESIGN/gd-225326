@@ -35,7 +35,7 @@ const App = () => (
           <Route path="/zuchtstaette" element={<Zuchtstaette />} />
           <Route path="/wissen/ursprung" element={<WissenUrsprung />} />
           <Route path="/ueber/weiterbildungen" element={<UeberWeiterbildungen />} />
-          <Route path="/gesundheit" element={<Gesundheit />} />
+          <Route path="/wissen/gesundheit" element={<Gesundheit />} />
           <Route path="/wissen/stubenreinheit" element={<WissenStubenreinheit />} />
           <Route path="/wissen/hundeerziehung" element={<WissenHundeerziehung />} />
           <Route path="/wissen/geschlechtsreife" element={<WissenGeschlechtsreife />} />
