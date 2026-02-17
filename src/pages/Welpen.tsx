@@ -26,9 +26,9 @@ const enzoImages = Object.entries(enzoModules)
 
 type GalleryTab = "benji" | "enzo";
 
-const galleries: Record<GalleryTab, { label: string; images: string[] }> = {
-  benji: { label: "Benji", images: benjiImages },
-  enzo: { label: "Enzo", images: enzoImages },
+const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[] }> = {
+  benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages },
+  enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages },
 };
 
 const Welpen = () => {
@@ -83,6 +83,7 @@ const Welpen = () => {
 
             {Object.entries(galleries).map(([key, { label, images }]) => (
               <TabsContent key={key} value={key}>
+                <p className="text-muted-foreground mb-4">Geboren am {galleries[key as GalleryTab].birthday}</p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
                   {images.map((src, i) => (
                     <button
