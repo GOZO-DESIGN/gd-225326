@@ -24,11 +24,18 @@ const enzoImages = Object.entries(enzoModules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src);
 
-type GalleryTab = "benji" | "enzo";
+// Import all balu images
+const baluModules = import.meta.glob("@/assets/balu/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
+const baluImages = Object.entries(baluModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src);
+
+type GalleryTab = "benji" | "enzo" | "balu";
 
 const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[] }> = {
   benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages },
   enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages },
+  balu: { label: "Balu", birthday: "12.10.2025", images: baluImages },
 };
 
 const Welpen = () => {
