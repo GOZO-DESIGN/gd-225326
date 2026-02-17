@@ -10,6 +10,7 @@ import Huendinnen from "./pages/Huendinnen";
 import Welpen from "./pages/Welpen";
 import Wurfplanung from "./pages/Wurfplanung";
 import Zuchtstaette from "./pages/Zuchtstaette";
+import WissenUrsprung from "./pages/WissenUrsprung";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/welpen" element={<Welpen />} />
           <Route path="/wurfplanung" element={<Wurfplanung />} />
           <Route path="/zuchtstaette" element={<Zuchtstaette />} />
+          <Route path="/wissen/ursprung" element={<WissenUrsprung />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
