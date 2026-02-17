@@ -91,7 +91,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-6">
             <Link to="/" className="text-[18px] font-body hover:opacity-80 transition-opacity">
               Home
             </Link>
@@ -199,9 +199,9 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile toggle */}
+          {/* Mobile/Tablet toggle */}
           <button
-            className="md:hidden"
+            className="lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -209,9 +209,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile/Tablet menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-secondary pb-4 px-4 space-y-2">
+        <div className="lg:hidden bg-secondary pb-4 px-4 space-y-2">
           <Link to="/" className="block text-[18px] py-2 hover:opacity-80" onClick={() => setMobileOpen(false)}>
             Home
           </Link>
