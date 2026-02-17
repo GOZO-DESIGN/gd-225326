@@ -17,6 +17,8 @@ import WissenStubenreinheit from "./pages/WissenStubenreinheit";
 import WissenHundeerziehung from "./pages/WissenHundeerziehung";
 import WissenGeschlechtsreife from "./pages/WissenGeschlechtsreife";
 import WissenKastration from "./pages/WissenKastration";
+import WissenZahngesundheit from "./pages/WissenZahngesundheit";
+import WissenFellpflege from "./pages/WissenFellpflege";
 import Galerie from "./pages/Galerie";
 
 const queryClient = new QueryClient();
@@ -41,6 +43,8 @@ const App = () => (
           <Route path="/wissen/hundeerziehung" element={<WissenHundeerziehung />} />
           <Route path="/wissen/geschlechtsreife" element={<WissenGeschlechtsreife />} />
           <Route path="/wissen/kastration" element={<WissenKastration />} />
+          <Route path="/wissen/zahngesundheit" element={<WissenZahngesundheit />} />
+          <Route path="/wissen/fellpflege" element={<WissenFellpflege />} />
           <Route path="/galerie" element={<Galerie />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

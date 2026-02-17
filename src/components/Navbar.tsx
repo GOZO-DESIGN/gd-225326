@@ -53,7 +53,7 @@ const Navbar = () => {
   const ueberLinks = [
     { label: "Über uns", href: "/#ueber" },
     { label: "Weiterbildungen, Zertifikate, Auszeichnungen", href: "/ueber/weiterbildungen" },
-    { label: "Urkunden und Pokale", href: "/ueber/urkunden" },
+    { label: "Urkunden und Pokale", href: "/ueber/weiterbildungen#urkunden" },
   ];
 
   const zuchtLinks = [
