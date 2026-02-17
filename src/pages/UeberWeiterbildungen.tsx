@@ -2,47 +2,52 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// Hero - reuse trophy image
+// Hero
 import heroImg from "@/assets/weiterbildungen/weiterbildungen-hero.webp";
-import trophy1 from "@/assets/weiterbildungen/trophy1.webp";
 
-// Certificates
+// Zertifikate section
 import honestdog from "@/assets/weiterbildungen/honestdog.webp";
-import f01Front from "@/assets/weiterbildungen/01-front.webp";
-import f01Back from "@/assets/weiterbildungen/01-back.webp";
-import f02Front from "@/assets/weiterbildungen/02-front.webp";
-import f02Back from "@/assets/weiterbildungen/02-back.webp";
-import f03Front from "@/assets/weiterbildungen/03-front.webp";
-import f03Back from "@/assets/weiterbildungen/03-back.webp";
-import f04Front from "@/assets/weiterbildungen/04-front.webp";
-import f04Back from "@/assets/weiterbildungen/04-back.webp";
-import f05Front from "@/assets/weiterbildungen/05-front.webp";
-import f06Front from "@/assets/weiterbildungen/06-front.webp";
-import f07Front from "@/assets/weiterbildungen/07-front.webp";
-import f07Back from "@/assets/weiterbildungen/07-back.webp";
-import f09Front from "@/assets/weiterbildungen/09-front.webp";
-import f09Back from "@/assets/weiterbildungen/09-back.webp";
-import f10Front from "@/assets/weiterbildungen/10-front.webp";
-import f10Back from "@/assets/weiterbildungen/10-back.webp";
-import f11Front from "@/assets/weiterbildungen/11-front.webp";
-import f12Front from "@/assets/weiterbildungen/12-front.webp";
-import f12Back from "@/assets/weiterbildungen/12-back.webp";
-import f13Front from "@/assets/weiterbildungen/13-front.webp";
-import f13Back from "@/assets/weiterbildungen/13-back.webp";
-import f012Front from "@/assets/weiterbildungen/012-front.webp";
-import f012Back from "@/assets/weiterbildungen/012-back.webp";
-import f013Front from "@/assets/weiterbildungen/013-front.webp";
-import f013Back from "@/assets/weiterbildungen/013-back.webp";
-import f14Front from "@/assets/weiterbildungen/14-front.webp";
-import f15Front from "@/assets/weiterbildungen/15-front.webp";
-import f15Back from "@/assets/weiterbildungen/15-back.webp";
+import urkundeZwinger from "@/assets/weiterbildungen/urkunde-zwinger.webp";
+import cert01Front from "@/assets/weiterbildungen/01-front.webp";
+import cert01Back from "@/assets/weiterbildungen/01-back.webp";
+import cert02Front from "@/assets/weiterbildungen/02-front.webp";
+import cert02Back from "@/assets/weiterbildungen/02-back.webp";
 
+// Urkunden Ada von Blauen Saphir
+import ada01Front from "@/assets/weiterbildungen/ada-01-front.webp";
+import ada01Back from "@/assets/weiterbildungen/ada-01-back.webp";
+import ada02Front from "@/assets/weiterbildungen/ada-02-front.webp";
+import ada02Back from "@/assets/weiterbildungen/ada-02-back.webp";
+import ada03Front from "@/assets/weiterbildungen/ada-03-front.webp";
+import ada04Front from "@/assets/weiterbildungen/ada-04-front.webp";
+import ada05Front from "@/assets/weiterbildungen/ada-05-front.webp";
+import ada05Back from "@/assets/weiterbildungen/ada-05-back.webp";
+import ada06Front from "@/assets/weiterbildungen/ada-06-front.webp";
+import ada06Back from "@/assets/weiterbildungen/ada-06-back.webp";
+import ada07Front from "@/assets/weiterbildungen/ada-07-front.webp";
+import ada07Back from "@/assets/weiterbildungen/ada-07-back.webp";
+import ada08Front from "@/assets/weiterbildungen/ada-08-front.webp";
+import ada09Front from "@/assets/weiterbildungen/ada-09-front.webp";
+import ada09Back from "@/assets/weiterbildungen/ada-09-back.webp";
+import ada10Front from "@/assets/weiterbildungen/ada-10-front.webp";
+import ada10Back from "@/assets/weiterbildungen/ada-10-back.webp";
+
+// Urkunden Ashley vom Wällerland
+import ashley01Front from "@/assets/weiterbildungen/ashley-01-front.webp";
+import ashley02Front from "@/assets/weiterbildungen/ashley-02-front.webp";
+import ashley02Back from "@/assets/weiterbildungen/ashley-02-back.webp";
+import ashley03Front from "@/assets/weiterbildungen/ashley-03-front.webp";
+import ashley03Back from "@/assets/weiterbildungen/ashley-03-back.webp";
+import ashley04Front from "@/assets/weiterbildungen/ashley-04-front.webp";
+import ashley04Back from "@/assets/weiterbildungen/ashley-04-back.webp";
+
+// Trophäen
+import trophy1 from "@/assets/weiterbildungen/trophy1.webp";
 import trophy2 from "@/assets/weiterbildungen/trophy2.webp";
 import trophy3 from "@/assets/weiterbildungen/trophy3.webp";
 import trophy4 from "@/assets/weiterbildungen/trophy4.webp";
-import trophy5 from "@/assets/weiterbildungen/trophy5.webp";
 
-/** Flip card component – hover to reveal back */
+/** Flip card component – hover/click to reveal back */
 const FlipCard = ({ front, back, alt }: { front: string; back?: string; alt: string }) => {
   const [flipped, setFlipped] = useState(false);
 
@@ -128,26 +133,16 @@ const UeberWeiterbildungen = () => {
             </ul>
           </section>
 
-          {/* HonestDog + top certificates */}
+          {/* HonestDog + Zertifikate */}
           <section className="space-y-6">
             <p className="text-foreground font-semibold">
               2024 HonestDog – Wir sind geprüfte Züchter auf verschiedene Verkaufsplattformen, mitunter Honest Dog Prüfsiegel
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               <img src={honestdog} alt="HonestDog Prüfsiegel" className="w-full rounded-lg shadow-md" loading="lazy" />
-              <FlipCard front={f01Front} back={f01Back} alt="Urkunde" />
-              <FlipCard front={f02Front} back={f02Back} alt="WRV Zertifikat" />
-            </div>
-          </section>
-
-          {/* Urkunde Zwinger vom Wällerland */}
-          <section className="space-y-6">
-            <h2 className="text-xl md:text-2xl font-heading text-foreground">
-              Urkunde – Zwinger vom Wällerland
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <FlipCard front={f03Front} back={f03Back} alt="Zertifikat" />
-              <FlipCard front={f04Front} back={f04Back} alt="Zertifikat" />
+              <img src={urkundeZwinger} alt="Urkunde Zwinger vom Wällerland" className="w-full rounded-lg shadow-md" loading="lazy" />
+              <FlipCard front={cert01Front} back={cert01Back} alt="WRV Zertifikat" />
+              <FlipCard front={cert02Front} back={cert02Back} alt="WRV Zertifikat" />
             </div>
           </section>
 
@@ -157,40 +152,31 @@ const UeberWeiterbildungen = () => {
               Urkunden und Pokale von Ausstellungserfolgen
             </h2>
 
-            {/* Ada von Blauen Saphir - Set 1 */}
-            <div className="space-y-6">
-              <h3 className="text-lg font-heading text-foreground">Urkunde – Ada von Blauen Saphir</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <FlipCard front={f05Front} alt="Urkunde Ada" />
-                <FlipCard front={f06Front} alt="Urkunde Ada" />
-                <FlipCard front={f07Front} back={f07Back} alt="Urkunde Ada" />
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <FlipCard front={f09Front} back={f09Back} alt="Urkunde Ada" />
-                <FlipCard front={f10Front} back={f10Back} alt="Urkunde Ada" />
-                <FlipCard front={f11Front} alt="Urkunde Ada" />
-              </div>
-            </div>
-
-            {/* Ada von Blauen Saphir - Set 2 */}
+            {/* Ada von Blauen Saphir */}
             <div className="space-y-6">
               <h3 className="text-lg font-heading text-foreground">Urkunde – Ada von Blauen Saphir</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <FlipCard front={f12Front} back={f12Back} alt="Urkunde Ada" />
-                <FlipCard front={f13Front} back={f13Back} alt="Urkunde Ada" />
+                <FlipCard front={ada01Front} back={ada01Back} alt="Urkunde Ada" />
+                <FlipCard front={ada02Front} back={ada02Back} alt="Urkunde Ada" />
+                <FlipCard front={ada03Front} alt="Urkunde Ada" />
+                <FlipCard front={ada04Front} back={ada09Back} alt="Urkunde Ada" />
+                <FlipCard front={ada05Front} back={ada05Back} alt="Urkunde Ada" />
+                <FlipCard front={ada06Front} back={ada06Back} alt="Urkunde Ada" />
+                <FlipCard front={ada07Front} back={ada07Back} alt="Urkunde Ada" />
+                <FlipCard front={ada08Front} alt="Urkunde Ada" />
+                <FlipCard front={ada09Front} back={ada09Back} alt="Urkunde Ada" />
+                <FlipCard front={ada10Front} back={ada10Back} alt="Urkunde Ada" />
               </div>
             </div>
 
             {/* Ashley vom Wällerland */}
             <div className="space-y-6">
               <h3 className="text-lg font-heading text-foreground">Urkunde – Ashley vom Wällerland</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <FlipCard front={f012Front} back={f012Back} alt="Urkunde Ashley" />
-                <FlipCard front={f013Front} back={f013Back} alt="Urkunde Ashley" />
-                <FlipCard front={f14Front} alt="Urkunde Ashley" />
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <FlipCard front={f15Front} back={f15Back} alt="Urkunde Ashley" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <FlipCard front={ashley01Front} alt="Urkunde Ashley" />
+                <FlipCard front={ashley02Front} back={ashley02Back} alt="Urkunde Ashley" />
+                <FlipCard front={ashley03Front} back={ashley03Back} alt="Urkunde Ashley" />
+                <FlipCard front={ashley04Front} back={ashley04Back} alt="Urkunde Ashley" />
               </div>
             </div>
           </section>
@@ -199,11 +185,11 @@ const UeberWeiterbildungen = () => {
           <section className="space-y-6">
             <h2 className="text-xl md:text-2xl font-heading text-foreground">Trophäen und Auszeichnungen</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <img src={trophy1} alt="Trophäen" className="w-full rounded-lg shadow-md" loading="lazy" />
               <img src={trophy2} alt="Trophäen" className="w-full rounded-lg shadow-md" loading="lazy" />
               <img src={trophy3} alt="Trophäen" className="w-full rounded-lg shadow-md" loading="lazy" />
-              <img src={trophy4} alt="Trophäen" className="w-full rounded-lg shadow-md" loading="lazy" />
             </div>
-            <img src={trophy5} alt="Trophäen" className="w-full max-w-2xl mx-auto rounded-lg shadow-md" loading="lazy" />
+            <img src={trophy4} alt="Trophäen" className="w-full max-w-2xl mx-auto rounded-lg shadow-md" loading="lazy" />
           </section>
 
         </div>
