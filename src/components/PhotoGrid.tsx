@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChevronLeft, ChevronRight, X, Search } from "lucide-react";
 
-// Import all galerie images via glob
-const webpModules = import.meta.glob("@/assets/galerie/*.webp", { eager: true, import: "default" }) as Record<string, string>;
-const avifModules = import.meta.glob("@/assets/galerie/*.avif", { eager: true, import: "default" }) as Record<string, string>;
-const jpgModules = import.meta.glob("@/assets/galerie/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
+// Lazy glob imports – modules are loaded on demand
+const webpModules = import.meta.glob("@/assets/galerie/*.webp", { import: "default" });
+const avifModules = import.meta.glob("@/assets/galerie/*.avif", { import: "default" });
+const jpgModules = import.meta.glob("@/assets/galerie/*.jpg", { import: "default" });
 
-const allModules = { ...webpModules, ...avifModules, ...jpgModules };
+const allModules: Record<string, () => Promise<unknown>> = { ...webpModules, ...avifModules, ...jpgModules };
 
 // Extract filename from path (normalize Unicode to handle decomposed umlauts)
 const fname = (path: string) => (path.split("/").pop() ?? "").normalize("NFC");
@@ -130,21 +130,21 @@ const tabConfig: { key: GalleryTab; label: string }[] = [
   { key: "andere", label: "Andere" },
 ];
 
-// Build per-tab image arrays
-const tabImages: Record<GalleryTab, string[]> = {
+// Build per-tab path arrays (paths only, not resolved URLs yet)
+const tabPaths: Record<GalleryTab, string[]> = {
   ashley: [], amy: [], fee: [], ada: [], charly: [], remmy: [], andere: [],
 };
 
-for (const [path, src] of Object.entries(allModules)) {
+for (const path of Object.keys(allModules)) {
   const filename = fname(path.normalize("NFC"));
   const tab = classifyFile(filename);
-  if (tab && tab in tabImages) {
-    tabImages[tab as GalleryTab].push(src);
+  if (tab && tab in tabPaths) {
+    tabPaths[tab as GalleryTab].push(path);
   }
 }
 
-// Sort charly numerically
-tabImages.charly.sort((a, b) => {
+// Sort charly numerically by path
+tabPaths.charly.sort((a, b) => {
   const numA = parseInt(fname(a).match(/charly-(\d+)/)?.[1] ?? "0");
   const numB = parseInt(fname(b).match(/charly-(\d+)/)?.[1] ?? "0");
   return numA - numB;
@@ -153,8 +153,32 @@ tabImages.charly.sort((a, b) => {
 const PhotoGrid = () => {
   const [activeTab, setActiveTab] = useState<GalleryTab>("ashley");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [resolvedImages, setResolvedImages] = useState<Record<GalleryTab, string[]>>({
+    ashley: [], amy: [], fee: [], ada: [], charly: [], remmy: [], andere: [],
+  });
+  const [loadedTabs, setLoadedTabs] = useState<Set<GalleryTab>>(new Set());
 
-  const currentImages = tabImages[activeTab];
+  // Resolve image URLs for the active tab on demand
+  useEffect(() => {
+    if (loadedTabs.has(activeTab)) return;
+
+    const paths = tabPaths[activeTab];
+    if (paths.length === 0) return;
+
+    let cancelled = false;
+    Promise.all(paths.map((p) => allModules[p]())).then((results) => {
+      if (cancelled) return;
+      setResolvedImages((prev) => ({
+        ...prev,
+        [activeTab]: results as string[],
+      }));
+      setLoadedTabs((prev) => new Set(prev).add(activeTab));
+    });
+
+    return () => { cancelled = true; };
+  }, [activeTab, loadedTabs]);
+
+  const currentImages = resolvedImages[activeTab];
 
   const openLightbox = (i: number) => setLightboxIndex(i);
   const closeLightbox = () => setLightboxIndex(null);
@@ -188,25 +212,32 @@ const PhotoGrid = () => {
 
             {tabConfig.map(({ key, label }) => (
               <TabsContent key={key} value={key}>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
-                  {tabImages[key].map((src, i) => (
-                    <button
-                      key={i}
-                      onClick={() => openLightbox(i)}
-                      className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                    >
-                      <img
-                        src={src}
-                        alt={`${label} Foto ${i + 1}`}
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300 flex items-center justify-center">
-                        <Search className="w-6 h-6 text-background opacity-0 group-hover:opacity-80 transition-opacity duration-300" />
-                      </div>
-                    </button>
-                  ))}
-                </div>
+                {resolvedImages[key].length === 0 && tabPaths[key].length > 0 ? (
+                  <div className="flex items-center justify-center py-20">
+                    <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+                    {resolvedImages[key].map((src, i) => (
+                      <button
+                        key={i}
+                        onClick={() => openLightbox(i)}
+                        className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                      >
+                        <img
+                          src={src}
+                          alt={`${label} Foto ${i + 1}`}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300 flex items-center justify-center">
+                          <Search className="w-6 h-6 text-background opacity-0 group-hover:opacity-80 transition-opacity duration-300" />
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </TabsContent>
             ))}
           </Tabs>
