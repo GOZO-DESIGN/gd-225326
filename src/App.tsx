@@ -24,6 +24,8 @@ const WissenZahngesundheit = lazy(() => import("./pages/WissenZahngesundheit"));
 const WissenFellpflege = lazy(() => import("./pages/WissenFellpflege"));
 const Galerie = lazy(() => import("./pages/Galerie"));
 const Kontakt = lazy(() => import("./pages/Kontakt"));
+const Impressum = lazy(() => import("./pages/Impressum"));
+const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 
 const queryClient = new QueryClient();
 
@@ -53,6 +55,8 @@ const App = () => (
             <Route path="/wissen/fellpflege" element={<WissenFellpflege />} />
             <Route path="/galerie" element={<Galerie />} />
             <Route path="/kontakt" element={<Kontakt />} />
+            <Route path="/impressum" element={<Impressum />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

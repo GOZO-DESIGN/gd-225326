@@ -39,10 +39,10 @@ const Footer = () => {
             <div>
               <h3 className="font-heading text-2xl mb-4">Sonstiges</h3>
               <div className="font-body text-[18px] space-y-1 opacity-90">
-                <a href="#" className="block hover:opacity-80">
+                <a href="/impressum" className="block hover:opacity-80">
                   Impressum
                 </a>
-                <a href="#" className="block hover:opacity-80">
+                <a href="/datenschutz" className="block hover:opacity-80">
                   Datenschutz
                 </a>
               </div>
