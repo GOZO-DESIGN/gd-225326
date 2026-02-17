@@ -104,7 +104,7 @@ const Wurfplanung = () => {
                 <img
                   src={zuchtnewsImg}
                   alt="Welpen Neugeboren"
-                  className="w-full h-[350px] md:h-[450px] object-cover rounded-xl shadow-lg"
+                  className="w-full h-[350px] md:h-[450px] object-contain rounded-xl shadow-lg"
                   loading="lazy"
                 />
             </AnimateOnScroll>
