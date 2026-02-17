@@ -45,7 +45,7 @@ const Index = () => {
         titleHighlight="Hündinnen"
         description="Unsere Hündinnen leben eng bei uns im Haus, genießen Nähe, Zuwendung und ein harmonisches Rudelleben. Sie werden liebevoll betreut, regelmäßig tierärztlich untersucht und nur eingesetzt, wenn sie vollständig gesund und bereit für eine Trächtigkeit sind. Jede Hündin ist verschmust, menschenbezogen und trägt mit ihrem stabilen, freundlichen Wesen einen wichtigen Teil zu unserer Zuchtqualität bei."
         buttonText="Entdecken Sie unsere Hündinnen"
-        buttonHref="/zucht/huendinnen"
+        buttonHref="/huendinnen"
         imageSrc={huendinImg}
         imageAlt="Pomeranian Hündin Fee"
         imageLabel="Fee"
