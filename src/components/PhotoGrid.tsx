@@ -178,7 +178,7 @@ const PhotoGrid = () => {
               setLightboxIndex(null);
             }}
           >
-            <TabsList className="mb-6 flex-wrap justify-center">
+            <TabsList className="mb-6 flex flex-wrap h-auto gap-1 justify-center">
               {tabConfig.map(({ key, label }) => (
                 <TabsTrigger key={key} value={key} className="text-base px-6">
                   {label}
