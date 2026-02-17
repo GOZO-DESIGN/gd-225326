@@ -3,6 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import huendinnenHero from "@/assets/huendinnen/hero.webp";
 
 /* ── image imports via glob ── */
 const allModules = import.meta.glob(
@@ -177,16 +178,19 @@ const Huendinnen = () => {
     <>
       <Navbar />
 
-      {/* Hero – 3 images side by side */}
-      <section className="relative h-[250px] md:h-[350px] overflow-hidden grid grid-cols-3">
-        {heroImages.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={`Hündinnen Hero ${i + 1}`}
-            className="w-full h-full object-cover"
-          />
-        ))}
+      {/* Hero */}
+      <section className="relative h-[400px] md:h-[650px] overflow-hidden">
+        <img
+          src={huendinnenHero}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
+        />
+        <img
+          src={huendinnenHero}
+          alt="Unsere Hündinnen – Pomeranian Zucht"
+          className="relative w-full h-full object-contain"
+        />
       </section>
 
       {/* Title bar */}
