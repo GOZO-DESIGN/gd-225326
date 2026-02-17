@@ -150,32 +150,9 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Über uns Dropdown */}
-            <div
-              ref={ueberDropdownRef}
-              className="relative"
-              onMouseEnter={() => setUeberOpen(true)}
-              onMouseLeave={() => setUeberOpen(false)}
-            >
-              <button className="flex items-center gap-1 text-[18px] font-body hover:opacity-80 transition-opacity">
-                Über uns
-                {ueberOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-              </button>
-              {ueberOpen && (
-                <div className="absolute top-full left-0 mt-0 w-96 bg-secondary border-2 border-primary shadow-lg z-50 py-2 animate-fade-in">
-                  {ueberLinks.map((l) => (
-                    <Link
-                      key={l.href}
-                      to={l.href}
-                      className="block px-5 py-3 text-[18px] font-body text-foreground hover:bg-primary/10 transition-colors"
-                      onClick={() => setUeberOpen(false)}
-                    >
-                      {l.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Link to="/ueber/weiterbildungen" className="text-[18px] font-body hover:opacity-80 transition-opacity">
+              Auszeichnungen
+            </Link>
 
             {otherLinks.map((l) => (
               <Link
@@ -269,20 +246,9 @@ const Navbar = () => {
             </div>
           )}
 
-          {/* Mobile Über uns */}
-          <button onClick={() => setMobileUeberOpen(!mobileUeberOpen)} className="flex items-center gap-1 text-[18px] py-2 hover:opacity-80 w-full">
-            Über uns
-            {mobileUeberOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-          </button>
-          {mobileUeberOpen && (
-            <div className="pl-4 space-y-1 border-l-2 border-primary ml-2">
-              {ueberLinks.map((l) => (
-                <Link key={l.href} to={l.href} className="block text-[18px] py-2 hover:opacity-80" onClick={() => { setMobileOpen(false); setMobileUeberOpen(false); }}>
-                  {l.label}
-                </Link>
-              ))}
-            </div>
-          )}
+          <Link to="/ueber/weiterbildungen" className="block text-[18px] py-2 hover:opacity-80" onClick={() => setMobileOpen(false)}>
+            Auszeichnungen
+          </Link>
 
           {otherLinks.map((l) => (
             <Link key={l.href} to={l.href} className="block text-[18px] py-2 hover:opacity-80" onClick={() => setMobileOpen(false)}>
