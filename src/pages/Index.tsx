@@ -33,7 +33,7 @@ const Index = () => {
         titleHighlight="Rüden"
         description="Unsere Deckrüden sind charakterstarke, gesunde und bestens untersuchte Pomeranians mit besonderer Farbgebung. Sie leben als vollwertige Familienmitglieder in unserem Zuhause, sind ausgeglichen, freundlich und zeigen ein rassetypisches Wesen ohne Qualzuchtmerkmale. Jeder Rüde wird sorgfältig ausgewählt und trägt maßgeblich zu unserer verantwortungsvollen und transparenten Zucht bei."
         buttonText="Entdecken Sie unsere Rüden"
-        buttonHref="/zucht/rueden"
+        buttonHref="/rueden"
         imageSrc={ruedeImg}
         imageAlt="Pomeranian Rüde Remmy"
         imageLabel="Remmy"
