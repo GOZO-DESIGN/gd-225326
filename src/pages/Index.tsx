@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import PhotoGrid from "@/components/PhotoGrid";
+
 import AboutSection from "@/components/AboutSection";
 import DogSection from "@/components/DogSection";
 import TrainingSection from "@/components/TrainingSection";
@@ -15,7 +15,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <PhotoGrid />
+      
       <AboutSection />
 
       <DogSection
