@@ -1,7 +1,9 @@
+import { useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// Correct images from old website
 import mainImg from "@/assets/zuchtstaette/main.webp";
 import gallery01 from "@/assets/zuchtstaette/gallery-01.avif";
 import gallery02 from "@/assets/zuchtstaette/gallery-02.avif";
@@ -11,27 +13,36 @@ import gallery05 from "@/assets/zuchtstaette/gallery-05.avif";
 import gallery06 from "@/assets/zuchtstaette/gallery-06.avif";
 import gallery07 from "@/assets/zuchtstaette/gallery-07.avif";
 import gallery08 from "@/assets/zuchtstaette/gallery-08.avif";
+import videoSrc from "@/assets/zuchtstaette/zuchststatte_00010.mp4";
 
-const gridImages = [gallery01, gallery02, gallery03, gallery04, gallery05, gallery06, gallery07, gallery08];
+type MediaItem = { type: "image" | "video"; src: string };
+
+const gridMedia: MediaItem[] = [
+  { type: "image", src: gallery01 },
+  { type: "image", src: gallery02 },
+  { type: "image", src: gallery03 },
+  { type: "image", src: gallery04 },
+  { type: "video", src: videoSrc },
+  { type: "image", src: gallery05 },
+  { type: "image", src: gallery06 },
+  { type: "image", src: gallery07 },
+  { type: "image", src: gallery08 },
+];
 
 const Zuchtstaette = () => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const closeLightbox = () => setLightboxIndex(null);
+  const prev = () => setLightboxIndex((i) => (i !== null ? (i - 1 + gridMedia.length) % gridMedia.length : null));
+  const next = () => setLightboxIndex((i) => (i !== null ? (i + 1) % gridMedia.length : null));
+
   return (
     <>
       <Navbar />
 
       {/* Hero */}
       <section className="relative h-[400px] md:h-[650px] overflow-hidden">
-        <img
-          src={mainImg}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
-        />
-        <img
-          src={mainImg}
-          alt="Unsere Zuchtstätte"
-          className="relative w-full h-full object-contain"
-        />
+        <img src={mainImg} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60" />
+        <img src={mainImg} alt="Unsere Zuchtstätte" className="relative w-full h-full object-contain" />
       </section>
 
       {/* Title bar */}
@@ -46,12 +57,7 @@ const Zuchtstaette = () => {
           {/* Main section: image left, text right */}
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
             <div className="w-full md:w-5/12">
-              <img
-                src={mainImg}
-                alt="Unsere Zuchtstätte"
-                className="w-full h-auto max-h-[600px] object-cover rounded-xl shadow-lg"
-                loading="lazy"
-              />
+              <img src={mainImg} alt="Unsere Zuchtstätte" className="w-full h-auto max-h-[600px] object-cover rounded-xl shadow-lg" loading="lazy" />
             </div>
             <div className="w-full md:w-7/12 space-y-5 font-body text-muted-foreground leading-relaxed">
               <p>
@@ -77,12 +83,7 @@ const Zuchtstaette = () => {
                 Ab März 2024 konnten wir unseren Traum einer gewerbsmäßigen Zucht umsetzen. Unsere
                 Zuchtstätte wurde vom zuständigen Veterinäramt des Burgenlandkreises abgenommen und
                 genehmigt, meldeten unser Gewerbe an und die Website{" "}
-                <a
-                  href="https://www.pomeranianzucht-sachsen-anhalt.de"
-                  className="text-accent underline hover:opacity-80"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://www.pomeranianzucht-sachsen-anhalt.de" className="text-accent underline hover:opacity-80" target="_blank" rel="noopener noreferrer">
                   www.pomeranianzucht-sachsen-anhalt.de
                 </a>{" "}
                 ging 11/25 online.
@@ -107,20 +108,70 @@ const Zuchtstaette = () => {
             </div>
           </div>
 
-          {/* Image grid */}
+          {/* Media grid with lightbox */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {gridImages.map((src, i) => (
-              <img
+            {gridMedia.map((item, i) => (
+              <button
                 key={i}
-                src={src}
-                alt={`Zuchtstätte Impression ${i + 1}`}
-                className="w-full h-[250px] md:h-[300px] object-cover rounded-lg shadow-md"
-                loading="lazy"
-              />
+                onClick={() => setLightboxIndex(i)}
+                className="group relative overflow-hidden rounded-lg h-[250px] md:h-[300px] focus:outline-none focus:ring-2 focus:ring-accent"
+              >
+                {item.type === "video" ? (
+                  <video
+                    src={item.src}
+                    muted
+                    loop
+                    playsInline
+                    autoPlay
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={`Zuchtstätte Impression ${i + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                )}
+                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300" />
+              </button>
             ))}
           </div>
         </div>
       </main>
+
+      {/* Lightbox */}
+      <Dialog open={lightboxIndex !== null} onOpenChange={closeLightbox}>
+        <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-none bg-background/95 backdrop-blur-md flex items-center justify-center">
+          {lightboxIndex !== null && (
+            <>
+              <button onClick={closeLightbox} className="absolute top-3 right-3 z-50 text-foreground/70 hover:text-foreground">
+                <X className="w-6 h-6" />
+              </button>
+              <button onClick={prev} className="absolute left-3 z-50 text-foreground/70 hover:text-foreground">
+                <ChevronLeft className="w-8 h-8" />
+              </button>
+              <button onClick={next} className="absolute right-3 z-50 text-foreground/70 hover:text-foreground">
+                <ChevronRight className="w-8 h-8" />
+              </button>
+              {gridMedia[lightboxIndex].type === "video" ? (
+                <video
+                  src={gridMedia[lightboxIndex].src}
+                  controls
+                  autoPlay
+                  className="max-w-full max-h-[85vh] rounded-md"
+                />
+              ) : (
+                <img
+                  src={gridMedia[lightboxIndex].src}
+                  alt={`Zuchtstätte Foto ${lightboxIndex + 1}`}
+                  className="max-w-full max-h-[85vh] object-contain rounded-md"
+                />
+              )}
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </>
