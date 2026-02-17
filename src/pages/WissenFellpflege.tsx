@@ -4,11 +4,66 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 import SEOHead from "@/components/SEOHead";
 import heroImg from "@/assets/wissen/fellpflege-hero.webp";
 
+// Welpen-Bilder
+import welpe1 from "@/assets/wissen/fellpflege/welpe-1.webp";
+import welpe2 from "@/assets/wissen/fellpflege/welpe-2.webp";
+import welpe3 from "@/assets/wissen/fellpflege/welpe-3.webp";
+
+// Ada Timeline-Bilder
+import ada1 from "@/assets/wissen/fellpflege/ada-1.webp";
+import ada2 from "@/assets/wissen/fellpflege/ada-2.webp";
+import ada3 from "@/assets/wissen/fellpflege/ada-3.webp";
+import ada4 from "@/assets/wissen/fellpflege/ada-4.webp";
+import ada5 from "@/assets/wissen/fellpflege/ada-5.webp";
+import ada6 from "@/assets/wissen/fellpflege/ada-6.webp";
+import ada7 from "@/assets/wissen/fellpflege/ada-7.webp";
+import ada8 from "@/assets/wissen/fellpflege/ada-8.webp";
+import ada9 from "@/assets/wissen/fellpflege/ada-9.webp";
+import ada10 from "@/assets/wissen/fellpflege/ada-10.webp";
+
+// Farbveränderung & Farbtabellen
+import farbeVeraenderung from "@/assets/wissen/fellpflege/farbe-veraenderung.webp";
+import farbtabelle1 from "@/assets/wissen/fellpflege/farbtabelle-1.avif";
+import farbtabelle2 from "@/assets/wissen/fellpflege/farbtabelle-2.avif";
+
+// Baden-Bilder
+import baden1 from "@/assets/wissen/fellpflege/baden-1.webp";
+import baden2 from "@/assets/wissen/fellpflege/baden-2.webp";
+import baden3 from "@/assets/wissen/fellpflege/baden-3.webp";
+
+// Pflege & Bürsten
+import pflegeset from "@/assets/wissen/fellpflege/pflegeset.webp";
+import buersten1 from "@/assets/wissen/fellpflege/buersten-1.webp";
+import buersten2 from "@/assets/wissen/fellpflege/buersten-2.webp";
+import buersten3 from "@/assets/wissen/fellpflege/buersten-3.webp";
+import buersten4 from "@/assets/wissen/fellpflege/buersten-4.webp";
+
 const Section = ({ children }: { children: React.ReactNode }) => (
   <AnimateOnScroll variant="fade-up">
     <div className="space-y-6">{children}</div>
   </AnimateOnScroll>
 );
+
+const ImageGrid = ({ images, alt }: { images: string[]; alt: string }) => (
+  <div className={`grid gap-4 ${images.length === 1 ? '' : images.length === 2 ? 'grid-cols-2' : 'grid-cols-2 md:grid-cols-3'}`}>
+    {images.map((src, i) => (
+      <img key={i} src={src} alt={`${alt} ${i + 1}`} className="rounded-xl w-full h-auto object-cover shadow-md" loading="lazy" />
+    ))}
+  </div>
+);
+
+const timelineItems = [
+  { img: ada1, label: "Welpe" },
+  { img: ada2, label: "Beginn Fellwechsel" },
+  { img: ada3, label: "Äffchenphase" },
+  { img: ada4, label: "Fellverlust" },
+  { img: ada5, label: "Lichtes Fell" },
+  { img: ada6, label: "Neues Fell wächst" },
+  { img: ada7, label: "Erholung" },
+  { img: ada8, label: "Fell füllt sich" },
+  { img: ada9, label: "Fast fertig" },
+  { img: ada10, label: "Erwachsenes Fell" },
+];
 
 const WissenFellpflege = () => {
   return (
@@ -54,6 +109,11 @@ const WissenFellpflege = () => {
             </p>
           </Section>
 
+          {/* Welpen-Bilder */}
+          <AnimateOnScroll variant="fade-up">
+            <ImageGrid images={[welpe1, welpe2, welpe3]} alt="Pomeranian Welpe" />
+          </AnimateOnScroll>
+
           {/* Wie helfen? */}
           <Section>
             <h3 className="text-xl font-heading text-foreground">
@@ -89,6 +149,71 @@ const WissenFellpflege = () => {
             </p>
             <p>In diesem Alter sind sie einfach spektakulär.</p>
           </Section>
+
+          {/* ───── Ada Timeline ───── */}
+          <Section>
+            <h3 className="text-xl font-heading text-foreground">
+              Beispiele für Haarausfall/Fellwechsel beim Zwergspitz
+            </h3>
+            <p className="text-sm text-muted-foreground italic">Fotos meiner Hündin Ada</p>
+          </Section>
+
+          <AnimateOnScroll variant="fade-up">
+            <div className="relative">
+              {/* Vertikale Timeline-Linie */}
+              <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-accent/40 -translate-x-1/2 hidden md:block" />
+
+              <div className="space-y-8 md:space-y-0">
+                {timelineItems.map((item, index) => {
+                  const isLeft = index % 2 === 0;
+                  return (
+                    <div key={index} className="relative md:flex md:items-center md:min-h-[220px]">
+                      {/* Desktop: alternierend links/rechts */}
+                      <div className={`hidden md:flex w-full items-center ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
+                        {/* Bild-Seite */}
+                        <div className="w-[calc(50%-2rem)] flex justify-center">
+                          <img
+                            src={item.img}
+                            alt={`Ada - ${item.label}`}
+                            className="w-48 h-48 object-cover rounded-xl shadow-lg border-2 border-accent/20"
+                            loading="lazy"
+                          />
+                        </div>
+
+                        {/* Mittelpunkt */}
+                        <div className="relative z-10 flex flex-col items-center mx-4">
+                          <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-heading text-sm shadow-md">
+                            {index + 1}
+                          </div>
+                        </div>
+
+                        {/* Label-Seite */}
+                        <div className="w-[calc(50%-2rem)] flex justify-center">
+                          <span className="text-sm font-heading text-foreground bg-secondary/50 px-4 py-2 rounded-full">
+                            {item.label}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Mobile: einfache Liste */}
+                      <div className="md:hidden flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-accent flex-shrink-0 flex items-center justify-center text-accent-foreground font-heading text-sm shadow-md">
+                          {index + 1}
+                        </div>
+                        <img
+                          src={item.img}
+                          alt={`Ada - ${item.label}`}
+                          className="w-24 h-24 object-cover rounded-xl shadow-md border-2 border-accent/20"
+                          loading="lazy"
+                        />
+                        <span className="text-sm font-heading text-foreground">{item.label}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </AnimateOnScroll>
 
           {/* ───── Farbveränderung ───── */}
           <Section>
@@ -126,6 +251,7 @@ const WissenFellpflege = () => {
             <p>
               Es ist völlig normal und natürlich, dass ein einjähriger Zwergspitz nicht wie ein Ball aussieht. Man muss ihm Zeit geben, seine Haare wieder herzustellen, um wieder wie ein echter Pomeranian auszusehen!
             </p>
+            <img src={farbeVeraenderung} alt="Farbveränderung beim Pomeranian" className="rounded-xl w-full max-w-md mx-auto shadow-md" loading="lazy" />
           </Section>
 
           {/* Pommersche Farben */}
@@ -139,6 +265,7 @@ const WissenFellpflege = () => {
             <p className="font-semibold text-foreground">
               Der Pomeranian ist in all seinen Farben wunderschön.
             </p>
+            <img src={farbtabelle1} alt="Pomeranian Farbtabelle" className="rounded-xl w-full shadow-md" loading="lazy" />
             <p>Die Farben des Pomeranians werden unterteilt in:</p>
             <ul className="list-disc list-inside space-y-1 pl-4">
               <li>Orange, Rot, Weiß (Reinweiß), Schwarz, Braun (Schokolade), graugewolkt und andersfarbig</li>
@@ -147,6 +274,7 @@ const WissenFellpflege = () => {
             <p>
               Andersfarbige Spitze: creme, creme-sable, orange-sable, black &amp; tan, merle und Schecken (Particolor).
             </p>
+            <img src={farbtabelle2} alt="Pomeranian Schecken Farbtabelle" className="rounded-xl w-full shadow-md" loading="lazy" />
           </Section>
 
           {/* ───── Die richtige Fellpflege ───── */}
@@ -204,6 +332,24 @@ const WissenFellpflege = () => {
               <li>Nach dem gründlichen Auspülen des Shampoos sollten Sie eine Pflegespülung oder Maske anwenden, da die Haut Ihres Poms noch sehr empfindlich ist und viel Feuchtigkeit und Schutz benötigt.</li>
               <li>Nachdem Sie mit dem ausführlichen Bad fertig sind, trocknen Sie Ihren Pom mit einem Handtuch gut ab. Föhnen Sie sein Haar vollständig trocken. Während des Föhnens ist es auch zu empfehlen, ihn zu bürsten, damit sein Fell schneller trocknet.</li>
             </ul>
+            <ImageGrid images={[baden1, baden3]} alt="Pomeranian beim Baden" />
+          </Section>
+
+          {/* Erwachsener Pom Baden */}
+          <Section>
+            <h3 className="text-xl font-heading text-foreground">
+              Unsere Empfehlung zum Baden/Duschen Ihres Erwachsenen Poms
+            </h3>
+            <p>
+              Rüden sollten alle 2 bis 3 Wochen und Hündinnen alle 6 bis 8 Wochen gebadet werden.
+            </p>
+            <p>
+              Auch im erwachsenen Alter wechseln Poms ihr Fell, in diesem Zeitraum empfehlen wir eine intensivere bzw. regelmäßigere Fellpflege (Wellnessprogramm).
+            </p>
+            <p>
+              Bitte verwenden Sie ausschließlich Produkte, die speziell für das Fell des Pomeranians entwickelt worden sind.
+            </p>
+            <img src={baden2} alt="Erwachsener Pomeranian beim Baden" className="rounded-xl w-full max-w-lg mx-auto shadow-md" loading="lazy" />
           </Section>
 
           {/* Richtig bürsten */}
@@ -226,6 +372,10 @@ const WissenFellpflege = () => {
             <p>
               Die tägliche Fellpflege ist zudem auch das beste natürliche Antiparasitikum, denn während dem Bürsten können Sie überprüfen, ob Ihr Pom Flöhe oder Zecken hat.
             </p>
+            <p className="font-semibold text-foreground">
+              Ich benutze z. B. dieses Pflegeset für meine Poms:
+            </p>
+            <img src={pflegeset} alt="Pflegeset für Pomeranians" className="rounded-xl w-full max-w-md mx-auto shadow-md" loading="lazy" />
           </Section>
 
           <Section>
@@ -233,18 +383,25 @@ const WissenFellpflege = () => {
             <p>
               Sprühen Sie vor dem Bürsten unbedingt ein gutes Pflegespray ins Fell Ihres Poms, damit das Fell mit Feuchtigkeit versorgt wird und um zu verhindern, dass das Fell beim Bürsten beschädigt wird oder bricht.
             </p>
+            <img src={buersten1} alt="Pflegespray auftragen" className="rounded-xl w-full max-w-md mx-auto shadow-md" loading="lazy" />
+
             <p>
               Im nächsten Schritt bürsten Sie das Haar mit einer hochwertigen Pflegebürste gut durch. Bürsten Sie Ihren Pom vom Schwanz in Richtung Kopf. Wichtig ist, dass Sie Stück für Stück gegen den Strich und bis auf die Haut bürsten.
             </p>
+            <img src={buersten2} alt="Bürsten mit Pflegebürste" className="rounded-xl w-full max-w-md mx-auto shadow-md" loading="lazy" />
+
             <p>
               Mit einer Slicker Bürste wird Haarschicht für Haarschicht die Haut und das Fell von der abgestorbenen Unterwolle entfernt.
             </p>
+            <img src={buersten3} alt="Slicker Bürste verwenden" className="rounded-xl w-full max-w-md mx-auto shadow-md" loading="lazy" />
+
             <p>
               Die Hautmassage während des Bürstens verbessert die Blutzirkulation, stärkt die Haarfollikel, verteilt das Körperfett und trägt zum Wechsel des sogenannten „Babyhaars" bei.
             </p>
             <p>
               Nachdem Sie das Haar durchgebürstet haben, verwenden Sie anschließend den Kamm und überprüfen, dass es keine übrigen Knoten bzw. Verfilzungen gibt.
             </p>
+            <img src={buersten4} alt="Kamm zur Kontrolle" className="rounded-xl w-full max-w-md mx-auto shadow-md" loading="lazy" />
           </Section>
 
           {/* Zusammenfassung */}
