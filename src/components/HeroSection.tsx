@@ -13,7 +13,7 @@ import img10 from "@/assets/home/WhatsApp-Image-2024-08-23-at-02.29.19_90af7699.
 import img11 from "@/assets/home/WhatsApp-Image-2024-08-23-at-19.22.48_ccc1001e.webp";
 import img12 from "@/assets/home/Anne_Katrin_Mueller_Oct_31_2025.avif";
 import img13 from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-09.38.50.avif";
-import img14 from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.19.avif";
+import img14 from "@/assets/home/fee-pomeranian-huendin.avif";
 import img15 from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-10.23.58.avif";
 import img16 from "@/assets/home/welpen-01-09-24-51.webp";
 
