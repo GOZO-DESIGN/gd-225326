@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Correct images from old website
 import heroImg from "@/assets/wurfplanung/hero.avif";
@@ -16,6 +18,46 @@ import kennenlernen1 from "@/assets/wurfplanung/kennenlernen-1.avif";
 import kennenlernen3 from "@/assets/wurfplanung/kennenlernen-3.avif";
 import kennenlernen4 from "@/assets/wurfplanung/kennenlernen-4.avif";
 import erstausstattungImg from "@/assets/wurfplanung/erstausstattung.avif";
+
+const AbgabeSlider = ({ images }: { images: string[] }) => {
+  const [current, setCurrent] = useState(0);
+  const prev = () => setCurrent((c) => (c - 1 + images.length) % images.length);
+  const next = () => setCurrent((c) => (c + 1) % images.length);
+
+  return (
+    <div className="w-full md:w-1/2 relative overflow-hidden rounded-lg">
+      <img
+        src={images[current]}
+        alt={`Welpen Abgabe ${current + 1}`}
+        className="w-full h-[350px] md:h-[450px] object-cover transition-opacity duration-300"
+      />
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background/90 rounded-full p-1.5 text-foreground transition-colors"
+        aria-label="Vorheriges Bild"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background/90 rounded-full p-1.5 text-foreground transition-colors"
+        aria-label="Nächstes Bild"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2 h-2 rounded-full transition-colors ${i === current ? "bg-accent" : "bg-background/60"}`}
+            aria-label={`Bild ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Wurfplanung = () => {
   return (
@@ -220,12 +262,7 @@ const Wurfplanung = () => {
                   Erstausstattung, die Ihnen den Einzug Ihres Welpen erleichtern soll.
                 </p>
               </div>
-              <div className="w-full md:w-1/2 grid grid-cols-2 gap-3">
-                <img src={abgabe1} alt="Welpen Abgabe" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
-                <img src={abgabe2} alt="Welpen Abgabe" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
-                <img src={abgabe3} alt="Welpen Abgabe" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
-                <img src={abgabe4} alt="Welpen Abgabe" className="w-full h-[180px] md:h-[220px] object-cover rounded-lg" loading="lazy" />
-              </div>
+              <AbgabeSlider images={[abgabe1, abgabe2, abgabe3, abgabe4]} />
             </div>
 
             {/* Block 5: Kennenlernen & Reservierung */}
