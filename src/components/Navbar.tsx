@@ -47,7 +47,7 @@ const Navbar = () => {
   }, []);
 
   const otherLinks = [
-    { label: "Galerie", href: "/#galerie" },
+    { label: "Galerie", href: "/galerie" },
   ];
 
   const ueberLinks = [
