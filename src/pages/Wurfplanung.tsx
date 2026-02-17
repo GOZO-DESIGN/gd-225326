@@ -25,11 +25,11 @@ const AbgabeSlider = ({ images }: { images: string[] }) => {
   const next = () => setCurrent((c) => (c + 1) % images.length);
 
   return (
-    <div className="w-full md:w-1/2 relative overflow-hidden rounded-lg">
+    <div className="w-full max-w-4xl mx-auto relative overflow-hidden rounded-xl shadow-lg">
       <img
         src={images[current]}
         alt={`Welpen Abgabe ${current + 1}`}
-        className="w-full h-[350px] md:h-[450px] object-cover transition-opacity duration-300"
+        className="w-full h-[350px] md:h-[500px] object-cover transition-opacity duration-300"
       />
       <button
         onClick={prev}
@@ -142,17 +142,9 @@ const Wurfplanung = () => {
         {/* ── Aufzucht – Geburt ── */}
         <section className="py-16 md:py-20">
           <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-            {/* Block 1: Geburt */}
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-              <div className="w-full md:w-1/2">
-                <img
-                  src={geburtImg}
-                  alt="Welpenaufzucht"
-                  className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
-                  loading="lazy"
-                />
-              </div>
-              <div className="w-full md:w-1/2 space-y-4">
+            {/* Block 1: Geburt – Text first, then image */}
+            <div className="space-y-6">
+              <div className="space-y-4">
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Wir nehmen uns genügend Zeit, um uns auf das bevorstehende schöne Ereignis vorzubereiten.
                 </p>
@@ -174,11 +166,23 @@ const Wurfplanung = () => {
                   Wundwerden des Gesäuges zu verhindern, kürze ich ganz vorsichtig die Krallen der Welpen.
                 </p>
               </div>
+              <img
+                src={geburtImg}
+                alt="Welpenaufzucht"
+                className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
+                loading="lazy"
+              />
             </div>
 
-            {/* Block 2: 2 Wochen */}
-            <div className="flex flex-col md:flex-row-reverse gap-8 md:gap-12 items-start">
-              <div className="w-full md:w-1/2 space-y-4">
+            {/* Block 2: 2 Wochen – Image first, then text */}
+            <div className="space-y-6">
+              <img
+                src={zweiWochenImg}
+                alt="Welpen 2 Wochen"
+                className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
+                loading="lazy"
+              />
+              <div className="space-y-4">
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Mit etwa 2 Wochen öffnen die Welpen langsam ihre Äuglein. Die Welpenzufütterung hängt von
                   der Milchleistung der Mutterhündin ab. Ab der 3. Woche bieten wir unseren Welpen
@@ -197,27 +201,11 @@ const Wurfplanung = () => {
                   Garten austoben und neues erkunden.
                 </p>
               </div>
-              <div className="w-full md:w-1/2">
-                <img
-                  src={zweiWochenImg}
-                  alt="Welpen 2 Wochen"
-                  className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
-                  loading="lazy"
-                />
-              </div>
             </div>
 
-            {/* Block 3: Prägephase */}
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-              <div className="w-full md:w-1/2">
-                <img
-                  src={praegephaseImg}
-                  alt="Welpen Prägephase"
-                  className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
-                  loading="lazy"
-                />
-              </div>
-              <div className="w-full md:w-1/2 space-y-4">
+            {/* Block 3: Prägephase – Text first, then image */}
+            <div className="space-y-6">
+              <div className="space-y-4">
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Wir erziehen unsere Welpen zu einem selbstbewussten, umgänglichen und liebevollen Zwergspitz.
                   Wir nehmen uns für die Welpen sehr viel Zeit, die Prägephase der Kleinen beginnt ab der 3.
@@ -239,11 +227,18 @@ const Wurfplanung = () => {
                   besuchen wir auch die Senioren-Residenz in Bad Bibra.
                 </p>
               </div>
+              <img
+                src={praegephaseImg}
+                alt="Welpen Prägephase"
+                className="w-full h-[350px] md:h-[500px] object-cover rounded-xl shadow-lg"
+                loading="lazy"
+              />
             </div>
 
-            {/* Block 4: Zuchtauflagen & Abgabe */}
-            <div className="flex flex-col md:flex-row-reverse gap-8 md:gap-12 items-start">
-              <div className="w-full md:w-1/2 space-y-4">
+            {/* Block 4: Zuchtauflagen & Abgabe – Image (slider) first, then text */}
+            <div className="space-y-6">
+              <AbgabeSlider images={[abgabe1, abgabe2, abgabe3, abgabe4]} />
+              <div className="space-y-4">
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Unsere Welpen werden unter strengen Zuchtauflagen aufgezogen. Die Eltern stammen aus einer
                   gesunden und robusten Zucht, haben an Ausstellungen teilgenommen und die
@@ -262,13 +257,11 @@ const Wurfplanung = () => {
                   Erstausstattung, die Ihnen den Einzug Ihres Welpen erleichtern soll.
                 </p>
               </div>
-              <AbgabeSlider images={[abgabe1, abgabe2, abgabe3, abgabe4]} />
             </div>
 
-            {/* Block 5: Kennenlernen & Reservierung */}
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-              <AbgabeSlider images={[kennenlernen1, heroImg, kennenlernen3, kennenlernen4]} />
-              <div className="w-full md:w-1/2 space-y-4">
+            {/* Block 5: Kennenlernen & Reservierung – Text first, then slider */}
+            <div className="space-y-6">
+              <div className="space-y-4">
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Eine Woche nachdem unsere Welpen geboren sind, stellen wir unsere Welpen auf unsere Webseite,
                   Instagram, TikTok, Facebook, Honestdog usw. mit Farbe und Geschlecht vor. Bei Interesse an
@@ -300,6 +293,7 @@ const Wurfplanung = () => {
                   passt, darf der Welpe bei Ihnen einziehen.
                 </p>
               </div>
+              <AbgabeSlider images={[kennenlernen1, heroImg, kennenlernen3, kennenlernen4]} />
             </div>
 
             {/* Erstausstattung */}
