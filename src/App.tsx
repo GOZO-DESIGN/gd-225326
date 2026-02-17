@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import Rueden from "./pages/Rueden";
 import Huendinnen from "./pages/Huendinnen";
 import Welpen from "./pages/Welpen";
+import Wurfplanung from "./pages/Wurfplanung";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/rueden" element={<Rueden />} />
           <Route path="/huendinnen" element={<Huendinnen />} />
           <Route path="/welpen" element={<Welpen />} />
+          <Route path="/wurfplanung" element={<Wurfplanung />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
