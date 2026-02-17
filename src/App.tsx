@@ -20,6 +20,7 @@ import WissenKastration from "./pages/WissenKastration";
 import WissenZahngesundheit from "./pages/WissenZahngesundheit";
 import WissenFellpflege from "./pages/WissenFellpflege";
 import Galerie from "./pages/Galerie";
+import Kontakt from "./pages/Kontakt";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/wissen/zahngesundheit" element={<WissenZahngesundheit />} />
           <Route path="/wissen/fellpflege" element={<WissenFellpflege />} />
           <Route path="/galerie" element={<Galerie />} />
+          <Route path="/kontakt" element={<Kontakt />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

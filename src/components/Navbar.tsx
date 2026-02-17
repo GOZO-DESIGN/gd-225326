@@ -192,7 +192,7 @@ const Navbar = () => {
             </div>
 
             <Link
-              to="/#kontakt"
+              to="/kontakt"
               className="bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-[18px] border border-primary hover:opacity-90 transition-opacity"
             >
               Kontakt
@@ -272,7 +272,7 @@ const Navbar = () => {
           )}
 
           <Link
-            to="/#kontakt"
+            to="/kontakt"
             className="block bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-[18px] text-center border border-primary"
             onClick={() => setMobileOpen(false)}
           >
