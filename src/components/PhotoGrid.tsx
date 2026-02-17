@@ -10,8 +10,8 @@ const jpgModules = import.meta.glob("@/assets/galerie/*.jpg", { eager: true, imp
 
 const allModules = { ...webpModules, ...avifModules, ...jpgModules };
 
-// Extract filename from path
-const fname = (path: string) => path.split("/").pop() ?? "";
+// Extract filename from path (normalize Unicode to handle decomposed umlauts)
+const fname = (path: string) => (path.split("/").pop() ?? "").normalize("NFC");
 
 // Filename-to-tab mapping based on original HTML
 const ashleyFiles = new Set([
@@ -106,13 +106,15 @@ const andereFiles = new Set([
 
 // Classify each image
 function classifyFile(filename: string): string {
-  if (filename.startsWith("charly-")) return "charly";
-  if (filename.startsWith("Anne-Katrin") && filename.includes("2025-10-24")) return "fee";
+  const normalized = filename.normalize("NFC");
+  if (normalized.startsWith("charly-")) return "charly";
+  if (normalized.includes("Anne-Katrin") && normalized.includes("2025-10-24")) return "fee";
+  if (normalized.includes("Anne-Katrin") && normalized.includes("2025-10-31")) return "remmy";
   if (filename.startsWith("Anne-Katrin") && filename.includes("2025-10-31")) return "remmy";
-  if (ashleyFiles.has(filename)) return "ashley";
-  if (amyFiles.has(filename)) return "amy";
-  if (adaFiles.has(filename)) return "ada";
-  if (andereFiles.has(filename)) return "andere";
+  if (ashleyFiles.has(normalized)) return "ashley";
+  if (amyFiles.has(normalized)) return "amy";
+  if (adaFiles.has(normalized)) return "ada";
+  if (andereFiles.has(normalized)) return "andere";
   return "";
 }
 
@@ -134,7 +136,7 @@ const tabImages: Record<GalleryTab, string[]> = {
 };
 
 for (const [path, src] of Object.entries(allModules)) {
-  const filename = fname(path);
+  const filename = fname(path.normalize("NFC"));
   const tab = classifyFile(filename);
   if (tab && tab in tabImages) {
     tabImages[tab as GalleryTab].push(src);
