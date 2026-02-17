@@ -1,10 +1,10 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-
 import AboutSection from "@/components/AboutSection";
 import DogSection from "@/components/DogSection";
 import TrainingSection from "@/components/TrainingSection";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 import welpenImg from "@/assets/home/Anne_Katrin_Mueller_Oct_31_2025.avif";
 import ruedeImg from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-09.38.50.avif";
@@ -13,6 +13,11 @@ import huendinImg from "@/assets/home/Anne-Katrin-Mu_CC_88ller-225326---2025-10-
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Pomeranian-Zucht Anne & Georg | Zwergspitz Zucht Sachsen-Anhalt"
+        description="Verantwortungsvolle Pomeranian-Zucht in Sachsen-Anhalt. Gesunde, charakterstarke Zwergspitze in besonderen Farben aus liebevoller Familienaufzucht."
+        canonical="https://www.pomeranianzucht-sachsen-anhalt.de/"
+      />
       <Navbar />
       <HeroSection />
       
@@ -25,7 +30,7 @@ const Index = () => {
         buttonText="Entdecken Sie unsere Welpen"
         buttonHref="/welpen"
         imageSrc={welpenImg}
-        imageAlt="Pomeranian Welpen"
+        imageAlt="Pomeranian Welpen aus unserer Zucht in Sachsen-Anhalt"
       />
 
       <DogSection
@@ -35,7 +40,7 @@ const Index = () => {
         buttonText="Entdecken Sie unsere Rüden"
         buttonHref="/rueden"
         imageSrc={ruedeImg}
-        imageAlt="Pomeranian Rüde Remmy"
+        imageAlt="Pomeranian Deckrüde Remmy von Arinakrieger"
         imageLabel="Remmy"
         reversed
       />
@@ -47,7 +52,7 @@ const Index = () => {
         buttonText="Entdecken Sie unsere Hündinnen"
         buttonHref="/huendinnen"
         imageSrc={huendinImg}
-        imageAlt="Pomeranian Hündin Fee"
+        imageAlt="Pomeranian Zuchthündin Fee vom Wällerland"
         imageLabel="Fee"
       />
 

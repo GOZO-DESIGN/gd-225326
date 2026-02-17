@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 import heroImg from "@/assets/wissen/erziehung-hero.avif";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
@@ -12,6 +13,7 @@ const Section = ({ children }: { children: React.ReactNode }) => (
 const WissenHundeerziehung = () => {
   return (
     <>
+      <SEOHead title="Hundeerziehung & Hundeschule – Tipps für Pomeranians" description="Moderne Erziehungsmethoden und Hundeschule für Ihren Pomeranian. Tipps zur positiven Verstärkung und Sozialisierung." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/wissen/hundeerziehung" />
       <Navbar />
 
       {/* Hero */}

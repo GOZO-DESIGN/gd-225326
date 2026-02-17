@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://www.pomeranianzucht-sachsen-anhalt.de/sitemap.xml

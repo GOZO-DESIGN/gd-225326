@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 import huendinnenHero from "@/assets/huendinnen/hero.webp";
 
 /* ── image imports via glob ── */
@@ -177,6 +178,7 @@ const ImageSlider = ({ images, alt }: { images: string[]; alt: string }) => {
 const Huendinnen = () => {
   return (
     <>
+      <SEOHead title="Unsere Hündinnen – Pomeranian Zuchthündinnen" description="Lernen Sie unsere Pomeranian Zuchthündinnen kennen. Liebevoll betreut, regelmäßig untersucht und mit stabilem, freundlichem Wesen." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/huendinnen" />
       <Navbar />
 
       {/* Hero */}

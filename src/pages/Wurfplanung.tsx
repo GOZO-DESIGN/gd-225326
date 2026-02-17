@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Correct images from old website
@@ -63,6 +64,7 @@ const AbgabeSlider = ({ images }: { images: string[] }) => {
 const Wurfplanung = () => {
   return (
     <>
+      <SEOHead title="Wurfplanung & Aufzucht – Pomeranian Welpen" description="Unsere Wurfplanung für 2026 und die liebevolle Aufzucht unserer Pomeranian Welpen. Von der Geburt bis zur Abgabe bestens betreut." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/wurfplanung" />
       <Navbar />
 
       {/* Hero Video */}

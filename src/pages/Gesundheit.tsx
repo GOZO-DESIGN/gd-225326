@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 
 import heroImg from "@/assets/gesundheit/gesundheit-hero.webp";
 import alopezieImg1 from "@/assets/gesundheit/Alopezie_x-1.webp";
@@ -27,6 +28,7 @@ const Img = ({ src, alt }: { src: string; alt: string }) => (
 const Gesundheit = () => {
   return (
     <>
+      <SEOHead title="Gesundheit des Pomeranians – Rassespezifische Krankheiten" description="Informationen zu rassespezifischen Krankheiten des Pomeranians: Patellaluxation, Alopezie X, Trachealkollaps und Hypoglykämie." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/wissen/gesundheit" />
       <Navbar />
 
       {/* Hero */}

@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 
 import mainImg from "@/assets/zuchtstaette/main.webp";
 import gallery01 from "@/assets/zuchtstaette/gallery-01.avif";
@@ -38,6 +39,7 @@ const Zuchtstaette = () => {
 
   return (
     <>
+      <SEOHead title="Unsere Zuchtstätte – Pomeranian Zucht" description="Unsere Zuchtstätte in Marienroda, Sachsen-Anhalt. Vom Veterinäramt abgenommen und nach §11 TierSchG genehmigt." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/zuchtstaette" />
       <Navbar />
 
       {/* Hero */}

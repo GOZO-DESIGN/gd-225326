@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 import heroImg from "@/assets/wissen/fellpflege-hero.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
@@ -12,6 +13,7 @@ const Section = ({ children }: { children: React.ReactNode }) => (
 const WissenFellpflege = () => {
   return (
     <>
+      <SEOHead title="Fellpflege beim Pomeranian – Fellwechsel & Pflege" description="Alles zur Fellpflege und Fellwechsel beim Pomeranian. Die Äffchenphase, richtige Pflege und Tipps für ein gesundes Fell." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/wissen/fellpflege" />
       <Navbar />
 
       {/* Hero */}
