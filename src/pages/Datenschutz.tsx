@@ -15,10 +15,10 @@ const Datenschutz = () => {
 
       <main className="min-h-screen bg-background pt-24 pb-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimateOnScroll variant="fade-up">
+          <div>
             <h1 className="text-3xl md:text-4xl font-heading text-foreground mb-8">Datenschutzerklärung</h1>
 
-            <div className="prose prose-lg max-w-none space-y-8 font-body text-foreground/90 [&_h2]:text-2xl [&_h2]:font-heading [&_h2]:text-foreground [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-heading [&_h3]:text-foreground [&_h3]:mt-6 [&_h3]:mb-3 [&_a]:text-primary [&_a]:underline [&_ul]:list-disc [&_ul]:pl-6">
+            <div className="max-w-none space-y-4 font-body text-foreground/90 [&_h2]:text-2xl [&_h2]:font-heading [&_h2]:text-foreground [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-heading [&_h3]:text-foreground [&_h3]:mt-6 [&_h3]:mb-3 [&_a]:text-primary [&_a]:underline [&_ul]:list-disc [&_ul]:pl-6 [&_p]:leading-relaxed">
 
               <h2>1. Datenschutz auf einen Blick</h2>
 
@@ -160,7 +160,7 @@ const Datenschutz = () => {
               <p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote und an einer leichten Auffindbarkeit der von uns auf der Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</p>
               <p>Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy?hl=de</a>.</p>
             </div>
-          </AnimateOnScroll>
+          </div>
         </div>
       </main>
 
