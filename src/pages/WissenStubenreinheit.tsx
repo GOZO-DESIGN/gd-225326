@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import heroImg from "@/assets/wissen/stubenreinheit-hero.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
   <div className="space-y-6">{children}</div>
@@ -10,7 +11,13 @@ const WissenStubenreinheit = () => {
     <>
       <Navbar />
 
-      {/* Title bar (no hero image for this text-heavy page) */}
+      {/* Hero */}
+      <section className="relative h-[400px] md:h-[650px] overflow-hidden">
+        <img src={heroImg} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60" />
+        <img src={heroImg} alt="Stubenreinheit beim Welpen" className="relative w-full h-full object-contain" />
+      </section>
+
+      {/* Title bar */}
       <div className="bg-accent py-8 md:py-12 text-center">
         <h1 className="text-2xl md:text-4xl font-heading text-accent-foreground max-w-3xl mx-auto px-4">
           Aller Anfang ist schwer – wie werden Welpen stubenrein?

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import heroImg from "@/assets/wissen/kastration-hero.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
   <div className="space-y-6">{children}</div>
@@ -9,6 +10,12 @@ const WissenKastration = () => {
   return (
     <>
       <Navbar />
+
+      {/* Hero */}
+      <section className="relative h-[400px] md:h-[650px] overflow-hidden">
+        <img src={heroImg} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60" />
+        <img src={heroImg} alt="Kastration beim Hund" className="relative w-full h-full object-contain" />
+      </section>
 
       <div className="bg-accent py-8 md:py-12 text-center">
         <h1 className="text-2xl md:text-4xl font-heading text-accent-foreground max-w-3xl mx-auto px-4">
