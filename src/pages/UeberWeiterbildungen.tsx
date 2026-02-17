@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 // Hero - reuse trophy image
+import heroImg from "@/assets/weiterbildungen/weiterbildungen-hero.webp";
 import trophy1 from "@/assets/weiterbildungen/trophy1.webp";
 
 // Certificates
@@ -90,13 +91,13 @@ const UeberWeiterbildungen = () => {
       {/* Hero */}
       <section className="relative h-[350px] md:h-[550px] overflow-hidden bg-black">
         <img
-          src={trophy1}
+          src={heroImg}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-50"
         />
         <img
-          src={trophy1}
+          src={heroImg}
           alt="Trophäen und Auszeichnungen"
           className="relative w-full h-full object-contain"
         />
@@ -105,8 +106,7 @@ const UeberWeiterbildungen = () => {
       {/* Title bar */}
       <div className="bg-accent py-4 text-center">
         <h1 className="text-2xl md:text-3xl font-heading text-accent-foreground">
-          <span className="line-through opacity-60 mr-2">Weiterbildungen</span>
-          Auszeichnungen, Zertifikate
+          Weiterbildungen, Auszeichnungen, Zertifikate
         </h1>
       </div>
 
@@ -117,7 +117,7 @@ const UeberWeiterbildungen = () => {
           {/* Certifications list */}
           <section className="space-y-4">
             <h2 className="text-xl md:text-2xl font-heading text-foreground">
-              <span className="line-through opacity-60 mr-2">Weiterbildung,</span> Auszeichnungen, Zertifikate
+              Weiterbildungen, Auszeichnungen, Zertifikate
             </h2>
             <ul className="list-disc list-inside space-y-2 pl-2">
               <li>01/2022 Registrierung von „Zwinger vom Wällerland" WRV e.V. Lindlar</li>
