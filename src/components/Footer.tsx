@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Youtube } from "lucide-react";
+import { SiTiktok } from "react-icons/si";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const Footer = () => {
@@ -53,14 +54,14 @@ const Footer = () => {
         {/* Social Icons */}
         <AnimateOnScroll variant="fade-up" delay={200}>
           <div className="flex justify-end gap-3 mt-8">
-            <a href="#" className="bg-accent rounded-full p-2 hover:opacity-80 transition-opacity">
+            <a href="https://www.facebook.com/profile.php?id=100083916187545" target="_blank" rel="noopener noreferrer" className="bg-accent rounded-full p-2 hover:opacity-80 transition-opacity">
               <Facebook size={18} />
             </a>
-            <a href="#" className="bg-accent rounded-full p-2 hover:opacity-80 transition-opacity">
+            <a href="https://www.instagram.com/pomeraniansachsenanhalt" target="_blank" rel="noopener noreferrer" className="bg-accent rounded-full p-2 hover:opacity-80 transition-opacity">
               <Instagram size={18} />
             </a>
-            <a href="#" className="bg-accent rounded-full p-2 hover:opacity-80 transition-opacity">
-              <Youtube size={18} />
+            <a href="https://www.tiktok.com/@pomeraniansachsen" target="_blank" rel="noopener noreferrer" className="bg-accent rounded-full p-2 hover:opacity-80 transition-opacity">
+              <SiTiktok size={18} />
             </a>
           </div>
         </AnimateOnScroll>
