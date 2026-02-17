@@ -5,6 +5,7 @@ import heroImg from "@/assets/welpen/hero_welpen.webp";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 // Import all benji images
 const benjiModules = import.meta.glob("@/assets/benji/*.webp", { eager: true, import: "default" }) as Record<string, string>;
@@ -160,10 +161,11 @@ const Welpen = () => {
 
       <main className="min-h-screen bg-primary-foreground py-16 md:py-20">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-heading text-foreground mb-8">
-            Unsere <span className="text-accent">Welpen</span>
-          </h1>
-
+          <AnimateOnScroll variant="fade-up">
+            <h1 className="text-4xl md:text-5xl font-heading text-foreground mb-8">
+              Unsere <span className="text-accent">Welpen</span>
+            </h1>
+          </AnimateOnScroll>
           <Tabs
             value={activeTab}
             onValueChange={(v) => {

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 import heroImg from "@/assets/gesundheit/gesundheit-hero.webp";
 import alopezieImg1 from "@/assets/gesundheit/Alopezie_x-1.webp";
@@ -7,16 +8,20 @@ import alopezieImg2 from "@/assets/gesundheit/Alopezie-x-2.webp";
 import alopezieImg3 from "@/assets/gesundheit/Alopezie_x-3.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
-  <div className="space-y-6">{children}</div>
+  <AnimateOnScroll variant="fade-up">
+    <div className="space-y-6">{children}</div>
+  </AnimateOnScroll>
 );
 
 const Img = ({ src, alt }: { src: string; alt: string }) => (
-  <img
-    src={src}
-    alt={alt}
-    className="w-full max-w-2xl mx-auto rounded-xl shadow-md"
-    loading="lazy"
-  />
+  <AnimateOnScroll variant="scale">
+    <img
+      src={src}
+      alt={alt}
+      className="w-full max-w-2xl mx-auto rounded-xl shadow-md"
+      loading="lazy"
+    />
+  </AnimateOnScroll>
 );
 
 const Gesundheit = () => {

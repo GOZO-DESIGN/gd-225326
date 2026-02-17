@@ -1,3 +1,5 @@
+import AnimateOnScroll from "@/components/AnimateOnScroll";
+
 import img1 from "@/assets/home/WhatsApp-Image-2024-07-11-at-17.33.05-1.webp";
 import img2 from "@/assets/home/WhatsApp-Image-2024-07-26-at-04.08.51_17788466.webp";
 import img3 from "@/assets/home/WhatsApp-Image-2024-07-26-at-04.54.00_c4d82cac.webp";
@@ -72,28 +74,32 @@ const HeroSection = () => {
         {/* Left: White text section */}
         <div className="w-full md:w-1/2 bg-background flex items-center justify-center px-8 py-20 md:py-0">
           <div className="max-w-lg space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-foreground leading-tight">
-              Pomeranian Zucht
-              <br />
-              <span className="text-3xl md:text-4xl text-accent">
-                mit Herz und Verstand
-              </span>
-            </h1>
-            <p className="font-body text-muted-foreground leading-relaxed text-lg">
-              Willkommen bei Pomeranian-Zucht Anne &amp; Georg – im idyllischen
-              Marienroda, mitten im Grünen. Mit Leidenschaft, Herz und Fachwissen
-              widmen wir uns der Zucht gesunder, charakterstarker und langlebiger
-              Zwergspitze in besonderen Farben – fernab von Qualzucht und mit
-              Fokus auf artgerechte Haltung, Gesundheit und Liebe zum Detail.
-            </p>
+            <AnimateOnScroll variant="fade-right" duration={800}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-foreground leading-tight">
+                Pomeranian Zucht
+                <br />
+                <span className="text-3xl md:text-4xl text-accent">
+                  mit Herz und Verstand
+                </span>
+              </h1>
+            </AnimateOnScroll>
+            <AnimateOnScroll variant="fade-up" delay={200} duration={800}>
+              <p className="font-body text-muted-foreground leading-relaxed text-lg">
+                Willkommen bei Pomeranian-Zucht Anne &amp; Georg – im idyllischen
+                Marienroda, mitten im Grünen. Mit Leidenschaft, Herz und Fachwissen
+                widmen wir uns der Zucht gesunder, charakterstarker und langlebiger
+                Zwergspitze in besonderen Farben – fernab von Qualzucht und mit
+                Fokus auf artgerechte Haltung, Gesundheit und Liebe zum Detail.
+              </p>
+            </AnimateOnScroll>
           </div>
         </div>
 
         {/* Right: Pink section with two infinite sliders */}
-        <div className="w-full md:w-1/2 bg-accent/15 flex flex-col items-center justify-center gap-6 py-16 md:py-0 overflow-hidden">
+        <AnimateOnScroll variant="fade-left" duration={1000} className="w-full md:w-1/2 bg-accent/15 flex flex-col items-center justify-center gap-6 py-16 md:py-0 overflow-hidden">
           <InfiniteRow images={rowA} duration="35s" />
           <InfiniteRow images={rowB} duration="40s" reverse />
-        </div>
+        </AnimateOnScroll>
       </section>
     </>
   );

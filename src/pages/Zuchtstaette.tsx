@@ -3,6 +3,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 import mainImg from "@/assets/zuchtstaette/main.webp";
 import gallery01 from "@/assets/zuchtstaette/gallery-01.avif";
@@ -56,10 +57,10 @@ const Zuchtstaette = () => {
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {/* Main section: image left, text right */}
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-            <div className="w-full md:w-5/12">
+            <AnimateOnScroll variant="fade-right" className="w-full md:w-5/12">
               <img src={mainImg} alt="Unsere Zuchtstätte" className="w-full h-auto max-h-[600px] object-cover rounded-xl shadow-lg" loading="lazy" />
-            </div>
-            <div className="w-full md:w-7/12 space-y-5 font-body text-muted-foreground leading-relaxed">
+            </AnimateOnScroll>
+            <AnimateOnScroll variant="fade-left" delay={150} className="w-full md:w-7/12 space-y-5 font-body text-muted-foreground leading-relaxed">
               <p>
                 Mit Leidenschaft und Hingabe zum wunderschönen Pomeranian begannen wir mit einer kleinen
                 Hobby- und Familienzucht. Eine befreundete Züchterin (Zuchtwart) stand uns von Anfang an
@@ -105,7 +106,7 @@ const Zuchtstaette = () => {
                 zu den Themen „Ernährung/Gesundheit", „Farb-Genetik und Zucht", um die wunderschöne Rasse
                 in besonderen Farben/Sonderfarben und ohne Qualzuchtmerkmale zu erhalten.
               </p>
-            </div>
+            </AnimateOnScroll>
           </div>
 
           {/* Media grid with lightbox */}

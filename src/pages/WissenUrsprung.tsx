@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 import heroImg from "@/assets/ursprung/uprspung-hero.webp";
 import img1 from "@/assets/ursprung/uprspung-1.jpg";
@@ -17,16 +18,20 @@ import img14 from "@/assets/ursprung/uprspung-14.webp";
 import img15 from "@/assets/ursprung/uprspung-15.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
-  <div className="space-y-6">{children}</div>
+  <AnimateOnScroll variant="fade-up">
+    <div className="space-y-6">{children}</div>
+  </AnimateOnScroll>
 );
 
 const Img = ({ src, alt }: { src: string; alt: string }) => (
-  <img
-    src={src}
-    alt={alt}
-    className="w-full max-w-2xl mx-auto rounded-xl shadow-md"
-    loading="lazy"
-  />
+  <AnimateOnScroll variant="scale">
+    <img
+      src={src}
+      alt={alt}
+      className="w-full max-w-2xl mx-auto rounded-xl shadow-md"
+      loading="lazy"
+    />
+  </AnimateOnScroll>
 );
 
 const WissenUrsprung = () => {

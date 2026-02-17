@@ -3,6 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 import huendinnenHero from "@/assets/huendinnen/hero.webp";
 
 /* ── image imports via glob ── */
@@ -205,8 +206,9 @@ const Huendinnen = () => {
           {dogs.map((dog, idx) => {
             const reversed = idx % 2 === 0; // first dog: text left, slider right
             return (
-              <section
+              <AnimateOnScroll
                 key={dog.name}
+                variant={reversed ? "fade-left" : "fade-right"}
                 className={`flex flex-col ${reversed ? "md:flex-row" : "md:flex-row-reverse"} gap-8 md:gap-12 items-center`}
               >
                 {/* Text */}
@@ -248,7 +250,7 @@ const Huendinnen = () => {
                 <div className="w-full md:w-1/2">
                   <ImageSlider images={dog.images} alt={dog.name} />
                 </div>
-              </section>
+              </AnimateOnScroll>
             );
           })}
         </div>

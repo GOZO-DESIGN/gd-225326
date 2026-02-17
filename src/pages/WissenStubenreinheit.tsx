@@ -1,9 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 import heroImg from "@/assets/wissen/stubenreinheit-hero.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
-  <div className="space-y-6">{children}</div>
+  <AnimateOnScroll variant="fade-up">
+    <div className="space-y-6">{children}</div>
+  </AnimateOnScroll>
 );
 
 const WissenStubenreinheit = () => {
