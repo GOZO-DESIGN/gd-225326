@@ -175,6 +175,19 @@ const WissenKastration = () => {
             </p>
           </div>
 
+          <AnimateOnScroll variant="fade-up">
+            <div className="aspect-video w-full rounded-xl overflow-hidden shadow-md">
+              <iframe
+                src="https://www.youtube.com/embed/ahFmByQslIE"
+                title="Kastration beim Hund – Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+                loading="lazy"
+              />
+            </div>
+          </AnimateOnScroll>
+
         </div>
       </main>
 
