@@ -12,6 +12,7 @@ import Wurfplanung from "./pages/Wurfplanung";
 import Zuchtstaette from "./pages/Zuchtstaette";
 import WissenUrsprung from "./pages/WissenUrsprung";
 import UeberWeiterbildungen from "./pages/UeberWeiterbildungen";
+import Gesundheit from "./pages/Gesundheit";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/zuchtstaette" element={<Zuchtstaette />} />
           <Route path="/wissen/ursprung" element={<WissenUrsprung />} />
           <Route path="/ueber/weiterbildungen" element={<UeberWeiterbildungen />} />
+          <Route path="/gesundheit" element={<Gesundheit />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
