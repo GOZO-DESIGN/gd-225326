@@ -36,13 +36,20 @@ const pandaImages = Object.entries(pandaModules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src);
 
-type GalleryTab = "benji" | "enzo" | "balu" | "panda";
+// Import all happy hope images
+const happyHopeModules = import.meta.glob("@/assets/happy-hope/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
+const happyHopeImages = Object.entries(happyHopeModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src);
+
+type GalleryTab = "benji" | "enzo" | "balu" | "panda" | "happy-hope";
 
 const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[] }> = {
   benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages },
   enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages },
   balu: { label: "Balu", birthday: "12.10.2025", images: baluImages },
   panda: { label: "Panda", birthday: "12.10.2025", images: pandaImages },
+  "happy-hope": { label: "Happy Hope", birthday: "12.10.2025", images: happyHopeImages },
 };
 
 const Welpen = () => {
