@@ -163,7 +163,7 @@ const Navbar = () => {
                 {wissenOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
               </button>
               {wissenOpen && (
-                <div className="absolute top-full right-0 mt-0 w-80 bg-secondary border-2 border-primary shadow-lg z-50 py-2 animate-fade-in">
+                <div className="absolute top-full left-0 mt-0 w-80 bg-secondary border-2 border-primary shadow-lg z-50 py-2 animate-fade-in">
                   {wissenLinks.map((l) => (
                     <Link
                       key={l.href}
