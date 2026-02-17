@@ -1,18 +1,18 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-/* Load all home images for the grid */
-const homeModules = import.meta.glob(
-  "@/assets/home/*.{avif,webp,jpg,jpeg,png}",
-  { eager: true, import: "default" }
-) as Record<string, string>;
-const homeImages = Object.entries(homeModules)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([, s]) => s);
+// Correct images from old website
+import mainImg from "@/assets/zuchtstaette/main.webp";
+import gallery01 from "@/assets/zuchtstaette/gallery-01.avif";
+import gallery02 from "@/assets/zuchtstaette/gallery-02.avif";
+import gallery03 from "@/assets/zuchtstaette/gallery-03.avif";
+import gallery04 from "@/assets/zuchtstaette/gallery-04.avif";
+import gallery05 from "@/assets/zuchtstaette/gallery-05.avif";
+import gallery06 from "@/assets/zuchtstaette/gallery-06.avif";
+import gallery07 from "@/assets/zuchtstaette/gallery-07.avif";
+import gallery08 from "@/assets/zuchtstaette/gallery-08.avif";
 
-const heroImg = homeImages[0];
-const mainImg = homeImages[1] || homeImages[0];
-const gridImages = homeImages.slice(2, 11); // up to 9 for 3x3
+const gridImages = [gallery01, gallery02, gallery03, gallery04, gallery05, gallery06, gallery07, gallery08];
 
 const Zuchtstaette = () => {
   return (
@@ -22,13 +22,13 @@ const Zuchtstaette = () => {
       {/* Hero */}
       <section className="relative h-[400px] md:h-[650px] overflow-hidden">
         <img
-          src={heroImg}
+          src={mainImg}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60"
         />
         <img
-          src={heroImg}
+          src={mainImg}
           alt="Unsere Zuchtstätte"
           className="relative w-full h-full object-contain"
         />
@@ -107,20 +107,18 @@ const Zuchtstaette = () => {
             </div>
           </div>
 
-          {/* Image grid 3×3 */}
-          {gridImages.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {gridImages.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`Zuchtstätte Impression ${i + 1}`}
-                  className="w-full h-[250px] md:h-[300px] object-cover rounded-lg shadow-md"
-                  loading="lazy"
-                />
-              ))}
-            </div>
-          )}
+          {/* Image grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {gridImages.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`Zuchtstätte Impression ${i + 1}`}
+                className="w-full h-[250px] md:h-[300px] object-cover rounded-lg shadow-md"
+                loading="lazy"
+              />
+            ))}
+          </div>
         </div>
       </main>
 
