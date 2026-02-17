@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 import heroImg from "@/assets/wissen/kastration-hero.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
@@ -12,6 +13,7 @@ const Section = ({ children }: { children: React.ReactNode }) => (
 const WissenKastration = () => {
   return (
     <>
+      <SEOHead title="Kastration beim Hund – Pro & Contra" description="Informationen zur Kastration beim Pomeranian. Vor- und Nachteile, Alternativen und was Sie beachten sollten." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/wissen/kastration" />
       <Navbar />
 
       {/* Hero */}

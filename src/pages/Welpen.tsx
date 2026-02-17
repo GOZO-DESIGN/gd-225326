@@ -6,6 +6,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 
 // Import all benji images
 const benjiModules = import.meta.glob("@/assets/benji/*.webp", { eager: true, import: "default" }) as Record<string, string>;
@@ -143,6 +144,7 @@ const Welpen = () => {
 
   return (
     <>
+      <SEOHead title="Pomeranian Welpen – Aktuelle Würfe" description="Entdecken Sie unsere Pomeranian Welpen aus liebevoller Familienaufzucht. Gesunde Zwergspitze in besonderen Farben, bestens sozialisiert und vorbereitet." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/welpen" />
       <Navbar />
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[650px] overflow-hidden">

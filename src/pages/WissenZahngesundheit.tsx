@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 
 import heroImg from "@/assets/zahnpflege/zahnpflege-hero.webp";
 import img1 from "@/assets/zahnpflege/zahnpflege-1.webp";
@@ -32,6 +33,7 @@ const Img = ({ src, alt }: { src: string; alt: string }) => (
 const WissenZahngesundheit = () => {
   return (
     <>
+      <SEOHead title="Zahngesundheit beim Pomeranian – Zahnpflege Tipps" description="Zahnpflege und Zahngesundheit beim Pomeranian. Milchzähne, Zahnwechsel, Zahnstein und richtige Pflege für gesunde Zähne." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/wissen/zahngesundheit" />
       <Navbar />
 
       {/* Hero */}

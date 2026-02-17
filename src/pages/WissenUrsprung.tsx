@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 
 import heroImg from "@/assets/ursprung/uprspung-hero.webp";
 import img1 from "@/assets/ursprung/uprspung-1.jpg";
@@ -37,6 +38,7 @@ const Img = ({ src, alt }: { src: string; alt: string }) => (
 const WissenUrsprung = () => {
   return (
     <>
+      <SEOHead title="Ursprung des Pomeranians – Geschichte des Zwergspitz" description="Die Geschichte des Zwergspitzes vom Deutschen Spitz zum Pomeranian. Ursprung, Charakter, Erscheinungsbild und unser Zuchtziel." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/wissen/ursprung" />
       <Navbar />
 
       {/* Hero */}

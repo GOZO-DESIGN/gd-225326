@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 import heroImg from "@/assets/wissen/stubenreinheit-hero.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
@@ -12,6 +13,7 @@ const Section = ({ children }: { children: React.ReactNode }) => (
 const WissenStubenreinheit = () => {
   return (
     <>
+      <SEOHead title="Stubenreinheit beim Welpen – Tipps & Tricks" description="Wie werden Welpen stubenrein? Nützliche Tipps und Tricks für den Alltag mit Ihrem Pomeranian Welpen." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/wissen/stubenreinheit" />
       <Navbar />
 
       {/* Hero */}

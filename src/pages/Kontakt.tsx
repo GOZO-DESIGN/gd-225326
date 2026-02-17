@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
@@ -47,6 +48,7 @@ const Kontakt = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead title="Kontakt – Pomeranian-Zucht Anne & Georg" description="Kontaktieren Sie uns für Fragen zu unserer Pomeranian-Zucht oder zur Welpenreservierung. WhatsApp, Telefon oder E-Mail." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/kontakt" />
       <Navbar />
 
       <main className="pt-32 pb-16">

@@ -1,12 +1,18 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 import heroImg from "@/assets/rueden/ruden_hero.webp";
 import remmyImg from "@/assets/rueden/remmy.avif";
 
 const Rueden = () => {
   return (
     <>
+      <SEOHead
+        title="Unsere Rüden – Pomeranian Deckrüden"
+        description="Lernen Sie unsere Pomeranian Deckrüden kennen. Charakterstarke, gesunde Zwergspitze mit besonderer Farbgebung aus verantwortungsvoller Zucht."
+        canonical="https://www.pomeranianzucht-sachsen-anhalt.de/rueden"
+      />
       <Navbar />
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[650px] overflow-hidden">

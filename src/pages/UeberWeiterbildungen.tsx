@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 
 // Hero
 import heroImg from "@/assets/weiterbildungen/weiterbildungen-hero.webp";
@@ -92,6 +93,7 @@ const FlipCard = ({ front, back, alt }: { front: string; back?: string; alt: str
 const UeberWeiterbildungen = () => {
   return (
     <>
+      <SEOHead title="Weiterbildungen & Auszeichnungen" description="Unsere Weiterbildungen, Zertifikate und Ausstellungserfolge. Geprüfte Pomeranian-Züchter mit HonestDog Prüfsiegel." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/ueber/weiterbildungen" />
       <Navbar />
 
       {/* Hero */}

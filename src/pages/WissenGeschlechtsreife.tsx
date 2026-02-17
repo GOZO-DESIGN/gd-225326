@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import SEOHead from "@/components/SEOHead";
 import heroImg from "@/assets/wissen/geschlechtsreife-hero.webp";
 
 const Section = ({ children }: { children: React.ReactNode }) => (
@@ -12,6 +13,7 @@ const Section = ({ children }: { children: React.ReactNode }) => (
 const WissenGeschlechtsreife = () => {
   return (
     <>
+      <SEOHead title="Geschlechtsreife beim Pomeranian – Hündin & Rüde" description="Alles über die Geschlechtsreife beim Pomeranian. Informationen zur Läufigkeit der Hündin und Geschlechtsreife des Rüden." canonical="https://www.pomeranianzucht-sachsen-anhalt.de/wissen/geschlechtsreife" />
       <Navbar />
 
       {/* Hero */}
