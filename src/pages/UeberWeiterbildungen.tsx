@@ -152,7 +152,7 @@ const UeberWeiterbildungen = () => {
           </section>
 
           {/* Urkunden und Pokale von Ausstellungserfolgen */}
-          <section className="bg-secondary/30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+          <section id="urkunden" className="bg-secondary/30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-12 space-y-10">
             <h2 className="text-xl md:text-2xl font-heading text-foreground italic">
               Urkunden und Pokale von Ausstellungserfolgen
             </h2>
