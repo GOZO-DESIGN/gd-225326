@@ -7,33 +7,52 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 import SEOHead from "@/components/SEOHead";
 import huendinnenHero from "@/assets/huendinnen/hero.webp";
 
-/* ── image imports via glob ── */
-const allModules = import.meta.glob(
-  "@/assets/huendinnen/*.{avif,webp,jpg,jpeg,png}",
-  { eager: true, import: "default" }
-) as Record<string, string>;
+/* ── Direct ES6 imports for Fee (11.27.0x) ── */
+import fee1 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.06.avif";
+import fee2 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.08.avif";
+import fee3 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.09.avif";
+import fee4 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.10.avif";
 
-const sorted = Object.entries(allModules).sort(([a], [b]) => a.localeCompare(b));
+/* ── Direct ES6 imports for Amy (11.27.1x) ── */
+import amy1 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.13.avif";
+import amy2 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.14.avif";
+import amy3 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.15.avif";
+import amy4 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.17.avif";
+import amy5 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.18.avif";
+import amy6 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.19.avif";
 
-/* helper: filter by substring in path */
-const pick = (sub: string) =>
-  sorted.filter(([p]) => p.toLowerCase().includes(sub)).map(([, s]) => s);
+/* ── Direct ES6 imports for Malinka (12.24 + 10-31) ── */
+import malinka1 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-12.24.25.webp";
+import malinka2 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-12.24.26.avif";
+import malinka3 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-12.24.27.avif";
+import malinka4 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-09.41.45.avif";
+import malinka5 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-09.41.46.avif";
 
-/* ── assign images to dogs ── */
-const anneKatrin1127 = sorted.filter(([p]) => p.includes("11.27.0")).map(([, s]) => s);   // 06-10  → Fee (5)
-const anneKatrin1127b = sorted.filter(([p]) => p.includes("11.27.1")).map(([, s]) => s);  // 13-19  → Amy (5+)
-const anneKatrin1224 = sorted.filter(([p]) => p.includes("12.24.2")).map(([, s]) => s);
-const anneKatrin1031 = sorted.filter(([p]) => p.includes("10-31")).map(([, s]) => s);
-const whatsapp = sorted.filter(([p]) => p.toLowerCase().includes("whatsapp")).map(([, s]) => s);
+/* ── Direct ES6 imports for WhatsApp images (Ashley / Malinka) ── */
+import wa1 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.29.05_e24b3535.webp";
+import wa2 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.29.06_10cc64c9.webp";
+import wa3 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.29.06_2ac9849c.webp";
+import wa4 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.29.06_5bce40dc.webp";
+import wa5 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.34.01_e9d36eb9.webp";
+import wa6 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.34.02_dceba441.webp";
+import wa7 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-03.25.53_5b587c30.webp";
+import wa8 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-03.26.59_d3137eda.webp";
+import wa9 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-03.27.16_c80a1c18.webp";
+import wa10 from "@/assets/huendinnen/WhatsApp-Image-2024-08-08-at-13.46.43_407a5f19.webp";
 
-const feeImages = anneKatrin1127.length ? anneKatrin1127 : whatsapp.slice(0, 4);
-const amyImages = anneKatrin1127b.length ? anneKatrin1127b : whatsapp.slice(0, 3);
-const ashleyImages = whatsapp.slice(0, 5);
-const charlyImages = pick("charly");
-const malinkaImages = [...anneKatrin1224, ...anneKatrin1031, ...whatsapp.slice(5)];
+/* ── Direct ES6 imports for Charly ── */
+import charly1 from "@/assets/huendinnen/charly-1.jpg";
+import charly2 from "@/assets/huendinnen/charly-2.jpg";
+import charly3 from "@/assets/huendinnen/charly-3.jpg";
+import charly4 from "@/assets/huendinnen/charly-4.jpg";
+import charly5 from "@/assets/huendinnen/charly-5.jpg";
 
-/* ── hero images (first 3 unique) ── */
-const heroImages = sorted.slice(0, 3).map(([, s]) => s);
+/* ── image arrays ── */
+const feeImages = [fee1, fee2, fee3, fee4];
+const amyImages = [amy1, amy2, amy3, amy4, amy5, amy6];
+const ashleyImages = [wa1, wa2, wa3, wa4, wa5];
+const charlyImages = [charly1, charly2, charly3, charly4, charly5];
+const malinkaImages = [malinka1, malinka2, malinka3, malinka4, malinka5, wa6, wa7, wa8, wa9, wa10];
 
 /* ── dog data ── */
 interface Dog {
@@ -206,7 +225,7 @@ const Huendinnen = () => {
       <main className="bg-primary-foreground py-12 md:py-16">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
           {dogs.map((dog, idx) => {
-            const reversed = idx % 2 === 0; // first dog: text left, slider right
+            const reversed = idx % 2 === 0;
             return (
               <AnimateOnScroll
                 key={dog.name}
