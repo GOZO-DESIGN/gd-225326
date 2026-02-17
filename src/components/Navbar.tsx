@@ -10,8 +10,11 @@ const Navbar = () => {
   const [mobileHundeOpen, setMobileHundeOpen] = useState(false);
   const [zuchtOpen, setZuchtOpen] = useState(false);
   const [mobileZuchtOpen, setMobileZuchtOpen] = useState(false);
+  const [wissenOpen, setWissenOpen] = useState(false);
+  const [mobileWissenOpen, setMobileWissenOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const zuchtDropdownRef = useRef<HTMLDivElement>(null);
+  const wissenDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +32,9 @@ const Navbar = () => {
       if (zuchtDropdownRef.current && !zuchtDropdownRef.current.contains(e.target as Node)) {
         setZuchtOpen(false);
       }
+      if (wissenDropdownRef.current && !wissenDropdownRef.current.contains(e.target as Node)) {
+        setWissenOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -38,7 +44,6 @@ const Navbar = () => {
     { label: "Aussehen/Farben", href: "/#about" },
     { label: "Über uns", href: "/#ueber" },
     { label: "Galerie", href: "/#galerie" },
-    { label: "Wissenswertes", href: "/#wissen" },
   ];
 
   const zuchtLinks = [
@@ -50,6 +55,17 @@ const Navbar = () => {
     { label: "Rüden", href: "/rueden" },
     { label: "Hündinnen", href: "/huendinnen" },
     { label: "Welpen", href: "/welpen" },
+  ];
+
+  const wissenLinks = [
+    { label: "Ursprung", href: "/wissen/ursprung" },
+    { label: "Zahngesundheit & Pflege", href: "/wissen/zahngesundheit" },
+    { label: "Gesundheit und rassespezifische Krankheiten", href: "/wissen/gesundheit" },
+    { label: "Fellpflege, Fellwechsel", href: "/wissen/fellpflege" },
+    { label: "Stubenreinheit", href: "/wissen/stubenreinheit" },
+    { label: "Hundeerziehung & Hundeschule", href: "/wissen/hundeerziehung" },
+    { label: "Geschlechtsreife", href: "/wissen/geschlechtsreife" },
+    { label: "Kastration", href: "/wissen/kastration" },
   ];
 
   return (
@@ -78,9 +94,7 @@ const Navbar = () => {
               onMouseEnter={() => setHundeOpen(true)}
               onMouseLeave={() => setHundeOpen(false)}
             >
-              <button
-                className="flex items-center gap-1 text-[18px] font-body hover:opacity-80 transition-opacity"
-              >
+              <button className="flex items-center gap-1 text-[18px] font-body hover:opacity-80 transition-opacity">
                 Unsere Hunde
                 {hundeOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
               </button>
@@ -107,9 +121,7 @@ const Navbar = () => {
               onMouseEnter={() => setZuchtOpen(true)}
               onMouseLeave={() => setZuchtOpen(false)}
             >
-              <button
-                className="flex items-center gap-1 text-[18px] font-body hover:opacity-80 transition-opacity"
-              >
+              <button className="flex items-center gap-1 text-[18px] font-body hover:opacity-80 transition-opacity">
                 Zucht
                 {zuchtOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
               </button>
@@ -138,6 +150,34 @@ const Navbar = () => {
                 {l.label}
               </Link>
             ))}
+
+            {/* Wissenswertes Dropdown */}
+            <div
+              ref={wissenDropdownRef}
+              className="relative"
+              onMouseEnter={() => setWissenOpen(true)}
+              onMouseLeave={() => setWissenOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-[18px] font-body hover:opacity-80 transition-opacity">
+                Wissenswertes
+                {wissenOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+              </button>
+              {wissenOpen && (
+                <div className="absolute top-full right-0 mt-0 w-80 bg-secondary border-2 border-primary shadow-lg z-50 py-2 animate-fade-in">
+                  {wissenLinks.map((l) => (
+                    <Link
+                      key={l.href}
+                      to={l.href}
+                      className="block px-5 py-3 text-[18px] font-body text-foreground hover:bg-primary/10 transition-colors"
+                      onClick={() => setWissenOpen(false)}
+                    >
+                      {l.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <Link
               to="/#kontakt"
               className="bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-[18px] border border-primary hover:opacity-90 transition-opacity"
@@ -159,31 +199,19 @@ const Navbar = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-secondary pb-4 px-4 space-y-2">
-          <Link
-            to="/"
-            className="block text-[18px] py-2 hover:opacity-80"
-            onClick={() => setMobileOpen(false)}
-          >
+          <Link to="/" className="block text-[18px] py-2 hover:opacity-80" onClick={() => setMobileOpen(false)}>
             Home
           </Link>
 
           {/* Mobile Unsere Hunde */}
-          <button
-            onClick={() => setMobileHundeOpen(!mobileHundeOpen)}
-            className="flex items-center gap-1 text-[18px] py-2 hover:opacity-80 w-full"
-          >
+          <button onClick={() => setMobileHundeOpen(!mobileHundeOpen)} className="flex items-center gap-1 text-[18px] py-2 hover:opacity-80 w-full">
             Unsere Hunde
             {mobileHundeOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
           </button>
           {mobileHundeOpen && (
             <div className="pl-4 space-y-1 border-l-2 border-primary ml-2">
               {hundeLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  to={l.href}
-                  className="block text-[18px] py-2 hover:opacity-80"
-                  onClick={() => { setMobileOpen(false); setMobileHundeOpen(false); }}
-                >
+                <Link key={l.href} to={l.href} className="block text-[18px] py-2 hover:opacity-80" onClick={() => { setMobileOpen(false); setMobileHundeOpen(false); }}>
                   {l.label}
                 </Link>
               ))}
@@ -191,22 +219,14 @@ const Navbar = () => {
           )}
 
           {/* Mobile Zucht */}
-          <button
-            onClick={() => setMobileZuchtOpen(!mobileZuchtOpen)}
-            className="flex items-center gap-1 text-[18px] py-2 hover:opacity-80 w-full"
-          >
+          <button onClick={() => setMobileZuchtOpen(!mobileZuchtOpen)} className="flex items-center gap-1 text-[18px] py-2 hover:opacity-80 w-full">
             Zucht
             {mobileZuchtOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
           </button>
           {mobileZuchtOpen && (
             <div className="pl-4 space-y-1 border-l-2 border-primary ml-2">
               {zuchtLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  to={l.href}
-                  className="block text-[18px] py-2 hover:opacity-80"
-                  onClick={() => { setMobileOpen(false); setMobileZuchtOpen(false); }}
-                >
+                <Link key={l.href} to={l.href} className="block text-[18px] py-2 hover:opacity-80" onClick={() => { setMobileOpen(false); setMobileZuchtOpen(false); }}>
                   {l.label}
                 </Link>
               ))}
@@ -214,15 +234,26 @@ const Navbar = () => {
           )}
 
           {otherLinks.map((l) => (
-            <Link
-              key={l.href}
-              to={l.href}
-              className="block text-[18px] py-2 hover:opacity-80"
-              onClick={() => setMobileOpen(false)}
-            >
+            <Link key={l.href} to={l.href} className="block text-[18px] py-2 hover:opacity-80" onClick={() => setMobileOpen(false)}>
               {l.label}
             </Link>
           ))}
+
+          {/* Mobile Wissenswertes */}
+          <button onClick={() => setMobileWissenOpen(!mobileWissenOpen)} className="flex items-center gap-1 text-[18px] py-2 hover:opacity-80 w-full">
+            Wissenswertes
+            {mobileWissenOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+          </button>
+          {mobileWissenOpen && (
+            <div className="pl-4 space-y-1 border-l-2 border-primary ml-2">
+              {wissenLinks.map((l) => (
+                <Link key={l.href} to={l.href} className="block text-[18px] py-2 hover:opacity-80" onClick={() => { setMobileOpen(false); setMobileWissenOpen(false); }}>
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          )}
+
           <Link
             to="/#kontakt"
             className="block bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-[18px] text-center border border-primary"
