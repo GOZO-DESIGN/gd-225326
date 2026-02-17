@@ -30,12 +30,19 @@ const baluImages = Object.entries(baluModules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src);
 
-type GalleryTab = "benji" | "enzo" | "balu";
+// Import all panda images
+const pandaModules = import.meta.glob("@/assets/panda/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
+const pandaImages = Object.entries(pandaModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src);
+
+type GalleryTab = "benji" | "enzo" | "balu" | "panda";
 
 const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[] }> = {
   benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages },
   enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages },
   balu: { label: "Balu", birthday: "12.10.2025", images: baluImages },
+  panda: { label: "Panda", birthday: "12.10.2025", images: pandaImages },
 };
 
 const Welpen = () => {
