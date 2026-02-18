@@ -20,6 +20,18 @@ import benjiVid8 from "@/assets/welpen/benji-8.mp4";
 import benjiVid9 from "@/assets/welpen/benji-9.mp4";
 import benjiVid10 from "@/assets/welpen/benji-10.mp4";
 
+// Enzo videos
+import enzoVid1 from "@/assets/welpen/enzo-1.mp4";
+import enzoVid2 from "@/assets/welpen/enzo-2.mp4";
+import enzoVid3 from "@/assets/welpen/enzo-3.mp4";
+import enzoVid4 from "@/assets/welpen/enzo-4.mp4";
+import enzoVid5 from "@/assets/welpen/enzo-5.mp4";
+import enzoVid6 from "@/assets/welpen/enzo-6.mp4";
+import enzoVid7 from "@/assets/welpen/enzo-7.mp4";
+import enzoVid8 from "@/assets/welpen/enzo-8.mp4";
+import enzoVid9 from "@/assets/welpen/enzo-9.mp4";
+import enzoVid10 from "@/assets/welpen/enzo-10.mp4";
+
 type MediaItem = { type: "image" | "video"; src: string };
 
 // Import all benji images
@@ -45,7 +57,11 @@ const enzoImages = Object.entries(enzoModules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src);
 
-// Import all balu images
+const enzoVideos: MediaItem[] = [
+  enzoVid1, enzoVid2, enzoVid3, enzoVid4, enzoVid5,
+  enzoVid6, enzoVid7, enzoVid8, enzoVid9, enzoVid10,
+].map((src) => ({ type: "video" as const, src }));
+
 const baluModules = import.meta.glob("@/assets/balu/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
 const baluImages = Object.entries(baluModules)
   .sort(([a], [b]) => a.localeCompare(b))
@@ -134,7 +150,7 @@ type GalleryTab =
 
 const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[]; media?: MediaItem[] }> = {
   benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages, media: [...benjiImages.map((src) => ({ type: "image" as const, src })), ...benjiVideos] },
-  enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages },
+  enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages, media: [...enzoImages.map((src) => ({ type: "image" as const, src })), ...enzoVideos] },
   balu: { label: "Balu", birthday: "12.10.2025", images: baluImages },
   panda: { label: "Panda", birthday: "12.10.2025", images: pandaImages },
   "happy-hope": { label: "Happy Hope", birthday: "12.10.2025", images: happyHopeImages, media: happyHopeMedia },
