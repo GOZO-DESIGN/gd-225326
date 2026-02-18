@@ -8,6 +8,20 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import SEOHead from "@/components/SEOHead";
 
+// Benji videos
+import benjiVid1 from "@/assets/welpen/benji-1.mp4";
+import benjiVid2 from "@/assets/welpen/benji-2.mp4";
+import benjiVid3 from "@/assets/welpen/benji-3.mp4";
+import benjiVid4 from "@/assets/welpen/benji-4.mp4";
+import benjiVid5 from "@/assets/welpen/benji-5.mp4";
+import benjiVid6 from "@/assets/welpen/benji-6.mp4";
+import benjiVid7 from "@/assets/welpen/benji-7.mp4";
+import benjiVid8 from "@/assets/welpen/benji-8.mp4";
+import benjiVid9 from "@/assets/welpen/benji-9.mp4";
+import benjiVid10 from "@/assets/welpen/benji-10.mp4";
+
+type MediaItem = { type: "image" | "video"; src: string };
+
 // Import all benji images
 const benjiModules = import.meta.glob("@/assets/benji/*.webp", { eager: true, import: "default" }) as Record<string, string>;
 const benjiImages = Object.entries(benjiModules)
@@ -19,6 +33,11 @@ const benjiImages = Object.entries(benjiModules)
     return a.localeCompare(b);
   })
   .map(([, src]) => src);
+
+const benjiVideos: MediaItem[] = [
+  benjiVid1, benjiVid2, benjiVid3, benjiVid4, benjiVid5,
+  benjiVid6, benjiVid7, benjiVid8, benjiVid9, benjiVid10,
+].map((src) => ({ type: "video" as const, src }));
 
 // Import all enzo images
 const enzoModules = import.meta.glob("@/assets/enzo/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
@@ -42,7 +61,6 @@ const pandaImages = Object.entries(pandaModules)
 const happyHopeImageModules = import.meta.glob("@/assets/happy-hope/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
 const happyHopeVideoModules = import.meta.glob("@/assets/happy-hope/*.mp4", { eager: true, import: "default" }) as Record<string, string>;
 
-type MediaItem = { type: "image" | "video"; src: string };
 
 const happyHopeMedia: MediaItem[] = [
   ...Object.entries(happyHopeImageModules).map(([path, src]) => ({ type: "image" as const, src, path })),
@@ -115,7 +133,7 @@ type GalleryTab =
   | "welpen-2021";
 
 const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[]; media?: MediaItem[] }> = {
-  benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages },
+  benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages, media: [...benjiImages.map((src) => ({ type: "image" as const, src })), ...benjiVideos] },
   enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages },
   balu: { label: "Balu", birthday: "12.10.2025", images: baluImages },
   panda: { label: "Panda", birthday: "12.10.2025", images: pandaImages },
