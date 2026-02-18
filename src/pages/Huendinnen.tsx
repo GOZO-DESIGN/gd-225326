@@ -7,26 +7,26 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 import SEOHead from "@/components/SEOHead";
 import huendinnenHero from "@/assets/huendinnen/hero.webp";
 
-/* ── Direct ES6 imports for Fee (11.27.0x) ── */
-import fee1 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.06.avif";
-import fee2 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.08.avif";
-import fee3 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.09.avif";
-import fee4 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.10.avif";
+/* ── Direct ES6 imports for Fee ── */
+import fee1 from "@/assets/huendinnen/fee-1.avif";
+import fee2 from "@/assets/huendinnen/fee-2.avif";
+import fee3 from "@/assets/huendinnen/fee-3.avif";
+import fee4 from "@/assets/huendinnen/fee-4.avif";
 
-/* ── Direct ES6 imports for Amy (11.27.1x) ── */
-import amy1 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.13.avif";
-import amy2 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.14.avif";
-import amy3 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.15.avif";
-import amy4 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.17.avif";
-import amy5 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.18.avif";
-import amy6 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-11.27.19.avif";
+/* ── Direct ES6 imports for Amy ── */
+import amy1 from "@/assets/huendinnen/amy-1.avif";
+import amy2 from "@/assets/huendinnen/amy-2.avif";
+import amy3 from "@/assets/huendinnen/amy-3.avif";
+import amy4 from "@/assets/huendinnen/amy-4.avif";
+import amy5 from "@/assets/huendinnen/amy-5.avif";
+import amy6 from "@/assets/huendinnen/amy-6.avif";
 
-/* ── Direct ES6 imports for Malinka (12.24 + 10-31) ── */
-import malinka1 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-12.24.25.webp";
-import malinka2 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-12.24.26.avif";
-import malinka3 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-24-12.24.27.avif";
-import malinka4 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-09.41.45.avif";
-import malinka5 from "@/assets/huendinnen/Anne-Katrin-Mu_CC_88ller-225326---2025-10-31-09.41.46.avif";
+/* ── Direct ES6 imports for Malinka ── */
+import malinka1 from "@/assets/huendinnen/malinka-1.webp";
+import malinka2 from "@/assets/huendinnen/malinka-2.avif";
+import malinka3 from "@/assets/huendinnen/malinka-3.avif";
+import malinka4 from "@/assets/huendinnen/malinka-4.avif";
+import malinka5 from "@/assets/huendinnen/malinka-5.avif";
 
 /* ── Direct ES6 imports for WhatsApp images (Ashley / Malinka) ── */
 import wa1 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.29.05_e24b3535.webp";
