@@ -31,6 +31,7 @@ import enzoVid7 from "@/assets/welpen/enzo-7.mp4";
 import enzoVid8 from "@/assets/welpen/enzo-8.mp4";
 import enzoVid9 from "@/assets/welpen/enzo-9.mp4";
 import enzoVid10 from "@/assets/welpen/enzo-10.mp4";
+import enzoVid11 from "@/assets/welpen/enzo-11.mp4";
 
 type MediaItem = { type: "image" | "video"; src: string };
 
@@ -59,7 +60,7 @@ const enzoImages = Object.entries(enzoModules)
 
 const enzoVideos: MediaItem[] = [
   enzoVid1, enzoVid2, enzoVid3, enzoVid4, enzoVid5,
-  enzoVid6, enzoVid7, enzoVid8, enzoVid9, enzoVid10,
+  enzoVid6, enzoVid7, enzoVid8, enzoVid9, enzoVid10, enzoVid11,
 ].map((src) => ({ type: "video" as const, src }));
 
 const baluModules = import.meta.glob("@/assets/balu/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
