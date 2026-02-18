@@ -44,6 +44,10 @@ import pandaVid7 from "@/assets/welpen/panda-7.mp4";
 import pandaVid8 from "@/assets/welpen/panda-8.mp4";
 import pandaVid9 from "@/assets/welpen/panda-9.mp4";
 import pandaVid10 from "@/assets/welpen/panda-10.mp4";
+import pandaVid11 from "@/assets/welpen/panda-11.mp4";
+import pandaVid12 from "@/assets/welpen/panda-12.mp4";
+import pandaVid13 from "@/assets/welpen/panda-13.mp4";
+import pandaVid14 from "@/assets/welpen/panda-14.mp4";
 
 type MediaItem = { type: "image" | "video"; src: string };
 
@@ -89,6 +93,7 @@ const pandaImages = Object.entries(pandaModules)
 const pandaVideos: MediaItem[] = [
   pandaVid1, pandaVid2, pandaVid3, pandaVid4, pandaVid5,
   pandaVid6, pandaVid7, pandaVid8, pandaVid9, pandaVid10,
+  pandaVid11, pandaVid12, pandaVid13, pandaVid14,
 ].map((src) => ({ type: "video" as const, src }));
 
 // Import all happy hope images and videos
