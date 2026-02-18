@@ -16,6 +16,7 @@ import gallery06 from "@/assets/zuchtstaette/gallery-06.avif";
 import gallery07 from "@/assets/zuchtstaette/gallery-07.avif";
 import gallery08 from "@/assets/zuchtstaette/gallery-08.avif";
 import videoSrc from "@/assets/zuchtstaette/zuchststatte_00010.mp4";
+import heroVideo from "@/assets/zuchtstaette/hero.mp4";
 
 type MediaItem = { type: "image" | "video"; src: string };
 
@@ -44,8 +45,8 @@ const Zuchtstaette = () => {
 
       {/* Hero */}
       <section className="relative h-[400px] md:h-[650px] overflow-hidden">
-        <img src={mainImg} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60" />
-        <img src={mainImg} alt="Unsere Zuchtstätte" className="relative w-full h-full object-contain" />
+        <video src={heroVideo} autoPlay muted loop playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl opacity-60" />
+        <video src={heroVideo} autoPlay muted loop playsInline aria-label="Unsere Zuchtstätte" className="relative w-full h-full object-contain" />
       </section>
 
       {/* Title bar */}
