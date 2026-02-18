@@ -33,6 +33,18 @@ import enzoVid9 from "@/assets/welpen/enzo-9.mp4";
 import enzoVid10 from "@/assets/welpen/enzo-10.mp4";
 import enzoVid11 from "@/assets/welpen/enzo-11.mp4";
 
+// Panda videos
+import pandaVid1 from "@/assets/welpen/panda-1.mp4";
+import pandaVid2 from "@/assets/welpen/panda-2.mp4";
+import pandaVid3 from "@/assets/welpen/panda-3.mp4";
+import pandaVid4 from "@/assets/welpen/panda-4.mp4";
+import pandaVid5 from "@/assets/welpen/panda-5.mp4";
+import pandaVid6 from "@/assets/welpen/panda-6.mp4";
+import pandaVid7 from "@/assets/welpen/panda-7.mp4";
+import pandaVid8 from "@/assets/welpen/panda-8.mp4";
+import pandaVid9 from "@/assets/welpen/panda-9.mp4";
+import pandaVid10 from "@/assets/welpen/panda-10.mp4";
+
 type MediaItem = { type: "image" | "video"; src: string };
 
 // Import all benji images
@@ -73,6 +85,11 @@ const pandaModules = import.meta.glob("@/assets/panda/*.jpg", { eager: true, imp
 const pandaImages = Object.entries(pandaModules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src);
+
+const pandaVideos: MediaItem[] = [
+  pandaVid1, pandaVid2, pandaVid3, pandaVid4, pandaVid5,
+  pandaVid6, pandaVid7, pandaVid8, pandaVid9, pandaVid10,
+].map((src) => ({ type: "video" as const, src }));
 
 // Import all happy hope images and videos
 const happyHopeImageModules = import.meta.glob("@/assets/happy-hope/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
@@ -153,7 +170,7 @@ const galleries: Record<GalleryTab, { label: string; birthday: string; images: s
   benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages, media: [...benjiImages.map((src) => ({ type: "image" as const, src })), ...benjiVideos] },
   enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages, media: [...enzoImages.map((src) => ({ type: "image" as const, src })), ...enzoVideos] },
   balu: { label: "Balu", birthday: "12.10.2025", images: baluImages },
-  panda: { label: "Panda", birthday: "12.10.2025", images: pandaImages },
+  panda: { label: "Panda", birthday: "12.10.2025", images: pandaImages, media: [...pandaImages.map((src) => ({ type: "image" as const, src })), ...pandaVideos] },
   "happy-hope": { label: "Happy Hope", birthday: "12.10.2025", images: happyHopeImages, media: happyHopeMedia },
   "welpen-05-11-24": { label: "Welpen geb. 05.11.2024", birthday: "05.11.2024", images: welpen051124Images },
   "welpen-01-09-24": { label: "Welpen geb. 01.09.2024", birthday: "01.09.2024", images: welpen010924Images },
