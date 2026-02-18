@@ -49,6 +49,15 @@ import pandaVid12 from "@/assets/welpen/panda-12.mp4";
 import pandaVid13 from "@/assets/welpen/panda-13.mp4";
 import pandaVid14 from "@/assets/welpen/panda-14.mp4";
 
+// Balu videos
+import baluVid1 from "@/assets/welpen/balu-1.mp4";
+import baluVid2 from "@/assets/welpen/balu-2.mp4";
+import baluVid3 from "@/assets/welpen/balu-3.mp4";
+import baluVid4 from "@/assets/welpen/balu-4.mp4";
+import baluVid5 from "@/assets/welpen/balu-5.mp4";
+import baluVid6 from "@/assets/welpen/balu-6.mp4";
+import baluVid7 from "@/assets/welpen/balu-7.mp4";
+
 type MediaItem = { type: "image" | "video"; src: string };
 
 // Import all benji images
@@ -83,6 +92,10 @@ const baluModules = import.meta.glob("@/assets/balu/*.jpg", { eager: true, impor
 const baluImages = Object.entries(baluModules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src);
+
+const baluVideos: MediaItem[] = [
+  baluVid1, baluVid2, baluVid3, baluVid4, baluVid5, baluVid6, baluVid7,
+].map((src) => ({ type: "video" as const, src }));
 
 // Import all panda images
 const pandaModules = import.meta.glob("@/assets/panda/*.jpg", { eager: true, import: "default" }) as Record<string, string>;
@@ -174,7 +187,7 @@ type GalleryTab =
 const galleries: Record<GalleryTab, { label: string; birthday: string; images: string[]; media?: MediaItem[] }> = {
   benji: { label: "Benji", birthday: "25.10.2025", images: benjiImages, media: [...benjiImages.map((src) => ({ type: "image" as const, src })), ...benjiVideos] },
   enzo: { label: "Enzo", birthday: "25.10.2025", images: enzoImages, media: [...enzoImages.map((src) => ({ type: "image" as const, src })), ...enzoVideos] },
-  balu: { label: "Balu", birthday: "12.10.2025", images: baluImages },
+  balu: { label: "Balu", birthday: "12.10.2025", images: baluImages, media: [...baluImages.map((src) => ({ type: "image" as const, src })), ...baluVideos] },
   panda: { label: "Panda", birthday: "12.10.2025", images: pandaImages, media: [...pandaImages.map((src) => ({ type: "image" as const, src })), ...pandaVideos] },
   "happy-hope": { label: "Happy Hope", birthday: "12.10.2025", images: happyHopeImages, media: happyHopeMedia },
   "welpen-05-11-24": { label: "Welpen geb. 05.11.2024", birthday: "05.11.2024", images: welpen051124Images },
