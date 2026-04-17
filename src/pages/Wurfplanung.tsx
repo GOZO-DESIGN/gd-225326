@@ -8,6 +8,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 // Correct images from old website
 import heroVideo from "@/assets/home/hero.mp4";
 import zuchtnewsImg from "@/assets/wurfplanung/zuchtnews-hope.jpg";
+import charlyWurf1 from "@/assets/wurfplanung/charly-wurf-1.webp";
+import charlyWurf2 from "@/assets/wurfplanung/charly-wurf-2.webp";
+import charlyWurf3 from "@/assets/wurfplanung/charly-wurf-3.webp";
+import charlyWurf4 from "@/assets/wurfplanung/charly-wurf-4.webp";
+import charlyWurf5 from "@/assets/wurfplanung/charly-wurf-5.webp";
+import charlyWurf6 from "@/assets/wurfplanung/charly-wurf-6.webp";
+import charlyWurf7 from "@/assets/wurfplanung/charly-wurf-7.webp";
+import charlyWurf8 from "@/assets/wurfplanung/charly-wurf-8.webp";
+import charlyWurf9 from "@/assets/wurfplanung/charly-wurf-9.webp";
 import geburtImg from "@/assets/wurfplanung/geburt.webp";
 import zweiWochenImg from "@/assets/wurfplanung/zwei-wochen.webp";
 import praegephaseImg from "@/assets/wurfplanung/praegephase-1.webp";
@@ -101,14 +110,18 @@ const Wurfplanung = () => {
                 <p className="font-body text-muted-foreground leading-relaxed">
                   Für unsere Welpen haben wir ihre Traumschlößchen gefunden, nette und verantwortungsbewußte Familien🥰.
                 </p>
+                <div className="pt-4 space-y-2">
+                  <h3 className="text-xl font-heading text-accent">Wurfanzeige – Mitte April</h3>
+                  <p className="font-body text-muted-foreground leading-relaxed">
+                    Wir freuen uns auf den geplanten Wurf von <strong>Sharlotta</strong> &amp; <strong>Remmy</strong> Mitte April.
+                  </p>
+                  <p className="font-body text-muted-foreground leading-relaxed">
+                    Zu erwartende Farben: <strong>schoko &amp; black</strong>, <strong>schoko &amp; black Merle</strong>, mit oder ohne Tans.
+                  </p>
+                </div>
             </AnimateOnScroll>
             <AnimateOnScroll variant="fade-left" className="w-full md:w-1/2">
-                <img
-                  src={zuchtnewsImg}
-                  alt="Welpen Neugeboren"
-                  className="w-full h-[350px] md:h-[450px] object-contain rounded-xl shadow-lg"
-                  loading="lazy"
-                />
+                <AbgabeSlider images={[charlyWurf2, charlyWurf1, charlyWurf3, charlyWurf8, charlyWurf7, charlyWurf5, charlyWurf6, charlyWurf4, charlyWurf9]} />
             </AnimateOnScroll>
             </div>
           </div>
