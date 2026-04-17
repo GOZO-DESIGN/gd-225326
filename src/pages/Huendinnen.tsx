@@ -8,51 +8,50 @@ import SEOHead from "@/components/SEOHead";
 import huendinnenHero from "@/assets/huendinnen/hero.webp";
 
 /* ── Direct ES6 imports for Fee ── */
-import fee1 from "@/assets/huendinnen/fee-1.avif";
-import fee2 from "@/assets/huendinnen/fee-2.avif";
-import fee3 from "@/assets/huendinnen/fee-3.avif";
-import fee4 from "@/assets/huendinnen/fee-4.avif";
+import fee0 from "@/assets/huendinnen/fee.avif";
+import fee1 from "@/assets/huendinnen/fee_1.avif";
+import fee3 from "@/assets/huendinnen/fee_3.avif";
+import fee4 from "@/assets/huendinnen/fee_4.avif";
+import fee5 from "@/assets/huendinnen/fee_5.avif";
+import fee6 from "@/assets/huendinnen/fee_6.avif";
+import fee7 from "@/assets/huendinnen/fee_7.avif";
+import fee8 from "@/assets/huendinnen/fee_8.avif";
+import fee9 from "@/assets/huendinnen/fee_9.avif";
+import fee10 from "@/assets/huendinnen/fee_10.avif";
 
 /* ── Direct ES6 imports for Amy ── */
-import amy1 from "@/assets/huendinnen/amy-1.avif";
-import amy2 from "@/assets/huendinnen/amy-2.avif";
-import amy3 from "@/assets/huendinnen/amy-3.avif";
-import amy4 from "@/assets/huendinnen/amy-4.avif";
-import amy5 from "@/assets/huendinnen/amy-5.avif";
-import amy6 from "@/assets/huendinnen/amy-6.avif";
+import amy1 from "@/assets/huendinnen/amy_1.webp";
+import amy2 from "@/assets/huendinnen/amy_2.avif";
+import amy3 from "@/assets/huendinnen/amy_3.avif";
+
+/* ── Direct ES6 imports for Ashley ── */
+import ashley1 from "@/assets/huendinnen/ashley-1.webp";
+import ashley2 from "@/assets/huendinnen/ashley-2.webp";
+import ashley3 from "@/assets/huendinnen/ashley-3.webp";
+import ashley4 from "@/assets/huendinnen/ashley-4.webp";
+import ashley5 from "@/assets/huendinnen/ashley-5.webp";
 
 /* ── Direct ES6 imports for Malinka ── */
-import malinka1 from "@/assets/huendinnen/malinka-1.webp";
-import malinka2 from "@/assets/huendinnen/malinka-2.avif";
-import malinka3 from "@/assets/huendinnen/malinka-3.avif";
-import malinka4 from "@/assets/huendinnen/malinka-4.avif";
-import malinka5 from "@/assets/huendinnen/malinka-5.avif";
+import malinka0 from "@/assets/huendinnen/malinka.webp";
+import malinka2 from "@/assets/huendinnen/malinka-2.webp";
+import malinka3 from "@/assets/huendinnen/malinka-3.webp";
+import malinka4 from "@/assets/huendinnen/malinka-4.webp";
 
-/* ── Direct ES6 imports for WhatsApp images (Ashley / Malinka) ── */
-import wa1 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.29.05_e24b3535.webp";
-import wa2 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.29.06_10cc64c9.webp";
-import wa3 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.29.06_2ac9849c.webp";
-import wa4 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.29.06_5bce40dc.webp";
-import wa5 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.34.01_e9d36eb9.webp";
-import wa6 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-01.34.02_dceba441.webp";
-import wa7 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-03.25.53_5b587c30.webp";
-import wa8 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-03.26.59_d3137eda.webp";
-import wa9 from "@/assets/huendinnen/WhatsApp-Image-2024-07-20-at-03.27.16_c80a1c18.webp";
-import wa10 from "@/assets/huendinnen/WhatsApp-Image-2024-08-08-at-13.46.43_407a5f19.webp";
-
-/* ── Direct ES6 imports for Charly ── */
-import charly1 from "@/assets/huendinnen/charly-1.jpg";
-import charly2 from "@/assets/huendinnen/charly-2.jpg";
-import charly3 from "@/assets/huendinnen/charly-3.jpg";
-import charly4 from "@/assets/huendinnen/charly-4.jpg";
-import charly5 from "@/assets/huendinnen/charly-5.jpg";
+/* ── Direct ES6 imports for Charly (Sharlotte) ── */
+import charly1 from "@/assets/huendinnen/sharlotte-1.jpg";
+import charly2 from "@/assets/huendinnen/sharlotte-2.jpg";
+import charly3 from "@/assets/huendinnen/sharlotte-3.jpg";
+import charly4 from "@/assets/huendinnen/sharlotte-4.jpg";
+import charly5 from "@/assets/huendinnen/sharlotte-5.jpg";
+import charly6 from "@/assets/huendinnen/sharlotte_1.avif";
+import charly7 from "@/assets/huendinnen/sharolotte_2.avif";
 
 /* ── image arrays ── */
-const feeImages = [fee1, fee2, fee3, fee4];
-const amyImages = [amy1, amy2, amy3, amy4, amy5, amy6];
-const ashleyImages = [wa1, wa2, wa3, wa4, wa5];
-const charlyImages = [charly1, charly2, charly3, charly4, charly5];
-const malinkaImages = [malinka1, malinka2, malinka3, malinka4, malinka5, wa6, wa7, wa8, wa9, wa10];
+const feeImages = [fee0, fee1, fee3, fee4, fee5, fee6, fee7, fee8, fee9, fee10];
+const amyImages = [amy1, amy2, amy3];
+const ashleyImages = [ashley1, ashley2, ashley3, ashley4, ashley5];
+const charlyImages = [charly1, charly2, charly3, charly4, charly5, charly6, charly7];
+const malinkaImages = [malinka0, malinka2, malinka3, malinka4];
 
 /* ── dog data ── */
 interface Dog {
