@@ -139,7 +139,7 @@ const Wurfplanung = () => {
                 </div>
             </AnimateOnScroll>
             <AnimateOnScroll variant="fade-left" className="w-full md:w-1/2">
-                <AbgabeSlider images={[charlyWurf2, charlyWurf1, charlyWurf3, charlyWurf8, charlyWurf7, charlyWurf5, charlyWurf6, charlyWurf4, charlyWurf9]} />
+                <AbgabeSlider images={[charlyWurf2, charlyWurf1, charlyWurf3, charlyWurf8, charlyWurf11, charlyWurf12, charlyWurf7, charlyWurf5, charlyWurf13, charlyWurf6, charlyWurf4, charlyWurf14, charlyWurf9]} />
             </AnimateOnScroll>
             </div>
           </div>
