@@ -112,7 +112,8 @@ const dogs: Dog[] = [
     details: [
       { label: "Farbe", value: "schoko & tan Merle" },
       { label: "Gewicht", value: "3.6 kg" },
-      { label: "PL", value: "noch offen" },
+      { label: "PL", value: "01/01" },
+      { label: "ZTP", value: "bestanden" },
       { label: "DNA", value: "hinterlegt" },
     ],
     images: charlyImages,
