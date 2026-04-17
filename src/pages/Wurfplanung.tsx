@@ -17,6 +17,10 @@ import charlyWurf6 from "@/assets/wurfplanung/charly-wurf-6.webp";
 import charlyWurf7 from "@/assets/wurfplanung/charly-wurf-7.webp";
 import charlyWurf8 from "@/assets/wurfplanung/charly-wurf-8.webp";
 import charlyWurf9 from "@/assets/wurfplanung/charly-wurf-9.webp";
+import charlyWurf11 from "@/assets/wurfplanung/charly-wurf-11.mp4";
+import charlyWurf12 from "@/assets/wurfplanung/charly-wurf-12.mp4";
+import charlyWurf13 from "@/assets/wurfplanung/charly-wurf-13.mp4";
+import charlyWurf14 from "@/assets/wurfplanung/charly-wurf-14.mp4";
 import geburtImg from "@/assets/wurfplanung/geburt.webp";
 import zweiWochenImg from "@/assets/wurfplanung/zwei-wochen.webp";
 import praegephaseImg from "@/assets/wurfplanung/praegephase-1.webp";
@@ -34,14 +38,28 @@ const AbgabeSlider = ({ images }: { images: string[] }) => {
   const [current, setCurrent] = useState(0);
   const prev = () => setCurrent((c) => (c - 1 + images.length) % images.length);
   const next = () => setCurrent((c) => (c + 1) % images.length);
+  const isVideo = (src: string) => /\.(mp4|webm|ogg|mov)(\?|$)/i.test(src);
 
   return (
     <div className="w-full max-w-4xl mx-auto relative overflow-hidden rounded-xl shadow-lg">
-      <img
-        src={images[current]}
-        alt={`Welpen Abgabe ${current + 1}`}
-        className="w-full h-[350px] md:h-[500px] object-cover transition-opacity duration-300"
-      />
+      {isVideo(images[current]) ? (
+        <video
+          key={images[current]}
+          src={images[current]}
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls
+          className="w-full h-[350px] md:h-[500px] object-cover bg-black"
+        />
+      ) : (
+        <img
+          src={images[current]}
+          alt={`Welpen Abgabe ${current + 1}`}
+          className="w-full h-[350px] md:h-[500px] object-cover transition-opacity duration-300"
+        />
+      )}
       <button
         onClick={prev}
         className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background/90 rounded-full p-1.5 text-foreground transition-colors"
